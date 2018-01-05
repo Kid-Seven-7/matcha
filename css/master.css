@@ -1,38 +1,7 @@
-/* Globals */
-
-header {
-  position: fixed;
-}
-
-footer {
-  position: fixed;
-  bottom: 20px;
-}
-
 body {
-
+  background-color: black;
 }
 
-a {
-  text-decoration: none;
+h1 {
+  color: pink;
 }
-
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
