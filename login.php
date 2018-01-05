@@ -112,54 +112,33 @@ else if (isset($_GET['user']) && $_GET['user'] == "res")
 
 <!DOCTYPE html>
 <html>
-<head>
-  <?php include_once 'meta.php' ?>
-  <title>Login</title>
-</head>
-
-<body>
-      <!--Header out here-->
-  <div>
-    <a href="index.php">Home</a>
-    <a href="gallery.php">Gallery</a>
-    <a href="login.php?user=log">Logout</a>
-    <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">&#9776;</a>
+  <head>
+    <?php include_once 'includes/meta.php' ?>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="MainContainer">
+      <?php include_once 'includes/header.php' ?>
+      <div class="logIn">
+        <h2>Login to your account</h2>
+        <form action="config/login.inc.php" method="POST">
+          <label for="username">Email/Username</label>
+          <br>
+          <input name="login" placeholder="Email/Username"/>
+          <br>
+          <label for="passwd">Password</label>
+          <br><input type="password" name="passwd" placeholder="Password"/>
+          <br>
+          <br>
+          <button type="submit" name="submit">Login</button>
+          <button formaction="index.php">Register</button>
+          <br>
+        </form>
+        <div class="passwd">
+          <a href="forgot.php">Forgot password?</a>
+        </div>
+      </div>
     </div>
-
-    <script>
-    function myFunction()
-    {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav")
-      {
-        x.className += " responsive";
-      }
-      else
-      {
-        x.className = "topnav";
-      }
-    }
-</script>
-<div>
-    <h1>Matcha</h1>
-</div>
-
-<div>
-    <div>
-</div>
-<div>
-    <h2>Login to your account</h2>
-    <form action="config/login.inc.php" method="POST">
-        <input name="login" placeholder="Email/Username"/>
-        <input type="password" name="passwd" placeholder="Password"/>
-        <button type="submit" name="submit">Login</button>
-        <button formaction="index.php">Register</button>
-        <button formaction="forgot.php">Forgot Password?</button>
-    </form>
-</div>
-</div>
-</body>
-<div>
-          <p>© 2017 Matcha</p>
-</div>
+  </body>
+  <?php include_once 'includes/footer.php' ?>
 </html>

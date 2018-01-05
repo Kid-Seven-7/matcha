@@ -103,41 +103,16 @@ else if (isset($_SESSION['email']) && $_SESSION['email'] != "")
 <!DOCTYPE html>
 <html >
   <head>
-    <?php include_once 'meta.php' ?>
-    <title>Register</title>
+    <?php include_once 'includes/meta.php' ?>
+    <title>Registeration</title>
   </head>
 
   <body>
     <!--Header out here-->
-    <div>
-      <a href="#">Home</a>
-      <!--Dont think I need this-->
-      <a href="#">Database</a>
-      <a href="#">Logout</a>
-      <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">&#9776;</a>
-      </div>
-
-    <div>
-      <h1>Matcha</h1><span></span>
-    </div>
-
-    <div>
-      <div>
-      </div>
-      <div>
-        <h2>Create an account</h2>
-        <form action="config/signup.php" method="POST">
-          <input type="text" name="user_name" placeholder="Username"/>
-          <input type="password" name="passwd" placeholder="Password"/>
-          <input type="email" name="email" placeholder="Email Address"/>
-          <button type="submit" name="submit">Register</button><br/>
-          <button formaction="login.php">Login</button>
-        </form>
-      </div>
-    </div>
-
-    <div>
-      <p>© 2017 Matcha</p>
+    <div class="MainContainer">
+      <?php include_once 'includes/header.php' ?>
+      <?php include_once 'includes/regform.php' ?>
+      <?php include_once 'includes/footer.php' ?>
     </div>
   </body>
 </html>

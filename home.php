@@ -73,27 +73,20 @@ catch(PDOException $e)
 <!DOCTYPE html>
 <html>
 <head>
-  <?php include_once 'meta.php' ?>
+  <?php include_once 'includes/meta.php' ?>
   <title>Login</title>
 </head>
 
 <body>
-    <div>
-        <h1>Matcha</h1>
-    </div>
-
-    <div>
-        <div>
-        </div>
-        <div>
+    <div class="MainContainer">
+      <?php include_once 'includes/header.php' ?>
+        <div class="LogInLanding">
             <h2>You can now log in to your account :)</h2>
             <form action="" method="POST">
                 <button formaction="login.php">Login</button>
             </form>
         </div>
+      <?php include_once 'includes/footer.php' ?>
     </div>
-    <div>
-          <p>© 2017 Matcha</p>
-</div>
 </body>
 </html>
