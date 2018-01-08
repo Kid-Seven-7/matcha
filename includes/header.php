@@ -12,7 +12,7 @@
       }
       if (isset($_SESSION['username']))
       {
-        echo ("<a href='#'>Logged in </a>");
+        echo ("<a href='profile.php'>Profile </a>");
         echo ("<a href='#'>Logout </a>");
       }
     ?>
