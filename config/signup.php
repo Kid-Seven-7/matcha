@@ -15,7 +15,7 @@ if (isset($_POST['submit']))
     {
         if (strlen($str) <= 7)
         {
-            //checking if the password is 8 more characters long 
+            //checking if the password is 8 more characters long
             return (1);
         }
         if (!preg_match("#[0-9]+#", $str))
@@ -106,7 +106,7 @@ if (isset($_POST['submit']))
                     //sending the mail
                     $to = $email;
                     $subject = "Verification code from Matcha";
-                    $msg = "Welcome to Matcha your account needs to be activated\nTo activate your account click on the link below\n\nhttp://localhost:8080/Matcha/home.php?verify=1&code=".$con_code."&email=".$email."&com=".$url_salt;
+                    $msg = "Welcome to Matcha $username, your account needs to be activated\nTo activate your account click on the link below\n\nhttp://localhost:8080/Matcha/home.php?verify=1&code=".$con_code."&email=".$email."&com=".$url_salt;
                     $headers = 'From: noreply@Matcha.com';
                     mail($to, $subject, $msg, $headers);
                     header("Location: ../index.php?verify=0");
