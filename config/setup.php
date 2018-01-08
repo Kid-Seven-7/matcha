@@ -8,10 +8,10 @@ try
 {
     $conn = new PDO('mysql:host=127.0.0.1', $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+
     //Preparing the query
     $stmt = $conn->prepare('DROP DATABASE Matcha');
-    
+
     //executing the query
     $stmt->execute();
     echo "Database deleted <br/>";
@@ -29,10 +29,10 @@ try
 {
     $conn = new PDO('mysql:host=127.0.0.1', $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+
     //Preparing the query
     $stmt = $conn->prepare('CREATE DATABASE Matcha');
-    
+
     //executing the query
     $stmt->execute();
     if ($found == 1)
@@ -50,16 +50,17 @@ try
     {
         $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
+
         //Preparing the query
         echo "Creating table : users <br/>";
         $stmt = $conn->prepare('CREATE TABLE users (
             id int(11) not null PRIMARY KEY AUTO_INCREMENT,
             user_name varchar(255) not null,
+            puser_name varchar(255) not null,
             email varchar(255) not null,
             passwd varchar(255) not null,
             active int(1) not null DEFAULT 0,
-            con_code varchar(255) not null, 
+            con_code varchar(255) not null,
             noti int(1) not null DEFAULT 1
             );'
         );
@@ -70,7 +71,7 @@ try
         {
             $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
+
             //Preparing the query
             echo "Creating table : comments <br/>";
             $stmt = $conn->prepare('CREATE TABLE comments (
@@ -88,7 +89,7 @@ try
 
             $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
+
             $stmt = $conn->prepare('CREATE TABLE likes (
                 id int(11) not null PRIMARY KEY AUTO_INCREMENT,
                 picname varchar(255) not null,
