@@ -5,7 +5,6 @@ require_once ('database.php');
 session_start();
 
 $username = $_SESSION['user_name'];
-Print_r($username);
 $pusername = $_POST['puser_name'];
 
 try {

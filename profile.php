@@ -18,7 +18,7 @@ $email = $_SESSION['email'];
   <body>
     <?php include_once 'includes/header.php' ?>
 
-    <div class="profile">
+    <div class="profile container">
       <div class="UpdateForm">
         <?php include_once 'includes/update.php' ?>
       </div>

@@ -1,3 +1,4 @@
+
 /* NavBar */
 .NavBar {
   padding: 30px 30px 30px 30px;
@@ -38,7 +39,6 @@
   width: 100%;
 }
 
-
 /* SideBar */
 .SideBar {
   float: left;
@@ -69,16 +69,18 @@
 /* UpdateForm */
 .UpdateForm {
   float: left;
-  width: 45%;
+  width: 30%;
   background-color: rgba(255,105,180, 0.5);
+  padding: 10px 10px 10px 10px;
 }
 
 /* FormFeedback */
 .FormFeedback {
   border: solid;
   float: right;
-  width: 45%;
+  width: 60%;
   background-color: rgba(255,105,180, 0.5);
+  padding: 10px 10px 10px 10px;
 }
 
 /*  */

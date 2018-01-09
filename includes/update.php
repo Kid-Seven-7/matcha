@@ -31,7 +31,7 @@
     <br><br>
     Bio:
     <br>
-    <textarea placeholder="Describe yourself here..." name="bio" rows="5" cols="40" required></textarea>
+    <textarea placeholder="Describe yourself here..." name="bio" rows="5" cols="20" required></textarea>
     <br><br>
     Age:
     <br>
