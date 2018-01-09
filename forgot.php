@@ -39,19 +39,11 @@ else if (isset($_GET['code']) && $_GET['code'] == -1)
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <?php include_once 'includes/meta.php' ?>
     <title>Reset Password</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!--Header out here-->
-  <div>
-    <a href="index.php">Home</a>
-    <a href="gallery.php">Gallery</a>
-    <a href="index.php?user=log">Logout</a>
-    <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">&#9776;</a>
-  </div>
-
+  <?php include_once 'includes/header.php' ?>
     <script>
     function myFunction()
     {
@@ -66,24 +58,21 @@ else if (isset($_GET['code']) && $_GET['code'] == -1)
           }
           }
 </script>
-<div>
-    <h1>Matcha</h1>
-</div>
 
 <div>
+
+<div class="RegForm">
     <div>
+      <h2>Enter your email</h2>
+      <form action="config/forgot.inc.php" method="POST">
+          <input type="email" name="email" placeholder="E-mail"/>
+          <br>
+          <button type="submit" name="submit">Submit</button>
+          <button formaction="login.php">Login</button>
+      </form>
+    </div>
 </div>
-<div>
-    <h2>Enter your email</h2>
-    <form action="config/forgot.inc.php" method="POST">
-        <input type="email" name="email" placeholder="E-mail"/>
-        <button type="submit" name="submit">Submit</button>
-        <button formaction="login.php">Login</button>
-    </form>
 </div>
-</div>
-<div>
-          <p>© 2017 Matcha</p>
-</div>
+<?php include_once 'includes/footer.php' ?>
 </body>
 </html>
