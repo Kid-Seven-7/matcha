@@ -62,11 +62,25 @@
 
 /* Profile */
 .profile {
+  width: 100%;
   clear: both;
 }
 
-/*  */
-/*  */
+/* UpdateForm */
+.UpdateForm {
+  float: left;
+  width: 45%;
+  background-color: rgba(255,105,180, 0.5);
+}
+
+/* FormFeedback */
+.FormFeedback {
+  border: solid;
+  float: right;
+  width: 45%;
+  background-color: rgba(255,105,180, 0.5);
+}
+
 /*  */
 /*  */
 /*  */
