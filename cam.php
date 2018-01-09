@@ -1,44 +1,35 @@
 <?php
 
-session_start();
+  session_start();
 
-if (isset($_GET['no_image']))
-{
+  if (isset($_GET['no_image'])) {
     echo "<script>alert('Please select a photo to upload first!')</script>";
-}
-else if (isset($_GET['file_error']))
-{
+  }
+  else if (isset($_GET['file_error'])) {
     echo "<script>alert('Error: Image is invalid.')</script>";
-}
-else if (isset($_GET['format_not_supported']))
-{
+  }
+  else if (isset($_GET['format_not_supported'])) {
     echo "<script>alert('Only jpeg, jpg and png are allowed!')</script>";
-}
-else if (isset($_GET['file_too_large']))
-{
+  }
+  else if (isset($_GET['file_too_large'])) {
     echo "<script>alert('File too large!!!. Try a file less than 10mb')</script>";
-}
-else if (isset($_GET['file_exists']))
-{
+  }
+  else if (isset($_GET['file_exists'])) {
     echo "<script>alert('File already exists. Try a different photo')</script>";
-}
-else if (isset($_GET['file_uploaded']))
-{
+  }
+  else if (isset($_GET['file_uploaded'])) {
     echo "<script>alert('File uploaded!')</script>";
-}
-else if (isset($_GET['file_not_found']))
-{
+  }
+  else if (isset($_GET['file_not_found'])) {
     echo "<script>alert('Error: File not found!')</script>";
-}
-else if (isset($_SESSION['username']) && isset($_SESSION['email']) && isset($_GET['login']) && $_GET['login'] == 1)
-{
+  }
+  else if (isset($_SESSION['username']) && isset($_SESSION['email']) && isset($_GET['login']) && $_GET['login'] == 1) {
     echo ("<script>alert('Logged in successfully');</script>");
-}
-else if ($_SESSION['username'] == "" || $_SESSION['email'] == "")
-{
+  }
+  else if ($_SESSION['username'] == "" || $_SESSION['email'] == "") {
     header("Location: login.php?user=res");
     exit();
-}
+  }
 
 ?>
 <!DOCTYPE html>
@@ -72,16 +63,16 @@ else if ($_SESSION['username'] == "" || $_SESSION['email'] == "")
               output.innerHTML = this.value;
             }
           </script>
-        </div>
+          </div>
         <div class="MainSection">
-          
+
         </div>
       </div>
       <section>
         <form method="POST" accept-charset="utf-8" name="form1">
           <input name="hidden_data" type="hidden"/>
-        </form>
-        <form method="POST" accept-charset="utf-8" name="save_canvas">
+          </form>
+          <form method="POST" accept-charset="utf-8" name="save_canvas">
           <input name="hidden_data_2" type="hidden"/>
         </form>
         <?php include_once 'includes/footer.php' ?>

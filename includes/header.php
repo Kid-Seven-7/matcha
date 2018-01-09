@@ -3,7 +3,6 @@
     <h1>Matcha</h1>
   </div>
   <div class="NavBar">
-
     <?php
       if (!isset($_SESSION['username']))
       {

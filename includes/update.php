@@ -1,4 +1,5 @@
-  <?php
+<?php
+
   // define variables and set to empty values
   $surname = $name = $gender = $preference = $bio = $age = "";
 
@@ -17,7 +18,7 @@
     $data = htmlspecialchars($data);
     return $data;
   }
-  ?>
+?>
   <h2>Update Profile</h2>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     Name:
