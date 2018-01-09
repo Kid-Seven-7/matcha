@@ -1,4 +1,3 @@
-
 /* NavBar */
 .NavBar {
   padding: 30px 30px 30px 30px;
@@ -17,8 +16,11 @@
 
 /* RegForm */
 .RegForm {
+  color: pink;
   text-align: center;
   clear: both;
+  padding-bottom: 20px;
+  background-color: rgba(0,0,0,0.5);
 }
 
 /* logIn */
@@ -83,10 +85,20 @@
   padding: 10px 10px 10px 10px;
 }
 
-/*  */
-/*  */
-/*  */
-/*  */
+/* Media Queries */
+@media screen and (max-width:426px) {
+  .TitleBar {
+    width: 100%;
+    text-align: center;
+    margin-top: -30px;
+  }
+  .NavBar {
+    width: 100%;
+    text-align: left;
+    margin-top: -50px;
+  }
+}
+
 /*  */
 /*  */
 /*  */

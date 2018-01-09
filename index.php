@@ -89,9 +89,15 @@ session_start();
 
   <body>
     <div class="MainContainer">
-      <?php include_once 'includes/header.php' ?>
-      <?php include_once 'includes/regform.php' ?>
-      <?php include_once 'includes/footer.php' ?>
-    </div>
+      <div class="HeaderClass">
+        <?php include_once 'includes/header.php' ?>
+      </div>
+      <div class="regformClass">
+        <?php include_once 'includes/regform.php' ?>
+      </div>
+      <div class="FooterClass">
+        <?php include_once 'includes/footer.php' ?>
+      </div>
+      </div>
   </body>
 </html>

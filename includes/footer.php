@@ -1,3 +1,3 @@
-<footer>
-  Matcha 2000 - 2018 &copy;
+<footer class="FooterClass">
+  Matcha (pty)ltd <br> &trade;
 </footer>

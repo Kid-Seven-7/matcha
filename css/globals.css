@@ -1,19 +1,25 @@
 /* Globals */
+html {
+  width: 100%;
+  height: 100%;
+}
 
 body {
   background-image: url("http://i0.kym-cdn.com/entries/icons/facebook/000/017/323/OnlineDating1.jpg");
+  background-size: 100% 100%;
+  background-attachment: fixed;
 }
 
 header {
   padding: 0px 40px 20px 40px;
 }
 
-footer {
-  clear: both;
-  position: relative;
-  margin-top: 10px;
-  bottom: 10%;
-  text-align: center;
+.FooterClass {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  text-align: right;
+  left: 0px;
 }
 
 a {
