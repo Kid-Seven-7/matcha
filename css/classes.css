@@ -16,11 +16,9 @@
 
 /* RegForm */
 .RegForm {
-  color: pink;
   text-align: center;
   clear: both;
   padding-bottom: 20px;
-  background-color: rgba(0,0,0,0.5);
 }
 
 /* logIn */
@@ -78,29 +76,30 @@
 
 /* FormFeedback */
 .FormFeedback {
-  border: solid;
   float: right;
   width: 60%;
   background-color: rgba(255,105,180, 0.5);
   padding: 10px 10px 10px 10px;
 }
 
-/* Media Queries */
-@media screen and (max-width:426px) {
-  .TitleBar {
-    width: 100%;
-    text-align: center;
-    margin-top: -30px;
-  }
-  .NavBar {
-    width: 100%;
-    text-align: left;
-    margin-top: -50px;
-  }
+/* passwd */
+.passwd a {
+  color: red;
+  text-decoration: underline;
 }
 
-/*  */
-/*  */
+/* box */
+.box {
+  display: table-cell;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
 /*  */
 /*  */
 /*  */

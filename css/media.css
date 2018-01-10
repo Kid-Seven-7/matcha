@@ -1,0 +1,60 @@
+/* Media Queries */
+/* For title and navigation */
+@media screen and (max-width:426px) {
+  .TitleBar {
+    width: 100%;
+    text-align: center;
+    margin-top: -30px;
+  }
+  .NavBar {
+    width: 100%;
+    text-align: left;
+    margin-top: -50px;
+  }
+}
+/* For cam page */
+@media screen and (max-width:920px) {
+  .SideBar {
+    margin: 0px 0px 0px 10px;
+    width: 95%;
+    height: 25%;
+    float: none;
+  }
+  .MainSection {
+    margin: 10px 0px 0px 10px;
+    width: 95%;
+    float: none;
+  }
+}
+
+/* Profile page */
+@media screen and (max-width:586px) {
+  .UpdateForm {
+    margin: 0px 0px 0px 0px;
+    width: 95%;
+    float: none;
+    text-align: center;
+  }
+  
+  .FormFeedback {
+    margin: 10px 0px 0px 0px;
+    width: 95%;
+    float: none;
+  }
+  .FormFeedback h2 {
+    text-align: center;
+  }
+}
+/**********************************
+*  0px 0px 0px 0px;
+*  float: none;
+*  width: 95%;
+*
+***********************************/
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */

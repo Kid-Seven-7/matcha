@@ -65,7 +65,7 @@
           </script>
           </div>
         <div class="MainSection">
-
+          <h2>Your search results</h2>
         </div>
       </div>
       <section>

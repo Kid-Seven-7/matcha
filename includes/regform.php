@@ -1,5 +1,4 @@
 <div class="RegForm">
-  <div>
     <h2>Create an account</h2>
     <form action="config/signup.php" method="POST">
       <label for="">Username</label>
@@ -17,5 +16,4 @@
       <br>
       <button type="submit" name="submit">Register</button><br/>
     </form>
-  </div>
 </div>
