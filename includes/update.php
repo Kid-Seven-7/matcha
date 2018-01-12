@@ -15,7 +15,7 @@ include ("../config/database.php");
     //$interests = test_input($_POST["interests"]);
 
     $i = 0;
-    while ($i < 11)
+    while ($i < 12)
     {
       $interests[] = test_input($_POST["interests".$i]);
       $i++;
@@ -68,7 +68,7 @@ include ("../config/database.php");
     <input type="radio" name="preference" value="female">Female
     <input type="radio" name="preference" value="female">Male
     <input type="radio" name="preference" value="male" checked>Both
-    <br>
+    <br><br>
     Interests:
     <br>
     <table>

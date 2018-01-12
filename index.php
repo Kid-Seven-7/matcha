@@ -95,6 +95,9 @@ session_start();
       <div class="regformClass">
         <?php include_once 'includes/regform.php' ?>
       </div>
+      <div class="profiles">
+        profiles here
+      </div>
       <div class="FooterClass">
         <?php include_once 'includes/footer.php' ?>
       </div>
