@@ -50,7 +50,6 @@
       $stmt = $conn->prepare('CREATE TABLE users (
         id int(11) not null PRIMARY KEY AUTO_INCREMENT,
         user_name varchar(255) not null,
-        puser_name varchar(255) not null,
         email varchar(255) not null,
         passwd varchar(255) not null,
         active int(1) not null DEFAULT 0,

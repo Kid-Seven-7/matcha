@@ -41,11 +41,10 @@ $email = $_SESSION['email'];
           echo $preference;
           echo "<br>";
           echo "Interests: ";
-          echo $interests;
-          echo "<br>";
-          echo "for each Interests: ";
           foreach ($interests as $interest) {
-            echo $interest;
+            if (!$interest == NULL) {
+              echo "#$interest ";
+            }
           }
         ?>
       </div>
