@@ -101,9 +101,9 @@
     <div class="logIn">
       <h2>Login to your account</h2>
       <form action="config/login.inc.php" method="POST">
-        <label for="username">Email/Username</label>
+        <label for="username">Email</label>
         <br>
-        <input name="login" placeholder="Email/Username"/>
+        <input name="login" placeholder="Email"/>
         <br>
         <label for="passwd">Password</label>
         <br><input type="password" name="passwd" placeholder="Password"/>

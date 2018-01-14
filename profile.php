@@ -25,8 +25,14 @@ $email = $_SESSION['email'];
       <div class="FormFeedback">
         <?php
           echo "<h2>$username's input:</h2>";
-          echo "Name: ";
-          echo $name;
+          echo "User name: ";
+          echo $username;
+          echo "<br>";
+          echo "email: ";
+          echo $email;
+          echo "<br>";
+          echo "First name: ";
+          echo $first_name;
           echo "<br>";
           echo "About me: ";
           echo $bio;
@@ -41,11 +47,10 @@ $email = $_SESSION['email'];
           echo $preference;
           echo "<br>";
           echo "Interests: ";
-          echo $interests;
-          echo "<br>";
-          echo "for each Interests: ";
           foreach ($interests as $interest) {
-            echo $interest;
+            if (!$interest == NULL) {
+              echo "#$interest ";
+            }
           }
         ?>
       </div>

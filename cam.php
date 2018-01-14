@@ -50,7 +50,7 @@
           <select>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-            <option value="Both">Both</option>
+            <option value="Both" selected="selected">Both</option>
           </select>
           <p>Age: ±<span id="demo"></span></p>
           <input type="range" min="18" max="100" value="29" class="slider" id="myRange">
