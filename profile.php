@@ -24,7 +24,6 @@ $email = $_SESSION['email'];
       </div>
       <div class="FormFeedback">
         <?php
-        var_dump($age);
           echo "<h2>$username's profile:</h2>";
           echo "User name: $username<br>";
           echo "email: $email<br>";
