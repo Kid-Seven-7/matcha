@@ -52,6 +52,7 @@
         user_name varchar(255) not null,
         first_name varchar(255),
         surname varchar(255),
+        address varchar(255),
         bio varchar(500),
         age int(3),
         gender varchar(255),
