@@ -1,5 +1,6 @@
 /* Media Queries */
-/* For title and navigation */
+
+/* max-width:426px */
 @media screen and (max-width:426px) {
   .TitleBar {
     width: 100%;
@@ -12,22 +13,8 @@
     margin-top: -50px;
   }
 }
-/* For cam page */
-@media screen and (max-width:920px) {
-  .SideBar {
-    margin: 0px 0px 0px 10px;
-    width: 95%;
-    height: 25%;
-    float: none;
-  }
-  .MainSection {
-    margin: 10px 0px 0px 10px;
-    width: 95%;
-    float: none;
-  }
-}
 
-/* Profile page */
+/* max-width:586px */
 @media screen and (max-width:586px) {
   .UpdateForm {
     margin: 0px 0px 0px 0px;
@@ -50,11 +37,28 @@
   }
 }
 
-@media screen and (max-width:720px) {
+/* max-width:730px */
+@media screen and (max-width:730px) {
   table, thead, tbody, th, td, tr {
-		display: block;
-	}
+    display: block;
+  }
 }
+
+/* max-width:920px */
+@media screen and (max-width:920px) {
+  .SideBar {
+    margin: 0px 0px 0px 10px;
+    width: 95%;
+    height: 25%;
+    float: none;
+  }
+  .MainSection {
+    margin: 10px 0px 0px 10px;
+    width: 95%;
+    float: none;
+  }
+}
+
 
 /**********************************
 *  0px 0px 0px 0px;
