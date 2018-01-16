@@ -26,8 +26,24 @@ include ("../config/database.php");
     $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare('UPDATE users SET first_name = :name WHERE user_name = :username');
-    $stmt->execute(array("first_name" => $name, "username" => $username));
+    $sql = "UPDATE users
+            SET first_name='$name',
+            surname='$surname',
+            bio='$bio',
+            age='$age',
+            gender='$gender',
+            preference='$preference'
+            WHERE email='$email'";
+    $_SESSION['first_name'] = $name;
+    $_SESSION['surname'] = $surname;
+    $_SESSION['bio'] = $bio;
+    $_SESSION['age'] = $age;
+    $_SESSION['gender'] = $gender;
+    $_SESSION['preference'] = $preference;
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    // $stmt->execute(array(':first_name' => $name,':email' => $email));
+    $conn = null;
   }
   catch(PDOException $e) {
     echo "error: ".$e;
@@ -95,4 +111,5 @@ include ("../config/database.php");
     </table>
     <br><br>
     <input type="submit" name="submit" value="Submit">
+
   </form>

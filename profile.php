@@ -24,33 +24,25 @@ $email = $_SESSION['email'];
       </div>
       <div class="FormFeedback">
         <?php
-          echo "<h2>$username's input:</h2>";
-          echo "User name: ";
-          echo $username;
-          echo "<br>";
-          echo "email: ";
-          echo $email;
-          echo "<br>";
-          echo "First name: ";
-          echo $first_name;
-          echo "<br>";
-          echo "About me: ";
-          echo $bio;
-          echo "<br>";
-          echo "Age: ";
-          echo $age;
-          echo "<br>";
-          echo "Gender: ";
-          echo $gender;
-          echo "<br>";
-          echo "Preference: ";
-          echo $preference;
-          echo "<br>";
+        var_dump($age);
+          echo "<h2>$username's profile:</h2>";
+          echo "User name: $username<br>";
+          echo "email: $email<br>";
+          echo "First name: $name<br>";
+          echo "About me: $bio<br>";
+          echo "Age: $age<br>";
+          echo "Gender: $gender<br>";
+          echo "Preference: $preference<br>";
           echo "Interests: ";
           foreach ($interests as $interest) {
             if (!$interest == NULL) {
               echo "#$interest ";
             }
+          }
+          echo "<br>";
+          if($age) {
+            echo "<a href='geocode.php'>Add location manually</a> or
+            <a href='location.php'>Add location automatically</a>";
           }
         ?>
       </div>
