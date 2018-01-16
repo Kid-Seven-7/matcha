@@ -11,6 +11,7 @@
     <h2 id="text-center">Enter Location: </h2>
     <form id="location-form">
       <input type="text" id="location-input" class="form-control form-control-lg">
+      <input type="hidden" id="address_input" />
       <br>
       <button type="submit">Submit</button>
     </form>
@@ -47,6 +48,8 @@
 
         // Formatted Address
         var formattedAddress = response.data.results[0].formatted_address;
+        document.getElementById('address_input').value = formattedAddress;
+        console.log("Address saved " + document.getElementById('address_input').value);
         var formattedAddressOutput = `
           <ul class="list-group">
             <li class="list-group-item">${formattedAddress}</li>
