@@ -58,6 +58,8 @@
             var slider = document.getElementById("myRange");
             var output = document.getElementById("demo");
             output.innerHTML = slider.value;
+            var ageRange = this.value;
+            var_dump(ageRange);
 
             slider.oninput = function() {
               output.innerHTML = this.value;
@@ -66,6 +68,7 @@
           </div>
         <div class="MainSection">
           <h2>Your search results</h2>
+          <?php include_once 'includes/search.php' ?>
         </div>
       </div>
       <section>
