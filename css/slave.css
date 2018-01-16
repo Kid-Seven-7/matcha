@@ -1,0 +1,141 @@
+/* CLASSES */
+  /* NavBar */
+  .NavBar {
+    padding: 30px 30px 30px 30px;
+    float: right;
+  }
+
+  /* TitleBar */
+  .TitleBar {
+    float: left;
+    text-align: left;
+  }
+  .TitleBar h1 {
+    color: pink;
+  }
+
+  /* RegForm */
+  .RegForm {
+    text-align: center;
+    clear: both;
+    padding-bottom: 20px;
+  }
+
+  /* logIn */
+  .logIn {
+    clear: both;
+    text-align: center;
+  }
+
+  /* LogInLanding */
+  .LogInLanding {
+    clear: both;
+    text-align: center;
+  }
+
+  /* MainPageContainer */
+  .MainPageContainer {
+    clear: both;
+    width: 100%;
+  }
+
+  /* SideBar */
+  .SideBar {
+    float: left;
+    text-align: center;
+    background-color: rgba(255,105,180, 0.5);
+    width: 15%;
+    height: 800px;
+    padding: 10px 10px 10px 10px;
+  }
+
+  /* MainSection */
+  .MainSection {
+    margin-left: 5px;
+    float: right;
+    text-align: center;
+    background-color: rgba(255,105,180, 0.5);
+    height: 800px;
+    width: 80%;
+    padding: 10px 10px 10px 10px;
+  }
+
+  /* Profile */
+  .profile {
+    width: 100%;
+    clear: both;
+  }
+
+  /* UpdateForm */
+  .UpdateForm {
+    float: left;
+    width: 30%;
+    background-color: rgba(255,105,180, 0.5);
+    padding: 10px 10px 10px 10px;
+  }
+  .UpdateForm h2 {
+    text-align: center;
+  }
+
+  /* FormFeedback */
+  .FormFeedback {
+    float: right;
+    width: 60%;
+    background-color: rgba(255,105,180, 0.5);
+    padding: 10px 10px 10px 10px;
+  }
+  .FormFeedback h2 {
+    text-align: center;
+  }
+
+  /* passwd */
+  .passwd a {
+    color: red;
+    text-decoration: underline;
+  }
+
+  /* box */
+  .box {
+    display: table-cell;
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
+  }
+
+  /* container */
+  .container {
+    clear: both;
+    background-color: rgba(255,105,180, 0.7);
+  }
+
+  /* searchTable */
+  .searchTable {
+    clear: both;
+  }
+  /*  */
+
+
+/* ID's */
+  /* location-form */
+  #location-form {
+    text-align: center;
+  }
+
+  /* text-center */
+  #text-center {
+    text-align: center;
+  }
+
+  /* map */
+  #map {
+    height: 980px;
+    width: 100%;
+  }
+
+  /*  */
+  /*  */
