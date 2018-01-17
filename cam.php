@@ -43,28 +43,52 @@
     <main>
       <div class="MainPageContainer">
         <div class="SideBar">
-          I'm looking for:
-          <br>
-          <br>
-          <label for="">Gender</label>
-          <select>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Both" selected="selected">Both</option>
-          </select>
-          <p>Age: ±<span id="demo"></span></p>
-          <input type="range" min="18" max="100" value="29" class="slider" id="myRange">
-          <script>
+          <h3>What are you looking for?</h3>
+          <form class="" action="includes/filter.php" method="post">
+            <label for="">Gender:</label><br>
+            <input type="radio" name="gender" value="male" checked> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="both"> Both
+            <br><br>
+            <label for="">Interests:</label>
+            <div class="tableDiv">
+              <table>
+                <tr>
+                  <td><input class="box" type="checkbox" name="interests0" value="Tattoos">Tattoos</td>
+                  <td><input class="box" type="checkbox" name="interests1" value="Piercings">Piercings</td>
+                  <td><input class="box" type="checkbox" name="interests2" value="Music">Music</td>
+                </tr>
+                <tr>
+                  <td><input class="box" type="checkbox" name="interests3" value="Art">Art</td>
+                  <td><input class="box" type="checkbox" name="interests4" value="Gaming">Gaming</td>
+                  <td><input class="box" type="checkbox" name="interests5" value="Cooking">Cooking</td>
+                </tr>
+                <tr>
+                  <td><input class="box" type="checkbox" name="interests6" value="Anime">Anime</td>
+                  <td><input class="box" type="checkbox" name="interests7" value="Cycling">Cycling</td>
+                  <td><input class="box" type="checkbox" name="interests8" value="Sports">Sports</td>
+                </tr>
+                <tr>
+                  <td><input class="box" type="checkbox" name="interests9" value="Fitness">Fitness</td>
+                  <td><input class="box" type="checkbox" name="interests10" value="Pets">Pets</td>
+                  <td><input class="box" type="checkbox" name="interests11" value="Nature">Nature</td>
+                </tr>
+              </table>
+            </div>
+            <br>
+            <script>
             var slider = document.getElementById("myRange");
             var output = document.getElementById("demo");
             output.innerHTML = slider.value;
-            var ageRange = this.value;
-            var_dump(ageRange);
 
             slider.oninput = function() {
               output.innerHTML = this.value;
             }
-          </script>
+            </script>
+            <div class="buttonDiv">
+              <input type="submit" name="submit" value="submit" id="submitButton">
+            </div>
+          </form>
           </div>
         <div class="MainSection">
           <h2>Your search results</h2>

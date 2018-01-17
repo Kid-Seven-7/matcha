@@ -42,11 +42,16 @@
   /* SideBar */
   .SideBar {
     float: left;
-    text-align: center;
     background-color: rgba(255,105,180, 0.5);
     width: 15%;
     height: 800px;
     padding: 10px 10px 10px 10px;
+  }
+  .SideBar h3 {
+    text-align: center;
+  }
+  .SideBar p {
+    text-align: center;
   }
 
   /* MainSection */
@@ -121,7 +126,13 @@
   .searchTable table {
     background-color: rgba(255,105,180, 0.5);
   }
-  /*  */
+
+  /* form */
+  .form {
+    clear: both;
+    width: 90%;
+    text-align: center;
+  }
   /*  */
 
 
@@ -141,6 +152,17 @@
     height: 980px;
     width: 100%;
   }
+
+  /* myRange */
+  #myRange {
+    width: 90%;
+  }
+
+  /* submitButton */
+  .buttonDiv {
+    text-align: center;
+  }
+
 
   /*  */
   /*  */

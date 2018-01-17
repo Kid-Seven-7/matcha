@@ -25,7 +25,7 @@ if (isset($_POST['email'])) {
             $url_salt = hash('whirlpool', rand(0, 100000));
             $to = $email;
             $subject = "Reset code from Matcha";
-            $msg = "$Username reset your account password\nClick the link below\n\nhttp://localhost:8080/camagru/reset.php?reset=1&code=".$con_code."&email=".$email."&com=".$url_salt;
+            $msg = "$Username reset your account password\nClick the link below\n\nhttp://localhost:8080/matcha/reset.php?reset=1&code=".$con_code."&email=".$email."&com=".$url_salt;
             $headers = 'From: noreply@Matcha.com';
             mail($to, $subject, $msg, $headers);
             header("Location: ../forgot.php?reset=1");
