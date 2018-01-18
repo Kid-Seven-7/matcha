@@ -22,6 +22,7 @@ $email = $_SESSION['email'];
       <div class="UpdateForm">
         <?php include_once 'includes/update.php' ?>
       </div>
+
       <div class="FormFeedback">
         <?php
           echo "<h2>$username's profile:</h2>";
@@ -38,6 +39,7 @@ $email = $_SESSION['email'];
               echo "#$interest ";
             }
           }
+          // echo "<img src='$fileDestination' alt ='img'>";
           echo "<br>";
           if($age) {
             echo "<a href='geocode.php'>Add location manually</a> or

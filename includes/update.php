@@ -55,6 +55,11 @@ include ("../config/database.php");
     $data = htmlspecialchars($data);
     return $data;
   }
+
+  if (isset($_GET["upload"]) && ($_GET["upload"] == "successful")){
+    echo ("<script>alert('Your upload was successful')</script>");
+  }
+
 ?>
   <h2>Update Profile</h2>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
