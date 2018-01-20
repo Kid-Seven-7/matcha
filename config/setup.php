@@ -49,7 +49,7 @@
       echo "Creating table : users <br/>";
       $stmt = $conn->prepare('CREATE TABLE users (
         id int(11) not null PRIMARY KEY AUTO_INCREMENT,
-        profilePic varchar(255),
+        profilePic varchar(255) default "../uploads/male.jpg",
         user_name varchar(255) not null,
         first_name varchar(255),
         surname varchar(255),
