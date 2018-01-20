@@ -4,7 +4,6 @@ session_start();
 if (isset($_POST['submit'])){
   if($_FILES['image']['name']){
     $fileName = $_FILES['image']['name'];
-    $_SESSION['filename'] = $fileName;
     $fileTmpName = $_FILES['image']['tmp_name'];
     $fileSize = $_FILES['image']['size'];
     $fileError = $_FILES['image']['error'];
@@ -19,25 +18,19 @@ if (isset($_POST['submit'])){
           if($filesize < 1000000){
             // $fileNameNew = uniqid('', true). ".".$fileActualExt;
             $fileDestination ='uploads/'.$fileName;
+            $_SESSION['profilePic'] = $fileName;
             move_uploaded_file($fileTmpName, $fileDestination);
 
-            // try {
-            //   $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-            //   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //
-            //   //Preparing query
-            //   $stmt = $conn->prepare('INSERT INTO pictures (name, user, type, ext)
-            //     VALUES (:fileName, );'
-            //   );
-            //   //executing the query
-            //   $stmt->execute(array('filename' => $fileName));
-            // }
-            // catch(PDOException $e) {
-            //   echo "Unable to create picture table";
-            //   echo "ERROR: ".$e->getMessage()."<br/>";
-            // }
+            try {
+              $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            // header("Location: upload.php?upload=successful");
+              $stmt = $conn->prepare("INSERT INTO pictures (name, user, current)
+                VALUES (:name, :user, :current)");
+              $stmt->execute(array(':name' => $fileName, ':user' => $_SESSION['username'], ':current' => 1));
+            } catch(PDOException $e) {
+              echo "Unable to add picture to table: $e";
+            }
           }else{
             echo "Your file is too big";
           }
@@ -45,7 +38,7 @@ if (isset($_POST['submit'])){
           echo "There was an error uploading your file";
         }
       }else{
-        echo "You cannot upload files of this type";
+        echo "Format not supported";
       }
     }
   }
@@ -73,19 +66,10 @@ if (isset($_POST['submit'])){
     <div id="image">
       <?php
         if(!empty($_FILES['image']['name'])){
-          echo "<h3>preview</h3><br>";
+          echo "<a href='includes/setprofile.php'>set as profilePic</a><br>";
         }
        ?>
       <img src="<?php echo $fileDestination ?>" alt="" width="400px" height="400px">
-      <?php
-        if(!empty($_FILES['image']['name'])){
-          echo "
-          <form class='' action='includes/setprofile.php' method='post'>
-            <button type='submit' name='submit' formaction='includes/setprofile.php'>Save</button>
-          </form>
-          ";
-        }
-       ?>
     </div>
   </body>
 </html>

@@ -65,19 +65,19 @@ include ("../config/database.php");
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     Name:
     <br>
-    <input size="30" type="text" name="name" placeholder="name" required>
+    <input size="30" type="text" name="name" placeholder="name">
     <br><br>
     Surname:
     <br>
-    <input size="30" type="text" name="surname" placeholder="surname" required>
+    <input size="30" type="text" name="surname" placeholder="surname">
     <br><br>
     Bio:
     <br>
-    <textarea placeholder="Describe yourself here..." name="bio" rows="5" cols="27" required></textarea>
+    <textarea placeholder="Describe yourself here..." name="bio" rows="5" cols="27"></textarea>
     <br><br>
     Age:
     <br>
-    <input type="number" name="age" placeholder="25" min="18" max="45" required>
+    <input type="number" name="age" placeholder="25" min="18" max="45">
     <br><br>
     Gender:
     <br>

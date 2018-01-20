@@ -25,26 +25,24 @@ $email = $_SESSION['email'];
 
       <div class="FormFeedback">
         <?php
-          echo "<h2>$username's profile:</h2>";
-          echo "User name: $username<br>";
-          echo "email: $email<br>";
-          echo "First name: $name<br>";
-          echo "About me: $bio<br>";
-          echo "Age: $age<br>";
-          echo "Gender: $gender<br>";
-          echo "Preference: $preference<br>";
-          echo "Interests: ";
-          foreach ($interests as $interest) {
-            if (!$interest == NULL) {
-              echo "#$interest ";
+        try {
+            $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT * FROM users WHERE user_name = $username");
+            $stmt->execute();
+
+            // set the resulting array to associative
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+              echo $v;
             }
-          }
-          // echo "<img src='$fileDestination' alt ='img'>";
-          echo "<br>";
-          if($age) {
-            echo "<a href='geocode.php'>Add location manually</a> or
-            <a href='location.php'>Add location automatically</a>";
-          }
+        }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        ?>
         ?>
       </div>
     </div>

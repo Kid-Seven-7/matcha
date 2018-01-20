@@ -9,11 +9,11 @@
   <?php include_once 'includes/header.php' ?>
   <div class="container">
     <h2 id="text-center">Enter Location: </h2>
-    <form id="location-form">
+    <form id="location-form" action="includes/address.php">
       <input type="text" id="location-input" class="form-control form-control-lg">
       <input type="hidden" id="address_input" />
       <br>
-      <button type="submit">Submit</button>
+      <button type="submit" name="submit">Submit</button>
     </form>
     <div id="formatted-address"></div>
     <div id="address-components"></div>

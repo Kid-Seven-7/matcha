@@ -58,11 +58,13 @@
   .MainSection {
     margin-left: 5px;
     float: right;
-    text-align: center;
     background-color: rgba(255,105,180, 0.5);
     height: 800px;
     width: 80%;
     padding: 10px 10px 10px 10px;
+  }
+  .MainSection h2 {
+    text-align: center;
   }
 
   /* Profile */
@@ -118,12 +120,12 @@
     background-color: rgba(255,105,180, 0.7);
   }
 
-  /* searchTable */
-  .searchTable {
+  /* searchResults */
+  .searchResults {
     clear: both;
     width: 100%;
   }
-  .searchTable table {
+  .searchResults ul {
     background-color: rgba(255,105,180, 0.5);
   }
 
@@ -146,7 +148,11 @@
   .buttonDiv {
     text-align: center;
   }
-  /*  */
+  /* resultsList */
+  .resultsList li {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
   /*  */
 
 

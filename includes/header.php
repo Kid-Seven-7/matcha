@@ -14,9 +14,9 @@
       /* logged in */
       if (isset($_SESSION['username']))
       {
+        echo ("<a href='cam.php'>Search</a>");
         echo ("<a href='profile.php'>Profile</a>");
         echo ("<a href='profilepic.php'>Upload profile pic</a>");
-        echo ("<a href='cam.php'>Search</a>");
         echo ("<a href='config/logout.php'>Logout</a>");
       }
     ?>

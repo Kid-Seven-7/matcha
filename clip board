@@ -1,0 +1,32 @@
+echo "<h2>$username's profile:</h2>";
+echo "User name: $username<br>";
+echo "email: $email<br>";
+if (isset($_POST['name'])){
+  echo "First name: $name<br>";
+}
+if (isset($_POST['bio'])){
+  echo "About me: $bio<br>";
+}
+if (isset($_POST['age'])){
+  echo "Age: $age<br>";
+}
+if (isset($_POST['gender'])){
+  echo "Gender: $gender<br>";
+}
+if (isset($_POST['preference'])){
+  echo "Preference: $preference<br>";
+}
+if (isset($_POST['interests'])){
+  echo "Interests: ";
+  foreach ($interests as $interest) {
+    if (!$interest == NULL) {
+      echo "#$interest ";
+    }
+  }
+}
+// echo "<img src='$fileDestination' alt ='img'>";
+echo "<br>";
+if($age) {
+  echo "<a href='geocode.php'>Add location manually</a> or
+  <a href='location.php'>Add location automatically</a>";
+}

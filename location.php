@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -38,7 +39,7 @@
               map: map,
               draggable: true,
               animation: google.maps.Animation.DROP,
-              title: 'Current Location'
+              title: '<?php $_SESSION['username'] ?> Current Location'
             });
 
             var lat ,lng;
