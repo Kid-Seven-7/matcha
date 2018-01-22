@@ -5,7 +5,7 @@
 
     echo "<div class='searchTable'>";
     echo "<table style='border: solid 1px black;'>";
-     echo "<tr><th>user_name</th><th>firstname</th><th>surname</th><th>email</th><th>bio</th></tr>";
+     echo "<tr><th>user_name</th><th>firstname</th><th>surname</th><th>bio</th></tr>";
 
     class TableRows extends RecursiveIteratorIterator {
         function __construct($it) {
@@ -28,16 +28,19 @@
     try {
         $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT user_name, first_name, surname, email, bio FROM users");
+        $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio FROM users");
         $stmt->execute();
 
         // set the resulting array to associative
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-          echo $v;
+          if ($v == ""){
+            echo "empty";
+          }else{
+            echo $v;
+          }
         }
-        // die("hello world!");
     }
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();

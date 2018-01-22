@@ -33,7 +33,7 @@
             if ($row['active'] == 1) {
               $_SESSION['username'] = $row['user_name'];
               $_SESSION['email'] = $row['email'];
-              header("Location: cam.php?login=1");
+              header("Location: profile.php?login=1");
               exit();
             }
             else {
