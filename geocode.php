@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php include_once 'includes/meta.php' ?>
+  <?php
+    include_once 'includes/meta.php';
+    session_start();
+  ?>
   <title>geocode</title>
 </head>
 <body>

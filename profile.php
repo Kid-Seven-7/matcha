@@ -7,6 +7,9 @@ if (isset($_GET['user'])) {
     echo ("<script>alert('Please login/register first');</script>");
   }
 }
+if (isset($_GET['avatar'])) {
+  echo ("<script>alert('This image has already been uploaded');</script>");
+}
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
 ?>
@@ -27,6 +30,7 @@ $email = $_SESSION['email'];
 
       <div class="FormFeedback">
         <?php
+        echo "<h2>{$username}'s Profile</h2><br>";
         try {
           $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -39,45 +43,51 @@ $email = $_SESSION['email'];
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           if (count($result)) {
             foreach($result as $row) {
+              echo "<img src='uploads/{$row['profilePic']}' width='200px' height='200px'><br>";
               if(empty($row['user_name'])){
-                echo "Username: Not set<br>";
+                echo "<strong>Username:</strong> Not set<br>";
               }else{
-                echo "Username: {$row['user_name']}<br>";
+                echo "<strong>Username:</strong> {$row['user_name']}<br>";
               }
               if(empty($row['first_name'])){
-                echo "Firstname: Not set<br>";
+                echo "<strong>Firstname:</strong> Not set<br>";
               }else{
-                echo "Firstname: {$row['first_name']}<br>";
+                echo "<strong>Firstname:</strong> {$row['first_name']}<br>";
               }
               if(empty($row['surname'])){
-                echo "Surname: Not set<br>";
+                echo "<strong>Surname:</strong> Not set<br>";
               }else{
-                echo "Surname: {$row['surname']}<br>";
+                echo "<strong>Surname:</strong> {$row['surname']}<br>";
               }
               if(empty($row['email'])){
-                echo "email: Not set<br>";
+                echo "<strong>email:</strong> Not set<br>";
               }else{
-                echo "email: {$row['email']}<br>";
+                echo "<strong>email:</strong> {$row['email']}<br>";
+              }
+              if(empty($row['location'])){
+                echo "<strong>location:</strong> Not set<br>";
+              }else{
+                echo "<strong>location:</strong> {$row['location']}<br>";
               }
               if(empty($row['bio'])){
-                echo "Bio: Not set<br>";
+                echo "<strong>Bio:</strong> Not set<br>";
               }else{
-                echo "Bio: {$row['bio']}<br>";
+                echo "<strong>Bio:</strong> {$row['bio']}<br>";
               }
               if(empty($row['age'])){
-                echo "Age: Not set<br>";
+                echo "<strong>Age:</strong> Not set<br>";
               }else{
-                echo "Age: {$row['age']}<br>";
+                echo "<strong>Age:</strong> {$row['age']}<br>";
               }
               if(empty($row['gender'])){
-                echo "Gender: Not set<br>";
+                echo "<strong>Gender:</strong> Not set<br>";
               }else{
-                echo "Gender: {$row['gender']}<br>";
+                echo "<strong>Gender:</strong> {$row['gender']}<br>";
               }
               if(empty($row['preference'])){
-                echo "Preference: Not set<br>";
+                echo "<strong>Preference:</strong> Not set<br>";
               }else{
-                echo "Preference: {$row['preference']}<br>";
+                echo "<strong>Preference:</strong> {$row['preference']}<br>";
               }
             }
           }
@@ -86,6 +96,7 @@ $email = $_SESSION['email'];
           echo "error: ".$e;
         }
         ?>
+        <a href="images.php">view profile pictures</a>
       </div>
     </div>
     <?php include_once 'includes/footer.php' ?>

@@ -25,6 +25,13 @@ if (isset($_POST['submit'])){
               $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
               $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+              $result = $conn->prepare("SELECT name, user, current
+                                        FROM users
+                                        WHERE name='{$fileName}' , user='{$_SESSION['username']}'");
+              if($result){
+                header("location: profile.php?avatar");
+              }
+
               $stmt = $conn->prepare("INSERT INTO pictures (name, user, current)
                 VALUES (:name, :user, :current)");
               $stmt->execute(array(':name' => $fileName, ':user' => $_SESSION['username'], ':current' => 1));

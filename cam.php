@@ -26,10 +26,12 @@
   else if (isset($_SESSION['username']) && isset($_SESSION['email']) && isset($_GET['login']) && $_GET['login'] == 1) {
     echo ("<script>alert('Logged in successfully');</script>");
   }
-  else if ($_SESSION['username'] == "" || $_SESSION['email'] == "") {
-    header("Location: login.php?user=res");
-    exit();
-  }
+  // Allows non-users to view profiles
+
+  // else if ($_SESSION['username'] == "" || $_SESSION['email'] == "") {
+  //   header("Location: login.php?user=res");
+  //   exit();
+  // }
 
 ?>
 <!DOCTYPE html>
@@ -44,14 +46,15 @@
       <div class="MainPageContainer">
         <div class="SideBar">
           <h3>What are you looking for?</h3>
-          <form class="" action="includes/filter.php" method="post">
+          <form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label for="">Gender:</label><br>
-            <input type="radio" name="gender" value="male" checked> Male<br>
+            <input type="radio" name="gender" value="male"> Male<br>
             <input type="radio" name="gender" value="female"> Female<br>
-            <input type="radio" name="gender" value="both"> Both
+            <input type="radio" name="gender" value="both" checked> Both
             <br><br>
             <label for="">Interests:</label>
             <div class="tableDiv">
+              <!-- Because tables look neater -->
               <table>
                 <tr>
                   <td><input class="box" type="checkbox" name="interests0" value="Tattoos">Tattoos</td>
@@ -92,16 +95,60 @@
           </div>
         <div class="MainSection">
           <h2>Your search results</h2>
-          <?php include_once 'includes/search.php' ?>
+          <?php
+          include_once('database.php');
+
+          echo "<div class='searchTable'>";
+          echo "<table style='border: solid 1px black;'>";
+          echo "<tr><th>user_name</th><th>firstname</th><th>surname</th><th>bio</th></tr>";
+
+          class TableRows extends RecursiveIteratorIterator {
+              function __construct($it) {
+                  parent::__construct($it, self::LEAVES_ONLY);
+              }
+
+              function current() {
+                  return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+              }
+
+              function beginChildren() {
+                  echo "<tr>";
+              }
+
+              function endChildren() {
+                  echo "</tr>" . "\n";
+              }
+          }
+
+          try {
+              $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+              //Because "both" is not a Gender
+              if($_POST['gender'] == 'both'){
+                $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio FROM users");
+              }else{
+                $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio FROM users WHERE gender = '{$_POST['gender']}'");
+              }
+              $stmt->execute();
+
+              // set the resulting array to associative
+              $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+              foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+                echo $v;
+              }
+          }
+          catch(PDOException $e) {
+              echo "Error: " . $e->getMessage();
+          }
+          $conn = null;
+          echo "</table>";
+          echo "</div>";
+          ?>
         </div>
       </div>
       <section>
-        <form method="POST" accept-charset="utf-8" name="form1">
-          <input name="hidden_data" type="hidden"/>
-          </form>
-          <form method="POST" accept-charset="utf-8" name="save_canvas">
-          <input name="hidden_data_2" type="hidden"/>
-        </form>
         <?php include_once 'includes/footer.php' ?>
       </section>
     </main>

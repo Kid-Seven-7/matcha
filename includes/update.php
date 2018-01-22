@@ -12,7 +12,7 @@ include ("../config/database.php");
     $age = test_input($_POST["age"]);
     $gender = test_input($_POST["gender"]);
     $preference = test_input($_POST["preference"]);
-    //$interests = test_input($_POST["interests"]);
+    $_SESSION['preference'] = $preference;
 
     $i = 0;
     while ($i < 12)
@@ -26,24 +26,49 @@ include ("../config/database.php");
     $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "UPDATE users
-            SET first_name='$name',
-            surname='$surname',
-            bio='$bio',
-            age='$age',
-            gender='$gender',
-            preference='$preference'
-            WHERE email='$email'";
-    $_SESSION['first_name'] = $name;
-    $_SESSION['surname'] = $surname;
-    $_SESSION['bio'] = $bio;
-    $_SESSION['age'] = $age;
-    $_SESSION['gender'] = $gender;
-    $_SESSION['preference'] = $preference;
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    // $stmt->execute(array(':first_name' => $name,':email' => $email));
-    $conn = null;
+    if($name){
+      $sql = "UPDATE users
+      SET first_name='$name'
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($surname){
+      $sql = "UPDATE users
+      SET surname='$surname'
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($bio){
+      $sql = "UPDATE users
+      SET bio='$bio'
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($age){
+      $sql = "UPDATE users
+      SET age='$age'
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($gender){
+      $sql = "UPDATE users
+      SET gender='$gender'
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($preference){
+      $sql = "UPDATE users
+      SET preference='$preference'
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+
   }
   catch(PDOException $e) {
     echo "error: ".$e;
@@ -82,13 +107,13 @@ include ("../config/database.php");
     Gender:
     <br>
     <input type="radio" name="gender" value="female">Female
-    <input type="radio" name="gender" value="male" checked>Male
+    <input type="radio" name="gender" value="male">Male
     <br><br>
     Sexual Preference:
     <br>
     <input type="radio" name="preference" value="female">Female
     <input type="radio" name="preference" value="female">Male
-    <input type="radio" name="preference" value="male" checked>Both
+    <input type="radio" name="preference" value="male">Both
     <br><br>
     Interests:
     <br>
@@ -118,3 +143,6 @@ include ("../config/database.php");
     <input type="submit" name="submit" value="Submit">
 
   </form>
+  <br>
+  <a href="geocode.php">set location manually</a> or
+  <a href="location.php">set location automatically</a>
