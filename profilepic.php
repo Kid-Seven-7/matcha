@@ -21,19 +21,28 @@ if (isset($_POST['submit'])){
             $_SESSION['profilePic'] = $fileName;
             move_uploaded_file($fileTmpName, $fileDestination);
 
+            // Check for duplicate files
             try {
               $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
               $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
               $result = $conn->prepare("SELECT name, user, current
-                                        FROM users
-                                        WHERE name='{$fileName}' , user='{$_SESSION['username']}'");
+                                        FROM pictures
+                                        WHERE name='{$fileName}' AND user='{$_SESSION['username']}'");
+              $result->execute();
               if($result){
-                header("location: profile.php?avatar");
+                var_dump($result);
               }
+              $conn= null;
 
+              // Check for 5 pic limit
+              //TODO
+
+              // Anding image to database
+              $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               $stmt = $conn->prepare("INSERT INTO pictures (name, user, current)
-                VALUES (:name, :user, :current)");
+                                      VALUES (:name, :user, :current)");
               $stmt->execute(array(':name' => $fileName, ':user' => $_SESSION['username'], ':current' => 1));
             } catch(PDOException $e) {
               echo "Unable to add picture to table: $e";

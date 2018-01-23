@@ -52,14 +52,9 @@
         // Formatted Address
         var formattedAddress = response.data.results[0].formatted_address;
 
-        /*
-          xmlHttp.open("GET", "index.php?address=" +formattedAddress, true);
-          xmlHttp.send();
+        window.location.href = "includes/address.php?address=" + formattedAddress;
+        alert(formattedAddress);
 
-          php
-
-          $_GET['address']
-        */
         document.getElementById('address_input').value = formattedAddress;
         console.log("Address saved " + document.getElementById('address_input').value);
         var formattedAddressOutput = `
@@ -98,5 +93,10 @@
       });
     }
   </script>
+  <?php
+
+
+
+   ?>
 </body>
 </html>

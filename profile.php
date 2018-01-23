@@ -12,6 +12,7 @@ if (isset($_GET['avatar'])) {
 }
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
+var_dump($_SESSION['latlng']);
 ?>
 
 <!DOCTYPE html>
@@ -64,10 +65,10 @@ $email = $_SESSION['email'];
               }else{
                 echo "<strong>email:</strong> {$row['email']}<br>";
               }
-              if(empty($row['location'])){
-                echo "<strong>location:</strong> Not set<br>";
+              if(empty($row['address'])){
+                echo "<strong>address:</strong> Not set<br>";
               }else{
-                echo "<strong>location:</strong> {$row['location']}<br>";
+                echo "<strong>address:</strong> {$row['address']}<br>";
               }
               if(empty($row['bio'])){
                 echo "<strong>Bio:</strong> Not set<br>";

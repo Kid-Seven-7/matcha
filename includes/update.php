@@ -60,6 +60,19 @@ include ("../config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+      if($gender == 'female'){
+        $sql = "UPDATE users
+        SET profilePic='../uploads/female.png'
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }else{
+        $sql = "UPDATE users
+        SET profilePic='../uploads/male.png'
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
     }
     if($preference){
       $sql = "UPDATE users
@@ -146,3 +159,5 @@ include ("../config/database.php");
   <br>
   <a href="geocode.php">set location manually</a> or
   <a href="location.php">set location automatically</a>
+  <br><br>
+  <a href="delete.php">Delete account</a>

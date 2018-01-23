@@ -23,6 +23,8 @@
               lng: position.coords.longitude
             };
 
+            window.location.href = "includes/address.php?latlng=" + pos.lat + "," + pos.lng;
+
             var cityCircle = new google.maps.Circle({
               strokeColor: '#FF0000',
               strokeOpacity: 0.8,
@@ -37,38 +39,28 @@
             var marker = new google.maps.Marker({
               position: pos,
               map: map,
-              draggable: true,
               animation: google.maps.Animation.DROP,
-              title: '<?php $_SESSION['username'] ?> Current Location'
+              title: '<?php echo "{$_SESSION['username']}" ?>\'s Current Location'
             });
 
-            var lat ,lng;
-            google.maps.event.addListener(marker, 'dragend', function (event) {
-                lat = this.getPosition().lat();
-                lng = this.getPosition().lng();
-                pos = {
-                  lat: lat,
-                  lng: lng
-                };
-                cityCircle.setMap(null);
+            cityCircle.setMap(null);
 
-                cityCircle = new google.maps.Circle({
-                  strokeColor: '#FF0000',
-                  strokeOpacity: 0.8,
-                  strokeWeight: 2,
-                  editable: true,
-                  fillColor: '#FF0000',
-                  fillOpacity: 0.35,
-                  map: map,
-                  center: pos,
-                  radius: 10000
-                });
-                google.maps.event.addListener(cityCircle, 'radius_changed', function () {
-                  console.log("radius: " + cityCircle.getRadius());
-                });
-                google.maps.event.addListener(cityCircle, 'center_changed', function () {
-                  console.log("center: " + cityCircle.getCenter());
-                });
+            cityCircle = new google.maps.Circle({
+              strokeColor: '#FF0000',
+              strokeOpacity: 0.2,
+              strokeWeight: 1,
+              editable: true,
+              fillColor: '#FF0000',
+              fillOpacity: 0.3,
+              map: map,
+              center: pos,
+              radius: 10000
+            });
+            google.maps.event.addListener(cityCircle, 'radius_changed', function () {
+              console.log("radius: " + cityCircle.getRadius());
+            });
+            google.maps.event.addListener(cityCircle, 'center_changed', function () {
+              console.log("center: " + cityCircle.getCenter());
             });
 
             map.setCenter(pos);

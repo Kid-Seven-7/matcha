@@ -158,7 +158,29 @@
     margin-top: 0px;
     margin-bottom: 0px;
   }
-  /*  */
+
+  /* profilePicGallery */
+  .profilePicGallery {
+    clear: both;
+    margin: 10px 10px 10px 10px;
+  }
+  .profilePicGallery img {
+    margin: 10px 10px 10px 10px;
+  }
+  .profilePicGallery img:hover {
+    border: 5px solid green;
+  }
+
+  /* deleteAccount */
+  .deleteAccount {
+    clear: both;
+    text-align: center;
+  }
+  .deleteAccount a {
+    font-size: 30px;
+    text-decoration: underline;
+    margin: 20px 20px 20px 20px;
+  }
   /*  */
   /*  */
 
