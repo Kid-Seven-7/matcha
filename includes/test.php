@@ -10,12 +10,11 @@ try {
           WHERE email='$email'";
   $stmt = $conn->prepare($sql);
   $stmt->execute();
-}
-catch(PDOException $e) {
+}catch(PDOException $e) {
   echo "error: ".$e;
 }
 
- ?>
+?>
 
 
 if (this){

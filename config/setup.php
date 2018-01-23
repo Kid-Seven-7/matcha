@@ -15,8 +15,7 @@
     $stmt->execute();
     echo "Database deleted <br/>";
     $found = 1;
-  }
-  catch (PDOException $e) {
+  }catch (PDOException $e) {
     $found = 0;
     echo "Database not found<br/>";
   }
@@ -34,8 +33,7 @@
     $stmt->execute();
     if ($found == 1) {
       echo "Re-creating database <br/>";
-    }
-    else {
+    }else {
       echo "Creating database <br/>";
     }
     echo "Done! <br/>";
@@ -116,23 +114,19 @@
           //executing the query
           $stmt->execute();
           echo "Table pictures created! <br/>";
-        }
-        catch(PDOException $e) {
+        }catch(PDOException $e) {
           echo "Unable to create picture table";
           echo "ERROR: ".$e->getMessage()."<br/>";
         }
-      }
-      catch (PDOException $e) {
+      }catch (PDOException $e) {
         echo "Unable to create table <br/>";
         echo "ERROR: ".$e->getMessage()."<br/>";
       }
-    }
-    catch (PDOException $e) {
+    }catch (PDOException $e) {
       echo "Unable to create table <br/>";
       echo "ERROR: ".$e->getMessage()."<br/>";
     }
-  }
-  catch (PDOException $e) {
+  }catch (PDOException $e) {
     echo "Unable to create database <br/>";
     echo "ERROR: ".$e->getMessage()."<br/>";
   }

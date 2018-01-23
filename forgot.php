@@ -4,26 +4,19 @@ require_once('config/database.php');
 
 if (isset($_GET['reset']) && $_GET['reset'] == 1) {
     echo ("<script>alert('A reset link has been sent your email')</script>");
-}
-else if (isset($_GET['email_not_found'])) {
+}elseif (isset($_GET['email_not_found'])) {
   echo ("<script>alert('This is not a registered email. Please register first');</script>");
-}
-else if (isset($_GET['con']) && $_GET['con'] == "error") {
+}elseif (isset($_GET['con']) && $_GET['con'] == "error") {
   echo ("<script>alert('Connection to the server failed');</script>");
-}
-else if (isset($_GET['verify']) && $_GET['verify'] == -1) {
+}elseif (isset($_GET['verify']) && $_GET['verify'] == -1) {
   echo ("<script>alert('This account is not yet varified');</script>");
-}
-else if (isset($_GET['email'])) {
+}elseif (isset($_GET['email'])) {
   echo ("<script>alert('Enter your email to get a reset link');</script>");
-}
-else if (isset($_GET['email_not_found'])) {
+}elseif (isset($_GET['email_not_found'])) {
   echo ("<script>alert('This is not a registered email. Please register to get an account');</script>");
-}
-else if (isset($_GET['con']) && $_GET['con'] == "error") {
+}elseif (isset($_GET['con']) && $_GET['con'] == "error") {
   echo ("<script>alert('Connection to the server failed');</script>");
-}
-else if (isset($_GET['code']) && $_GET['code'] == -1) {
+}elseif (isset($_GET['code']) && $_GET['code'] == -1) {
   echo ("<script>alert('Invalid code entered. To reset your account enter your email and submit');</script>");
 }
 

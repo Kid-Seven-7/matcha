@@ -33,26 +33,22 @@
               $stmt = $conn->prepare('UPDATE users SET con_code = :new_code WHERE email = :email');
               $stmt->execute(array(':new_code' => $new_code, ':email' => $user));
               echo ("<script>alert('Account is now active!')</script>");
-            }
-            catch(PDOException $e) {
+            }catch(PDOException $e) {
               header("Location: index.php?con=error");
               exit();
             }
-          }
-          else {
+          }else {
             //if the code doesn't match
             header("Location: index.php?code=-1");
             exit();
           }
         }
-      }
-      else {
+      }else {
         //if user doesn't exist
         header("Location: index.php?code=-1");
         exit();
       }
-    }
-    catch(PDOException $e) {
+    }catch(PDOException $e) {
       //connection error
       header("Location: index.php?con=error");
       exit();
@@ -66,7 +62,6 @@
     <?php include_once 'includes/meta.php' ?>
     <title>Login</title>
   </head>
-
   <body>
     <div class="MainContainer">
       <?php include_once 'includes/header.php' ?>

@@ -10,14 +10,15 @@ if (isset($_POST['submit'])) {
   if (empty($login) || empty($passwd)) {
   header("Location: ../login.php?login=empty");
   exit();
-  }
-  else {
+  }else {
     try {
       //connecting and checking the user in the database
       $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $stmt = $conn->prepare('SELECT * FROM users WHERE email = :email OR user_name = :username');
+      $stmt = $conn->prepare('SELECT *
+                              FROM users
+                              WHERE email = :email OR user_name = :username');
       $stmt->execute(array(':email' => $login, ':username' => $login));
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -33,8 +34,7 @@ if (isset($_POST['submit'])) {
             }
             header("Location: ../login.php?verify=1");
             exit();
-          }
-          else if ($row['active'] == 0) {
+          }elseif ($row['active'] == 0) {
             header("Location: ../login.php?verify=0");
             exit();
           }
@@ -43,20 +43,17 @@ if (isset($_POST['submit'])) {
             exit();
           }
         }
-      }
-      else {
+      }else {
         //if the user is not found
         header("Location: ../login.php?user=not_found");
         exit();
       }
-    }
-    catch(PDOException $e) {
+    }catch(PDOException $e) {
       header("location: ../login.php?server=error");
       exit();
     }
   }
-}
-else {
+}else {
   header("Location: login.php");
   exit();
 }

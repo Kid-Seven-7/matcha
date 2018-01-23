@@ -4,26 +4,19 @@
 
   if (isset($_GET['no_image'])) {
     echo "<script>alert('Please select a photo to upload first!')</script>";
-  }
-  else if (isset($_GET['file_error'])) {
+  }elseif (isset($_GET['file_error'])) {
     echo "<script>alert('Error: Image is invalid.')</script>";
-  }
-  else if (isset($_GET['format_not_supported'])) {
+  }elseif (isset($_GET['format_not_supported'])) {
     echo "<script>alert('Only jpeg, jpg and png are allowed!')</script>";
-  }
-  else if (isset($_GET['file_too_large'])) {
+  }elseif (isset($_GET['file_too_large'])) {
     echo "<script>alert('File too large!!!. Try a file less than 10mb')</script>";
-  }
-  else if (isset($_GET['file_exists'])) {
+  }elseif (isset($_GET['file_exists'])) {
     echo "<script>alert('File already exists. Try a different photo')</script>";
-  }
-  else if (isset($_GET['file_uploaded'])) {
+  }elseif (isset($_GET['file_uploaded'])) {
     echo "<script>alert('File uploaded!')</script>";
-  }
-  else if (isset($_GET['file_not_found'])) {
+  }elseif (isset($_GET['file_not_found'])) {
     echo "<script>alert('Error: File not found!')</script>";
-  }
-  else if (isset($_SESSION['username']) && isset($_SESSION['email']) && isset($_GET['login']) && $_GET['login'] == 1) {
+  }elseif (isset($_SESSION['username']) && isset($_SESSION['email']) && isset($_GET['login']) && $_GET['login'] == 1) {
     echo ("<script>alert('Logged in successfully');</script>");
   }
   // Allows non-users to view profiles
@@ -80,13 +73,13 @@
             </div>
             <br>
             <script>
-            var slider = document.getElementById("myRange");
-            var output = document.getElementById("demo");
-            output.innerHTML = slider.value;
+              var slider = document.getElementById("myRange");
+              var output = document.getElementById("demo");
+              output.innerHTML = slider.value;
 
-            slider.oninput = function() {
-              output.innerHTML = this.value;
-            }
+              slider.oninput = function() {
+                output.innerHTML = this.value;
+              }
             </script>
             <div class="buttonDiv">
               <input type="submit" name="submit" value="submit" id="submitButton">
@@ -96,39 +89,42 @@
         <div class="MainSection">
           <h2>Your search results</h2>
           <?php
-          include_once('database.php');
+            include_once('database.php');
 
-          echo "<div class='searchTable'>";
-          echo "<table style='border: solid 1px black;'>";
-          echo "<tr><th>user_name</th><th>firstname</th><th>surname</th><th>bio</th></tr>";
+            echo "<div class='searchTable'>";
+            echo "<table style='border: solid 1px black;'>";
+            echo "<tr><th>user_name</th><th>firstname</th><th>surname</th><th>bio</th></tr>";
 
-          class TableRows extends RecursiveIteratorIterator {
-              function __construct($it) {
-                  parent::__construct($it, self::LEAVES_ONLY);
-              }
+            class TableRows extends RecursiveIteratorIterator {
+                function __construct($it) {
+                    parent::__construct($it, self::LEAVES_ONLY);
+                }
 
-              function current() {
-                  return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
-              }
+                function current() {
+                    return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+                }
 
-              function beginChildren() {
-                  echo "<tr>";
-              }
+                function beginChildren() {
+                    echo "<tr>";
+                }
 
-              function endChildren() {
-                  echo "</tr>" . "\n";
-              }
-          }
+                function endChildren() {
+                    echo "</tr>" . "\n";
+                }
+            }
 
-          try {
+            try {
               $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
               $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
               //Because "both" is not a Gender
-              if($_POST['gender'] == 'both'){
-                $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio FROM users");
+              if($_POST['gender'] == 'both') {
+                $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio
+                                        FROM users");
               }else{
-                $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio FROM users WHERE gender = '{$_POST['gender']}'");
+                $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio
+                                        FROM users
+                                        WHERE gender = '{$_POST['gender']}'");
               }
               $stmt->execute();
 
@@ -138,13 +134,12 @@
               foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
                 echo $v;
               }
-          }
-          catch(PDOException $e) {
+            }catch(PDOException $e) {
               echo "Error: " . $e->getMessage();
-          }
-          $conn = null;
-          echo "</table>";
-          echo "</div>";
+            }
+            $conn = null;
+            echo "</table>";
+            echo "</div>";
           ?>
         </div>
       </div>

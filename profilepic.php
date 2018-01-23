@@ -13,51 +13,51 @@ if (isset($_POST['submit'])){
 
     $allowed = array('jpg', 'jpeg', 'png');
 
-      if(in_array($fileActualExt, $allowed)){
-        if($fileError === 0){
-          if($filesize < 1000000){
-            // $fileNameNew = uniqid('', true). ".".$fileActualExt;
-            $fileDestination ='uploads/'.$fileName;
-            $_SESSION['profilePic'] = $fileName;
-            move_uploaded_file($fileTmpName, $fileDestination);
+    if(in_array($fileActualExt, $allowed)){
+      if($fileError === 0){
+        if($filesize < 1000000){
+          // $fileNameNew = uniqid('', true). ".".$fileActualExt;
+          $fileDestination ='uploads/'.$fileName;
+          $_SESSION['profilePic'] = $fileName;
+          move_uploaded_file($fileTmpName, $fileDestination);
 
-            // Check for duplicate files
-            try {
-              $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
-              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          // Check for duplicate files
+          try {
+            $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-              $result = $conn->prepare("SELECT name, user, current
-                                        FROM pictures
-                                        WHERE name='{$fileName}' AND user='{$_SESSION['username']}'");
-              $result->execute();
-              if($result){
-                var_dump($result);
-              }
-              $conn= null;
-
-              // Check for 5 pic limit
-              //TODO
-
-              // Anding image to database
-              $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
-              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-              $stmt = $conn->prepare("INSERT INTO pictures (name, user, current)
-                                      VALUES (:name, :user, :current)");
-              $stmt->execute(array(':name' => $fileName, ':user' => $_SESSION['username'], ':current' => 1));
-            } catch(PDOException $e) {
-              echo "Unable to add picture to table: $e";
+            $result = $conn->prepare("SELECT name, user, current
+                                      FROM pictures
+                                      WHERE name='{$fileName}' AND user='{$_SESSION['username']}'");
+            $result->execute();
+            if($result){
+              var_dump($result);
             }
-          }else{
-            echo "Your file is too big";
+            $conn= null;
+
+            // Check for 5 pic limit
+            //TODO
+
+            // Anding image to database
+            $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("INSERT INTO pictures (name, user, current)
+                                    VALUES (:name, :user, :current)");
+            $stmt->execute(array(':name' => $fileName, ':user' => $_SESSION['username'], ':current' => 1));
+          }catch(PDOException $e) {
+            echo "Unable to add picture to table: $e";
           }
         }else{
-          echo "There was an error uploading your file";
+          echo "Your file is too big";
         }
       }else{
-        echo "Format not supported";
+        echo "There was an error uploading your file";
       }
+    }else{
+      echo "Format not supported";
     }
   }
+}
 
 
 ?>

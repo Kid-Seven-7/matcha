@@ -11,7 +11,9 @@ if (isset($_GET['code']) && isset($_GET['email']) && isset($_GET['com'])) {
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt = $conn->prepare("SELECT *
+                            FROM users
+                            WHERE email = :email");
     $stmt->execute(array(':email' => $email));
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,46 +27,38 @@ if (isset($_GET['code']) && isset($_GET['email']) && isset($_GET['com'])) {
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $stmt = $conn->prepare("UPDATE users
-            SET con_code = :code
-            WHERE email = :email");
+                                    SET con_code = :code
+                                    WHERE email = :email");
 
             $stmt->execute(array('code' => $new_code, 'email' => $email));
             $_SESSION['new_code'] = $new_code;
             $_SESSION['email'] = $email;
-          }
-          catch (PDOException $e) {
+          }catch (PDOException $e) {
             header("Location: forgot.php?con=error");
             exit();
           }
-        }
-        else {
+        }else {
           //Code doesn't match
           header("Location: forgot.php?code=-1");
           exit();
         }
       }
-    }
-    else {
+    }else {
       //User doesn't exist
       header("Location: forgot.php?email_not_found");
       exit();
     }
-  }
-  catch(PDOException $e) {
+  }catch(PDOException $e) {
   header("Location: forgot.php?con=error");
   exit();
   }
-}
-else if (isset($_GET['pas']) && $_GET['pas'] == "weak") {
+}elseif (isset($_GET['pas']) && $_GET['pas'] == "weak") {
   echo ("<script>alert('Password too short. Password must be 8 or more characters, have atleast one lowercase and one uppercase letter');</script>");
-}
-else if (isset($_GET['empty'])) {
+}elseif (isset($_GET['empty'])) {
   echo ("<script>alert('Fields are empty')</script>");
-}
-else if (isset($_GET['match'])) {
+}elseif (isset($_GET['match'])) {
   echo ("<script>alert('Password does not match')</script>");
-}
-else {
+}else {
   //if the page is not entered correctly
   header("Location: forgot.php");
   exit();

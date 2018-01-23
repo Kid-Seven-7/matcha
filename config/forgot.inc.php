@@ -35,20 +35,17 @@ if (isset($_POST['email'])) {
             exit();
           }
         }
-      }
-      else {
+      }else {
         header("Location: ../forgot.php?email_not_found");
         exit();
       }
-    }
-    catch(PDOException $e) {
+    }catch(PDOException $e) {
       //if there's an error
       header("Location: ../forgot.php?con=error");
       exit();
     }
   }
-}
-else {
+}                   else {
   header("Location: ../forgot.php?email");
   exit();
 }

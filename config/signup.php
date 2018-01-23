@@ -26,32 +26,31 @@
       if (!preg_match("#[A-Z]+#", $str)) {
         //checking if the password consists of a uppercase letter
         return (1);
-      }
-      else {
+      }else {
         return (0);
       }
     }
     if (empty($username) || empty($email) || empty('passwd')) {
       header("Location: ../index.php?signup=empty");
       exit();
-    }
-    //Checking if the username is characters only
-    else if (!preg_match("/^[a-zA-Z]*$/", $username)) {
+    }elseif (!preg_match("/^[a-zA-Z]*$/", $username)) {
+      //Checking if the username is characters only
       header("Location: ../index.php?signup=invalid");
       exit();
-    }
-    else if (passcheck($passwd) == 1) {
+    }elseif (passcheck($passwd) == 1) {
       header("Location: ../index.php?pas=weak");
       exit();
-    }
-    else {
+    }else {
       try {
         //Checking the user exists
         $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         //Preparing the query
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email OR user_name = :username");
+        $stmt = $conn->prepare("SELECT *
+                                FROM users
+                                WHERE email = :email
+                                OR user_name = :username");
 
         //executing the query
         $stmt->execute(array(':email' => $email, ':username' => $username));
@@ -63,15 +62,12 @@
             {
               header("Location: ../index.php?signup=email");
               exit();
-            }
-            else if ($row['user_name'] == $username)
-            {
+            }elseif ($row['user_name'] == $username) {
               header("Location: ../index.php?signup=username");
               exit();
             }
           }
-        }
-        else {
+        }else {
           //randomising the con_code for user verification
           $con_code = hash('whirlpool', rand(0, 10000));
           $url_salt = hash('whirlpool', rand(0,100000));
@@ -84,7 +80,7 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $stmt = $conn->prepare("INSERT INTO users (user_name, email, passwd, con_code)
-            VALUES(:username, :email, :passwd, :con_code)");
+                                    VALUES(:username, :email, :passwd, :con_code)");
 
             $stmt->execute(array(':username' => $username, ':email' => $email, ':passwd' => $hashedPw, ':con_code' => $con_code));
 
@@ -96,24 +92,21 @@
             mail($to, $subject, $msg, $headers);
             header("Location: ../index.php?verify=0");
             exit();
-          }
-          catch(PDOException $e) {
+          }catch(PDOException $e) {
             //if there is an error
             $error = $e->getMessage();
             header("Location: ../index.php?con=error&msg=".$error);
             exit();
           }
         }
-      }
-      catch (PDOException $e) {
+      }catch (PDOException $e) {
         //if there is an error
         $error = $e->getMessage();
         header("Location: ../index.php?con=error&msg=".$error);
         exit();
       }
     }
-  }
-  else {
+  }else {
     header("Location: ../index.php?submit=0");
     exit();
   }

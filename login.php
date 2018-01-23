@@ -4,16 +4,14 @@
   require_once ('config/database.php');
 
   if (isset($_GET['user']) && $_GET['user'] == "log") {
-  if (!isset($_SESSION['username'])) {
-  //sign in please
-  echo ("<script>alert('Please login/register first');</script>");
-  }
-  else {
-  session_destroy();
-  echo ("<script>alert('Logged out successfully');</script>");
-  }
-  }
-  else if (isset($_GET['verify']) && $_GET['verify'] == 1) {
+    if (!isset($_SESSION['username'])) {
+    //sign in please
+    echo ("<script>alert('Please login/register first');</script>");
+    }else {
+    session_destroy();
+    echo ("<script>alert('Logged out successfully');</script>");
+    }
+  }elseif (isset($_GET['verify']) && $_GET['verify'] == 1) {
     if ($_SESSION['username'] && $_SESSION['email']) {
       $name = $_SESSION['username'];
       $email = $_SESSION['email'];
@@ -37,54 +35,42 @@
               $_SESSION['email'] = $row['email'];
               header("Location: profile.php?login=1");
               exit();
-            }
-            else {
+            }else {
               header("Location: login.php?not_active");
               exit();
             }
           }
         }
-      }
-      catch(PDOException $e) {
+      }catch(PDOException $e) {
         //TODO
         header("Location: login.php?con=error");
         exit();
       }
-    }
-    else {
+    }else {
       header("Location: login.php?user=invalid");
       exit();
     }
-  }
-  else if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
+  }elseif (isset($_SESSION['username']) && isset($_SESSION['email'])) {
     header("Location: index.php");
     exit();
   }
   if (isset($_GET['login']) && $_GET['login'] == "invalid") {
     echo "<script>alert('Invalid username/password entered');</script>";
-  }
-  else if (isset($_GET['verify']) && $_GET['verify'] == 0) {
+  }elseif (isset($_GET['verify']) && $_GET['verify'] == 0) {
     echo ("<script>alert('You need to verify your account before you can log in');</script>");
-  }
-  else if (isset($_GET['user']) && $_GET['user'] == "not_found") {
+  }elseif (isset($_GET['user']) && $_GET['user'] == "not_found") {
     echo ("<script>alert('Login details did not match any of our records. Check your details carefully');</script>");
-  }
-  else if (isset($_GET['code']) && $_GET['code'] == -1) {
+  }elseif (isset($_GET['code']) && $_GET['code'] == -1) {
     echo ("<script>alert('Error: Code is nolonger valid');</script>");
-  }
-  else if (isset($_GET['user']) && $_GET['user'] == "invalid") {
+  }elseif (isset($_GET['user']) && $_GET['user'] == "invalid") {
     echo ("<script>alert('Error: Username / Password is incorrect');</script>");
-  }
-  else if (isset($_GET['not_active'])) {
+  }elseif (isset($_GET['not_active'])) {
     echo ("<script>alert('You need to activate your account');</script>");
-  }
-  else if (isset($_GET['con']) && $_GET['con'] == "error") {
+  }elseif (isset($_GET['con']) && $_GET['con'] == "error") {
     echo ("<script>alert('Connection to the server failed');</script>");
-  }
-  else if (isset($_GET['reset']) && $_GET['reset'] == "suc") {
+  }elseif (isset($_GET['reset']) && $_GET['reset'] == "suc") {
     echo ("<script>alert('Password updated successfully');</script>");
-  }
-  else if (isset($_GET['user']) && $_GET['user'] == "res") {
+  }elseif (isset($_GET['user']) && $_GET['user'] == "res") {
     echo ("<script>alert('Please login first');</script>");
   }
 

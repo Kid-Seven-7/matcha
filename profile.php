@@ -92,8 +92,7 @@ var_dump($_SESSION['latlng']);
               }
             }
           }
-        }
-        catch(PDOException $e) {
+        }catch(PDOException $e) {
           echo "error: ".$e;
         }
         ?>
