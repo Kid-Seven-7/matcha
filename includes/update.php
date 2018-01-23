@@ -103,11 +103,11 @@ include ("../config/database.php");
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   Name:
   <br>
-  <input size="30" type="text" name="name" placeholder="name">
+  <input size="30" type="text" name="name" placeholder="name" value="<?php if(isset($_POST['name'])) echo htmlentities($_POST['name']); ?>">
   <br><br>
   Surname:
   <br>
-  <input size="30" type="text" name="surname" placeholder="surname">
+  <input size="30" type="text" name="surname" placeholder="surname" value="<?php if(isset($_POST['surname'])) echo htmlentities($_POST['surname']); ?>">
   <br><br>
   Bio:
   <br>
@@ -115,7 +115,7 @@ include ("../config/database.php");
   <br><br>
   Age:
   <br>
-  <input type="number" name="age" placeholder="25" min="18" max="45">
+  <input type="number" name="age" placeholder="25" min="18" max="45" value="<?php if(isset($_POST['age'])) echo htmlentities($_POST['age']); ?>">
   <br><br>
   Gender:
   <br>
