@@ -23,5 +23,5 @@ try {
 catch(PDOException $e) {
   echo "error: ".$e;
 }
-// header("Location: ../profile.php");
+header("Location: ../profile.php");
 ?>
