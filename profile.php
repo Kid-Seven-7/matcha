@@ -12,7 +12,6 @@ if (isset($_GET['avatar'])) {
 }
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
-var_dump($_SESSION['latlng']);
 ?>
 
 <!DOCTYPE html>
@@ -44,12 +43,8 @@ var_dump($_SESSION['latlng']);
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           if (count($result)) {
             foreach($result as $row) {
-              echo "<img src='uploads/{$row['profilePic']}' width='200px' height='200px'><br>";
-              if(empty($row['user_name'])){
-                echo "<strong>Username:</strong> Not set<br>";
-              }else{
-                echo "<strong>Username:</strong> {$row['user_name']}<br>";
-              }
+              echo "<img src='uploads/{$row['profilePic']}' width='200px' height='180px'><br>";
+              echo "<strong>Username:</strong> {$row['user_name']}<br>";
               if(empty($row['first_name'])){
                 echo "<strong>Firstname:</strong> Not set<br>";
               }else{
@@ -60,11 +55,7 @@ var_dump($_SESSION['latlng']);
               }else{
                 echo "<strong>Surname:</strong> {$row['surname']}<br>";
               }
-              if(empty($row['email'])){
-                echo "<strong>email:</strong> Not set<br>";
-              }else{
-                echo "<strong>email:</strong> {$row['email']}<br>";
-              }
+              echo "<strong>email:</strong> {$row['email']}<br>";
               if(empty($row['address'])){
                 echo "<strong>address:</strong> Not set<br>";
               }else{
@@ -90,6 +81,44 @@ var_dump($_SESSION['latlng']);
               }else{
                 echo "<strong>Preference:</strong> {$row['preference']}<br>";
               }
+              echo "<strong>Interests:</strong><br>";
+              if(($row['Tattoos'])){
+                echo "<pre>    #Tattoos</pre>";
+              }
+              if(($row['Piercings'])){
+                echo "<pre>    #Piercings</pre>";
+              }
+              if(($row['Music'])){
+                echo "<pre>    #Music</pre>";
+              }
+              if(($row['Art'])){
+                echo "<pre>    #Art</pre>";
+              }
+              if(($row['Gaming'])){
+                echo "<pre>    #Gaming</pre>";
+              }
+              if(($row['Cooking'])){
+                echo "<pre>    #Cooking</pre>";
+              }
+              if(($row['Anime'])){
+                echo "<pre>    #Anime</pre>";
+              }
+              if(($row['Cycling'])){
+                echo "<pre>    #Cycling</pre>";
+              }
+              if(($row['Sports'])){
+                echo "<pre>    #Sports</pre>";
+              }
+              if(($row['Fitness'])){
+                echo "<pre>    #Fitness</pre>";
+              }
+              if(($row['Pets'])){
+                echo "<pre>    #Pets</pre>";
+              }
+              if(($row['Nature'])){
+                echo "<pre>    #Nature</pre>";
+              }
+              echo "<br>";
             }
           }
         }catch(PDOException $e) {
