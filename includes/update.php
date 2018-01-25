@@ -88,22 +88,11 @@ include ("../config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Tattoos=0
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
     }
+
     if($interests[1]){
       $sql = "UPDATE users
       SET Piercings=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Piercings=0
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -114,22 +103,10 @@ include ("../config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Music=0
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
     }
     if($interests[3]){
       $sql = "UPDATE users
       SET Art=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Art=0
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -140,22 +117,10 @@ include ("../config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Gaming=0
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
     }
     if($interests[5]){
       $sql = "UPDATE users
       SET Cooking=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Cooking=0
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -166,22 +131,10 @@ include ("../config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Anime=0
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
     }
     if($interests[7]){
       $sql = "UPDATE users
       SET Cycling=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Cycling=0
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -192,22 +145,10 @@ include ("../config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Sports=0
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
     }
     if($interests[9]){
       $sql = "UPDATE users
       SET Fitness=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Fitness=0
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -218,12 +159,6 @@ include ("../config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Pets=0
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
     }
     if($interests[11]){
       $sql = "UPDATE users
@@ -231,14 +166,7 @@ include ("../config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
-    }else{
-      $sql = "UPDATE users
-      SET Nature=0
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
     }
-
   }
   catch(PDOException $e) {
     echo "error: ".$e;
@@ -282,33 +210,97 @@ include ("../config/database.php");
   Sexual Preference:
   <br>
   <input type="radio" name="preference" value="female">Female
-  <input type="radio" name="preference" value="female">Male
-  <input type="radio" name="preference" value="male">Both
+  <input type="radio" name="preference" value="male">Male
+  <input type="radio" name="preference" value="both">Both
   <br><br>
-  Interests:
-  <br>
-  <table>
-    <tr>
-      <td><input class="box" type="checkbox" name="interests0" value="Tattoos">Tattoos</td>
-      <td><input class="box" type="checkbox" name="interests1" value="Piercings">Piercings</td>
-      <td><input class="box" type="checkbox" name="interests2" value="Music">Music</td>
-    </tr>
-    <tr>
-      <td><input class="box" type="checkbox" name="interests3" value="Art">Art</td>
-      <td><input class="box" type="checkbox" name="interests4" value="Gaming">Gaming</td>
-      <td><input class="box" type="checkbox" name="interests5" value="Cooking">Cooking</td>
-    </tr>
-    <tr>
-      <td><input class="box" type="checkbox" name="interests6" value="Anime">Anime</td>
-      <td><input class="box" type="checkbox" name="interests7" value="Cycling">Cycling</td>
-      <td><input class="box" type="checkbox" name="interests8" value="Sports">Sports</td>
-    </tr>
-    <tr>
-      <td><input class="box" type="checkbox" name="interests9" value="Fitness">Fitness</td>
-      <td><input class="box" type="checkbox" name="interests10" value="Pets">Pets</td>
-      <td><input class="box" type="checkbox" name="interests11" value="Nature">Nature</td>
-    </tr>
-  </table>
+  <?php
+    try {
+      $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      $sql = "SELECT *
+              FROM users
+              WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      if (count($result)) {
+        foreach($result as $row) {
+          echo "Interests: <br><table>";
+          echo "<tr>";
+          if(($row['Tattoos'])){
+            echo "<td><input class='box' type='checkbox' name='interests0' value='Tattoos' checked>Tattoos</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests0' value='Tattoos'>Tattoos</td>";
+          }
+          if(($row['Piercings'])){
+            echo "<td><input class='box' type='checkbox' name='interests1' value='Piercings' checked>Piercings</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests1' value='Piercings'>Piercings</td>";
+          }
+          if(($row['Music'])){
+            echo "<td><input class='box' type='checkbox' name='interests2' value='Music' checked>Music</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests2' value='Music'>Music</td>";
+          }
+          echo "</tr>";
+          echo "<tr>";
+          if(($row['Art'])){
+            echo "<td><input class='box' type='checkbox' name='interests3' value='Art' checked>Art</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests3' value='Art'>Art</td>";
+          }
+          if(($row['Gaming'])){
+            echo "<td><input class='box' type='checkbox' name='interests4' value='Gaming' checked>Gaming</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests4' value='Gaming'>Gaming</td>";
+          }
+          if(($row['Cooking'])){
+            echo "<td><input class='box' type='checkbox' name='interests5' value='Cooking' checked>Cooking</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests5' value='Cooking'>Cooking</td>";
+          }
+          echo "</tr>";
+          echo "<tr>";
+          if(($row['Anime'])){
+            echo "<td><input class='box' type='checkbox' name='interests6' value='Anime' checked>Anime</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests6' value='Anime'>Anime</td>";
+          }
+          if(($row['Cycling'])){
+            echo "<td><input class='box' type='checkbox' name='interests7' value='Cycling' checked>Cycling</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests7' value='Cycling'>Cycling</td>";
+          }
+          if(($row['Sports'])){
+            echo "<td><input class='box' type='checkbox' name='interests8' value='Sports' checked>Sports</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests8' value='Sports'>Sports</td>";
+          }
+          echo "</tr>";
+          echo "<tr>";
+          if(($row['Fitness'])){
+            echo "<td><input class='box' type='checkbox' name='interests9' value='Fitness' checked>Fitness</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests9' value='Fitness'>Fitness</td>";
+          }
+          if(($row['Pets'])){
+            echo "<td><input class='box' type='checkbox' name='interests10' value='Pets' checked>Pets</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests10' value='Pets'>Pets</td>";
+          }
+          if(($row['Nature'])){
+            echo "<td><input class='box' type='checkbox' name='interests11' value='Nature' checked>Nature</td>";
+          }else{
+            echo "<td><input class='box' type='checkbox' name='interests11' value='Nature'>Nature</td>";
+          }
+          echo "</tr></table>";
+        }
+      }
+    }catch(PDOException $e) {
+      echo "error: ".$e;
+    }
+  ?>
   <br><br>
   <input type="submit" name="submit" value="Submit">
 </form>
