@@ -30,9 +30,6 @@ if (isset($_POST['submit'])){
                                       FROM pictures
                                       WHERE name='{$fileName}' AND user='{$_SESSION['username']}'");
             $result->execute();
-            if($result){
-              var_dump($result);
-            }
             $conn= null;
 
             // Check for 5 pic limit

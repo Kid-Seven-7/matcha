@@ -21,7 +21,6 @@ if (isset($_POST['submit'])){
 
     echo "username: {$_SESSION['username']}<br>";
     echo "email: {$_SESSION['email']}<br>";
-    VAR_DUMP($_SESSION);
 
     $fileExt = explode('.', $fileName);
     echo "file ext: {$fileExt[1]}<br>";

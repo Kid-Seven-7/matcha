@@ -23,7 +23,7 @@
               lng: position.coords.longitude
             };
 
-            window.location.href = "includes/address.php?latlng=" + pos.lat + "," + pos.lng;
+            window.location.href = "geocode.php?latlng=" + pos.lat + "," + pos.lng;
 
             var cityCircle = new google.maps.Circle({
               strokeColor: '#FF0000',

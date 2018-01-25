@@ -13,6 +13,7 @@ include ("../config/database.php");
     $gender = test_input($_POST["gender"]);
     $preference = test_input($_POST["preference"]);
     $_SESSION['preference'] = $preference;
+    $_SESSION['updated'] = "yes";
 
     $i = 0;
     while ($i < 12)
@@ -26,7 +27,7 @@ include ("../config/database.php");
     $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if($name){
+        if($name){
       $sql = "UPDATE users
       SET first_name='$name'
       WHERE email='$email'";
@@ -77,6 +78,162 @@ include ("../config/database.php");
     if($preference){
       $sql = "UPDATE users
       SET preference='$preference'
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[0]){
+      $sql = "UPDATE users
+      SET Tattoos=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Tattoos=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[1]){
+      $sql = "UPDATE users
+      SET Piercings=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Piercings=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[2]){
+      $sql = "UPDATE users
+      SET Music=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Music=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[3]){
+      $sql = "UPDATE users
+      SET Art=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Art=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[4]){
+      $sql = "UPDATE users
+      SET Gaming=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Gaming=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[5]){
+      $sql = "UPDATE users
+      SET Cooking=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Cooking=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[6]){
+      $sql = "UPDATE users
+      SET Anime=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Anime=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[7]){
+      $sql = "UPDATE users
+      SET Cycling=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Cycling=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[8]){
+      $sql = "UPDATE users
+      SET Sports=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Sports=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[9]){
+      $sql = "UPDATE users
+      SET Fitness=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Fitness=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[10]){
+      $sql = "UPDATE users
+      SET Pets=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Pets=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
+    if($interests[11]){
+      $sql = "UPDATE users
+      SET Nature=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Nature=0
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -154,10 +311,14 @@ include ("../config/database.php");
   </table>
   <br><br>
   <input type="submit" name="submit" value="Submit">
-
 </form>
 <br>
-<a href="geocode.php">set location manually</a> or
-<a href="location.php">set location automatically</a>
+<?php
+  if($_SESSION['updated'] == "yes"){
+    echo "<a href='geocode.php'>set location manually</a> or
+    <a href='location.php'>set location automatically</a>";
+  }
+
+?>
 <br><br>
 <a href="delete.php">Delete account</a>

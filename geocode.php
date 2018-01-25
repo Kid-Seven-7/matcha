@@ -13,7 +13,14 @@
   <div class="container">
     <h2 id="text-center">Enter Location: </h2>
     <form id="location-form" action="includes/address.php">
-      <input type="text" id="location-input" class="form-control form-control-lg">
+      <?php
+        if (isset($_GET['latlng'])) {
+          echo "<input type='text' id='location-input' class='form-control form-control-lg' value='{$_GET['latlng']}'>";
+        }else{
+          echo "<input type='text' id='location-input' class='form-control form-control-lg'>";
+        }
+      ?>
+      <!-- <input type="text" id="location-input" class="form-control form-control-lg"> -->
       <input type="hidden" id="address_input" />
       <br>
       <button type="submit" name="submit">Submit</button>
