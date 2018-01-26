@@ -29,6 +29,13 @@ if (isset($_POST['submit'])) {
             $_SESSION['username'] = $row['user_name'];
             $_SESSION['email'] = $row['email'];
             $folder_name = $_SESSION['username'];
+
+            //User is online
+            $stmt = $conn->prepare('UPDATE users
+                                    SET online=1
+                                    WHERE email = :email OR user_name = :username');
+            $stmt->execute(array(':email' => $login, ':username' => $login));
+
             if (file_exists("upload/".$folder_name)) {
               mkdir("upload/".$folder_name);
             }

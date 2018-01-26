@@ -80,9 +80,6 @@ session_start();
       <div class="regformClass">
         <?php include_once 'includes/regform.php' ?>
       </div>
-      <div class="profiles">
-        <?php include_once 'includes/search.php' ?>
-      </div>
       <div class="FooterClass">
         <?php include_once 'includes/footer.php' ?>
       </div>

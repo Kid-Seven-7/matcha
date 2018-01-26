@@ -1,5 +1,12 @@
 /* Media Queries */
 
+/* max-width:280px */
+@media screen and (max-width:280px) {
+  .suggestions {
+    width: 100%;
+  }
+}
+
 /* max-width:426px */
 @media screen and (max-width:426px) {
   .TitleBar {
@@ -37,11 +44,26 @@
   }
 }
 
+/* max-width:600px */
+@media screen and (max-width:600px) {
+  .suggestions {
+    width: 100%;
+  }
+}
+
 /* max-width:730px */
 @media screen and (max-width:730px) {
   table, thead, tbody, th, td, tr {
     display: block;
   }
+}
+
+/* max-width:780px */
+@media screen and (max-width:780px) {
+  .suggestions {
+    width: 100%;
+    float: left;
+  }  
 }
 
 /* max-width:920px */
@@ -61,11 +83,27 @@
   }
 }
 
+/* max-width:1300px */
+@media screen and (max-width:1300px) {
+  .suggestions img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+
+/* max-width:1600px */
+@media screen and (max-width:1600px) {
+  .suggestions {
+    width: 25%;
+  }
+}
 
 /**********************************
 *  0px 0px 0px 0px;
 *  float: none;
 *  width: 95%;
+*  @media screen and (max-width:px)
 *
 ***********************************/
 /*  */

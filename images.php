@@ -11,23 +11,28 @@
         session_start();
 
         try {
-          $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
-          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-          $stmt = $conn->prepare("SELECT * FROM pictures WHERE user = '{$_SESSION['username']}'");
-          $stmt->execute();
+        $stmt = $conn->prepare("SELECT * FROM pictures WHERE user = '{$_SESSION['username']}'");
+        $stmt->execute();
 
-          // set the resulting array to associative
-          $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-          foreach($stmt->fetchAll() as $k=>$v) {
-            // var_dump($v);
-            echo "<a href='#'><img class='picResults' src='uploads/{$v['name']}' width='200px' height='200px'";
-          }
+        // set the resulting array to associative
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        foreach($stmt->fetchAll() as $k=>$v) {
+          // var_dump($v);
+          echo "<div class='picResults'>";
+          echo "<img src='uploads/{$v['name']}' alt='profilePic' width='200px' height='200px'><br>";
+          echo "<ul>
+                  <li><a href='includes/set_delete.php?del={$v['name']}'>delete</a></li>
+                  <li><a href='includes/set_delete.php?set={$v['name']}'>set as prolifepic</a></li>
+                </ul>";
+          echo "</div>";
         }
-        catch(PDOException $e) {
-          echo "Error: " . $e->getMessage();
-        }
+      }
+      catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+      }
       ?>
     </div>
   </body>

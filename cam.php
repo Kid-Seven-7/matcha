@@ -18,13 +18,10 @@
     echo "<script>alert('Error: File not found!')</script>";
   }elseif (isset($_SESSION['username']) && isset($_SESSION['email']) && isset($_GET['login']) && $_GET['login'] == 1) {
     echo ("<script>alert('Logged in successfully');</script>");
+  }elseif ($_SESSION['username'] == "" || $_SESSION['email'] == "") {
+    header("Location: login.php?user=res");
+    exit();
   }
-  // Allows non-users to view profiles
-
-  // else if ($_SESSION['username'] == "" || $_SESSION['email'] == "") {
-  //   header("Location: login.php?user=res");
-  //   exit();
-  // }
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +36,7 @@
       <div class="MainPageContainer">
         <div class="SideBar">
           <h3>What are you looking for?</h3>
-          <form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+          <form class="" action="includes/adsearch.php" method="post">
             <label for="">Gender:</label><br>
             <input type="radio" name="gender" value="male"> Male<br>
             <input type="radio" name="gender" value="female"> Female<br>
@@ -72,14 +69,6 @@
               </table>
             </div>
             <br>
-            <script>
-              var slider = document.getElementById("myRange");
-              var output = document.getElementById("demo");
-              output.innerHTML = slider.value;
-
-              slider.oninput = function() {
-                output.innerHTML = this.value;
-              }
             </script>
             <div class="buttonDiv">
               <input type="submit" name="submit" value="submit" id="submitButton">
@@ -88,59 +77,7 @@
           </div>
         <div class="MainSection">
           <h2>Your search results</h2>
-          <?php
-            include_once('database.php');
-
-            echo "<div class='searchTable'>";
-            echo "<table style='border: solid 1px black;'>";
-            echo "<tr><th>user_name</th><th>firstname</th><th>surname</th><th>bio</th></tr>";
-
-            class TableRows extends RecursiveIteratorIterator {
-                function __construct($it) {
-                    parent::__construct($it, self::LEAVES_ONLY);
-                }
-
-                function current() {
-                    return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
-                }
-
-                function beginChildren() {
-                    echo "<tr>";
-                }
-
-                function endChildren() {
-                    echo "</tr>" . "\n";
-                }
-            }
-
-            try {
-              $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
-              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-              //Because "both" is not a Gender
-              if($_POST['gender'] == 'both') {
-                $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio
-                                        FROM users");
-              }else{
-                $stmt = $conn->prepare("SELECT user_name, first_name, surname, bio
-                                        FROM users
-                                        WHERE gender = '{$_POST['gender']}'");
-              }
-              $stmt->execute();
-
-              // set the resulting array to associative
-              $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-              foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-                echo $v;
-              }
-            }catch(PDOException $e) {
-              echo "Error: " . $e->getMessage();
-            }
-            $conn = null;
-            echo "</table>";
-            echo "</div>";
-          ?>
+          <?php include_once 'includes/search.php' ?>
         </div>
       </div>
       <section>

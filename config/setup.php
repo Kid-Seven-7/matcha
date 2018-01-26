@@ -47,6 +47,7 @@
       echo "Creating table : users <br/>";
       $stmt = $conn->prepare('CREATE TABLE users (
         id int(11) not null PRIMARY KEY AUTO_INCREMENT,
+        online int(1) not null default 0,
         profilePic varchar(255) default "../uploads/undefined.png",
         user_name varchar(255) not null,
         first_name varchar(255),
@@ -84,18 +85,18 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         //Preparing the query
-        echo "Creating table : comments <br/>";
-        $stmt = $conn->prepare('CREATE TABLE comments (
+        echo "Creating table : chats <br/>";
+        $stmt = $conn->prepare('CREATE TABLE chats (
           id int(11) not null PRIMARY KEY AUTO_INCREMENT,
-          name varchar(255) not null,
-          user_name varchar(255) not null,
-          user_image varchar(255) not null,
-          comment varchar(255) not null
+          sent_to varchar(255) not null,
+          sent_by varchar(255) not null,
+          message text not null,
+          opened varchar(255) not null
           );'
         );
         //executing the query
         $stmt->execute();
-        echo "Table comments created! <br/>";
+        echo "Table chats created! <br/>";
         echo "Creating table : likes <br/>";
 
         $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
@@ -103,9 +104,9 @@
 
         $stmt = $conn->prepare('CREATE TABLE likes (
           id int(11) not null PRIMARY KEY AUTO_INCREMENT,
-          picname varchar(255) not null,
+          likee varchar(255) not null,
           liker varchar(255) not null,
-          user_image varchar(255) not null
+          seen int(1) not null default 0
           );'
         );
         $stmt->execute();
@@ -140,6 +141,26 @@
     }
   }catch (PDOException $e) {
     echo "Unable to create database <br/>";
+    echo "ERROR: ".$e->getMessage()."<br/>";
+  }
+
+
+  try {
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    echo "Creating table : connections <br/>";
+    $stmt = $conn->prepare('CREATE TABLE connections (
+      id int(11) not null PRIMARY KEY AUTO_INCREMENT,
+      user1 varchar(255) not null,
+      user2 varchar(255) not null
+      );'
+    );
+    //executing the query
+    $stmt->execute();
+    echo "Table connections created! <br/>";
+  }catch(PDOException $e) {
+    echo "Unable to create picture table";
     echo "ERROR: ".$e->getMessage()."<br/>";
   }
   $conn = null;

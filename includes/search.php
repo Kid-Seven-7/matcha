@@ -2,53 +2,34 @@
 <?php include_once 'includes/header.php' ?>
 <?php
 session_start();
-include_once('database.php');
-
-echo "<div>";
-echo "<table class='searchTable'>";
- echo "<tr><th>user_name</th><th>firstname</th><th>surname</th><th>age</th><th>bio</th></tr>";
-
-class TableRows extends RecursiveIteratorIterator {
-  function __construct($it) {
-    parent::__construct($it, self::LEAVES_ONLY);
-  }
-
-  function current() {
-    return "<td style='width: 150px; border: 0;'>" . parent::current(). "</td>";
-  }
-
-  function beginChildren() {
-    echo "<tr>";
-  }
-
-  function endChildren() {
-    echo "</tr>" . "\n";
-  }
-}
-
 try {
-  $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+  $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  if(($_POST['gender'] == 'both') || empty($_POST['gender'])){
-    $stmt = $conn->prepare("SELECT user_name, first_name, surname, age, bio
-                            FROM users");
+  if($_SESSION['preference'] == 'male'){
+    $sql = "SELECT *
+            FROM users
+            WHERE gender='male'";
+  }elseif ($_SESSION['preference'] == 'female') {
+    $sql = "SELECT *
+            FROM users
+            WHERE gender='female'";
   }else{
-    $stmt = $conn->prepare("SELECT user_name, first_name, surname, age, bio
-                            FROM users
-                            WHERE gender = '{$_POST['gender']}'");
+    $sql = "SELECT *
+            FROM users";
   }
+
+  $stmt = $conn->prepare($sql);
   $stmt->execute();
-
-  // set the resulting array to associative
-  $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-  foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-    echo {$v};
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  if (count($result)) {
+    foreach($result as $row) {
+      if ($row['user_name'] != $_SESSION['username']){
+        echo "<div class='suggestions'>";
+        echo "<a href='checkout.php?user={$row['id']}'><img src='uploads/{$row['profilePic']}'></a>";
+        echo "</div>";
+      }
+    }
   }
 }catch(PDOException $e) {
-  echo "Error: " . $e->getMessage();
+  echo "error: ".$e;
 }
-$conn = null;
-echo "</table>";
-echo "</div>";
-?>
