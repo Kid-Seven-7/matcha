@@ -1,0 +1,94 @@
+DEL.PHP
+
+// try {
+//   $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+//   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//   if($_GET['rem'] == 'tattoos'){
+//     $sql = "UPDATE users
+//     SET Tattoos=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'piercings'){
+//     $sql = "UPDATE users
+//     SET Piercings=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'music'){
+//     $sql = "UPDATE users
+//     SET Music=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'art'){
+//     $sql = "UPDATE users
+//     SET Art=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'gaming'){
+//     $sql = "UPDATE users
+//     SET Gaming=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'cooking'){
+//     $sql = "UPDATE users
+//     SET Cooking=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'anime'){
+//     $sql = "UPDATE users
+//     SET Anime=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'cycling'){
+//     $sql = "UPDATE users
+//     SET Cycling=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'sports'){
+//     $sql = "UPDATE users
+//     SET Sports=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'fitness'){
+//     $sql = "UPDATE users
+//     SET Fitness=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'pets'){
+//     $sql = "UPDATE users
+//     SET Pets=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }elseif($_GET['rem'] == 'nature'){
+//     $sql = "UPDATE users
+//     SET Nature=1
+//     WHERE email='$email'";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     header("Location: profile.php");
+//   }
+// }catch(PDOException $e) {
+//   echo "error: ".$e;
+// }
+// }

@@ -3,6 +3,10 @@
   .NavBar {
     padding: 30px 30px 30px 30px;
     float: right;
+    font-size: 23px;
+  }
+  .NavBar a {
+    margin: 10px 10px 10px 10px;
   }
 
   /* TitleBar */
@@ -94,11 +98,15 @@
   .FormFeedback h2 {
     text-align: center;
   }
+  .FormFeedback a {
+    font-size: 18px;
+  }
 
   /* passwd */
   .passwd a {
-    color: red;
+    color: pink;
     text-decoration: underline;
+    font-size: 23px;
   }
 
   /* box */
@@ -253,7 +261,20 @@
     padding-top: 0px;
     padding-bottom: 0px;
   }
-  /*  */
+
+  /* ajaxDiv */
+  .ajaxDiv{
+    clear: both;
+    width: 100%;
+  }
+  .ajaxDiv form {
+    float: left;
+    width: 20%;
+  }
+  .ajaxDiv #txtHint {
+    float: right;
+    width: 80%;
+  }
   /*  */
   /*  */
 

@@ -29,6 +29,7 @@ a {
 }
 
 a:hover {
+  color: pink;
   text-decoration: underline;
 }
 
@@ -44,6 +45,14 @@ button {
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+label {
+  font-size: 18px;
+}
+
+input {
+  line-height: 18px;
 }
 
 @keyframes ButtonFlash {

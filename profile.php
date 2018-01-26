@@ -83,40 +83,40 @@ $email = $_SESSION['email'];
               }
               echo "<strong>Interests:</strong><br>";
               if(($row['Tattoos'])){
-                echo "<pre>    #Tattoos</pre>";
+                echo "<pre>    #Tattoos<a href='includes/del.php?rem=tattoos'>remove</a></pre>";
               }
               if(($row['Piercings'])){
-                echo "<pre>    #Piercings</pre>";
+                echo "<pre>    #Piercings<a href='includes/del.php?rem=piercings'>remove</a></pre>";
               }
               if(($row['Music'])){
-                echo "<pre>    #Music</pre>";
+                echo "<pre>    #Music<a href='includes/del.php?rem=music'>remove</a></pre>";
               }
               if(($row['Art'])){
-                echo "<pre>    #Art</pre>";
+                echo "<pre>    #Art<a href='includes/del.php?rem=art'>remove</a></pre>";
               }
               if(($row['Gaming'])){
-                echo "<pre>    #Gaming</pre>";
+                echo "<pre>    #Gaming<a href='includes/del.php?rem=gaming'>remove</a></pre>";
               }
               if(($row['Cooking'])){
-                echo "<pre>    #Cooking</pre>";
+                echo "<pre>    #Cooking<a href='includes/del.php?rem=cooking'>remove</a></pre>";
               }
               if(($row['Anime'])){
-                echo "<pre>    #Anime</pre>";
+                echo "<pre>    #Anime<a href='includes/del.php?rem=anime'>remove</a></pre>";
               }
               if(($row['Cycling'])){
-                echo "<pre>    #Cycling</pre>";
+                echo "<pre>    #Cycling<a href='includes/del.php?rem=cycling'>remove</a></pre>";
               }
               if(($row['Sports'])){
-                echo "<pre>    #Sports</pre>";
+                echo "<pre>    #Sports<a href='includes/del.php?rem=sports'>remove</a></pre>";
               }
               if(($row['Fitness'])){
-                echo "<pre>    #Fitness</pre>";
+                echo "<pre>    #Fitness<a href='includes/del.php?rem=fitness'>remove</a></pre>";
               }
               if(($row['Pets'])){
-                echo "<pre>    #Pets</pre>";
+                echo "<pre>    #Pets<a href='includes/del.php?rem=pets'>remove</a></pre>";
               }
               if(($row['Nature'])){
-                echo "<pre>    #Nature</pre>";
+                echo "<pre>    #Nature<a href='includes/del.php?rem=nature'>remove</a></pre>";
               }
               echo "<br>";
             }
