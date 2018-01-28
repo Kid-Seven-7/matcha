@@ -87,10 +87,11 @@
         //Preparing the query
         echo "Creating table : chats <br/>";
         $stmt = $conn->prepare('CREATE TABLE chats (
-          id int(11) not null PRIMARY KEY AUTO_INCREMENT,
+          message_id int(11) not null PRIMARY KEY AUTO_INCREMENT,
           sent_to varchar(255) not null,
           sent_by varchar(255) not null,
           message text not null,
+          sent_on DateTime not null,
           opened varchar(255) not null
           );'
         );
