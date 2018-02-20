@@ -1,10 +1,10 @@
 <?php
   session_start();
   try {
+    $i = 0;
     //Inserting data to the database
     $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 
     $stmt = $conn->prepare("SELECT *
                             FROM connections
@@ -12,9 +12,10 @@
     $stmt->execute(array(':user' => $_SESSION['username']));
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (count($result)) {
-      echo "<strong>Connections:</strong><br>";
+      echo "<br><strong>Connections:</strong><br>";
       foreach($result as $row) {
-        echo "chat with {$row['user2']}<br>";
+        echo "<a href='#'>{$row['user2']}</a><br>";
+        $i++;
       }
     }
 
@@ -24,13 +25,13 @@
     $stmt->execute(array(':user' => $_SESSION['username']));
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (count($result)) {
-      echo "<strong>Connections made:</strong><br>";
+      if ($i = 0){
+        echo "<br><strong>Connections:</strong><br>";
+      }
       foreach($result as $row) {
-        echo "chat with {$row['user1']}<br>";
+        echo "<a href='#'>{$row['user1']}</a><br>";
       }
     }
-
-
   }catch(PDOException $e) {
     echo "error: ".$e;
   }
