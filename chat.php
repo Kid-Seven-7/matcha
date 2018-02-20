@@ -18,6 +18,7 @@
         <?php include_once 'includes/chat.php' ?>
       </aside>
       <section class="chatMainSection">
+        <?php include_once 'includes/im.php' ?>
         chatMainSection
       </section>
     </div>
