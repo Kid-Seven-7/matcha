@@ -22,7 +22,7 @@
         foreach($stmt->fetchAll() as $k=>$v) {
           // var_dump($v);
           echo "<div class='picResults'>";
-          echo "<img src='uploads/{$v['name']}' alt='profilePic' width='200px' height='200px'><br>";
+          echo "<img src='uploads/{$v['name']}' alt='profilePic'><br>";
           echo "<ul>
                   <li><a href='includes/set_delete.php?del={$v['name']}'>delete</a></li>
                   <li><a href='includes/set_delete.php?set={$v['name']}'>set as prolifepic</a></li>
