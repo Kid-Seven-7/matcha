@@ -74,6 +74,10 @@ if (isset($_POST['submit'])){
         <br><br>
         <button type="submit" name="submit">Upload</button>
       </form>
+      <br><br>
+      <div class="webcam">
+        <?php include_once 'test2.php' ?>
+      </div>
     </div>
     <?php ($fileDestination); ?>
     <div id="image">
