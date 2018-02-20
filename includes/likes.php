@@ -5,28 +5,31 @@
     $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
+    // Checking for profiles the user has liked
     $stmt = $conn->prepare("SELECT *
                             FROM likes
-                            WHERE liker = :liker");
+                            WHERE liker = :liker
+                            AND seen = 0");
     $stmt->execute(array(':liker' => $_SESSION['username']));
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (count($result)) {
-      echo "<strong>People that you have liked:</strong><br>";
+      echo "<br><strong>People that you have liked:</strong><br>";
       foreach($result as $row) {
-        echo "you liked {$row['likee']}<br>";
+        echo "<a href='#'>X </a>{$row['likee']}<br>";
       }
     }
 
+    // Checking for profiles that have liked the user
     $stmt = $conn->prepare("SELECT *
                             FROM likes
-                            WHERE likee = :likee");
+                            WHERE likee = :likee
+                            AND seen = 0");
     $stmt->execute(array(':likee' => $_SESSION['username']));
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (count($result)) {
-      echo "<strong>People that have liked you:</strong><br>";
+      echo "<br><strong>People that have liked you:</strong><br>";
       foreach($result as $row) {
-        echo "{$row['liker']} liked you<br>";
+        echo "<a href='#'>X </a><a href='#'> {$row['liker']} </a><br>";
       }
     }
 
