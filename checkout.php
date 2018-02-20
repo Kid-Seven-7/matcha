@@ -44,12 +44,6 @@ if(isset($_GET['user'])){
             }else{
               echo "<strong>Surname:</strong> {$row['surname']}<br>";
             }
-            // echo "<strong>email:</strong> {$row['email']}<br>";
-            // if(empty($row['address'])){
-            //   echo "<strong>address:</strong> Not set<br>";
-            // }else{
-            //   echo "<strong>address:</strong> {$row['address']}<br>";
-            // }
             if(empty($row['bio'])){
               echo "<strong>Bio:</strong> Not set<br>";
             }else{
