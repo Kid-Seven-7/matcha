@@ -189,13 +189,18 @@
 
   /* picResults */
   .picResults {
-    width: 100%;
+    float: left;
+    width: 320px;
     background-color: rgba(255,105,180, 0.7);
     margin: 20px 20px 20px 20px;
     border: 2px solid black;
   }
   .picResults a {
     text-decoration: none;
+  }
+  .picResults img {
+    width: 300px;
+    height: 300px;
   }
 
   /* suggestions */
