@@ -40,6 +40,7 @@ h2 {
 button {
   background-color: Red;
   line-height: 20px;
+  border-radius: 5px;
   width: 65px;
   animation-name: ButtonFlash;
   animation-duration: 1s;
@@ -53,6 +54,7 @@ label {
 
 input {
   line-height: 18px;
+  border-radius: 5px;
 }
 
 @keyframes ButtonFlash {
