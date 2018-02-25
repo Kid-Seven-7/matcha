@@ -8,7 +8,25 @@
 
       //Logged in
       if (isset($_SESSION['username'])) {
-        echo "<a href='chat.php'><h1>Matcha</h1></a>";
+        try {
+          $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $stmt = $conn->prepare("SELECT *
+                                  FROM chats
+                                  WHERE sent_to = :user
+                                  AND opened = 0");
+          $stmt->execute(array(':user' => $_SESSION['username']));
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          if (count($result)) {
+            echo "<a href='chat.php'><h1>Matcha<span class='noti'>*</span></h1></a>";
+          }
+          else{
+            echo "<a href='chat.php'><h1>Matcha</h1></a>";
+          }
+        }catch(PDOException $e) {
+          echo "error: ".$e;
+        }
+        // echo "<a href='chat.php'><h1>Matcha</h1></a>";
       }
     ?>
   </div>
