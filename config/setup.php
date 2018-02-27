@@ -92,7 +92,8 @@
           sent_by varchar(255) not null,
           message text not null,
           sent_on DateTime not null,
-          opened varchar(255) not null
+          opened varchar(255) not null,
+          connection_id int(11) not null
           );'
         );
         //executing the query
