@@ -17,8 +17,9 @@
                                   AND opened = 0");
           $stmt->execute(array(':user' => $_SESSION['username']));
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-          if (count($result)) {
-            echo "<a href='chat.php'><h1>Matcha<span class='noti'>*</span></h1></a>";
+          $msg = count($result);
+          if (count($result) >= 1) {
+            echo "<a href='chat.php'><h1>Matcha<span class='noti'>*{$msgs}</span></h1></a>";
           }
           else{
             echo "<a href='chat.php'><h1>Matcha</h1></a>";
