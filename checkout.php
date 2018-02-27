@@ -32,7 +32,7 @@ if(isset($_GET['user'])){
             echo "<h2>{$row['user_name']}'s Profile</h2><br>";
             $_SESSION['checkingout'] = $row['user_name'];
             echo "<div class='leftDiv'>";
-            echo "<img src='uploads/{$row['profilePic']}' width='300px' height='300px'><br>";
+            echo "<img src='uploads/{$row['profilePic']}' class='searchpic'><br>";
             echo "</div><div class='rightDiv'>";
             if(empty($row['first_name'])){
               echo "<strong>Firstname:</strong> Not set<br>";
