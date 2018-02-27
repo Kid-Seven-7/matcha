@@ -1,5 +1,23 @@
 <?php
   session_start();
+
+  if ($_GET['remlike']){
+    try {
+      $user = $_GET['view'];
+      //Inserting data to the database
+      $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+      $stmt = $conn->prepare("UPDATE likes
+                              SET seen = 1
+                              WHERE id = :id");
+      $stmt->execute(array(':id' => $_GET['remlike']));
+    }catch(PDOException $e) {
+      echo "error: ".$e;
+    }
+  }
+
   try {
     //Inserting data to the database
     $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
@@ -15,7 +33,7 @@
     if (count($result)) {
       echo "<br><strong>People that you have liked:</strong><br>";
       foreach($result as $row) {
-        echo "<a href='chat.php?view={$row['liker']}'>X </a>{$row['likee']}<br>";
+        echo "<a href='chat.php?remlike={$row['id']}'>X </a>{$row['likee']}<br>";
       }
     }
 
@@ -29,7 +47,7 @@
     if (count($result)) {
       echo "<br><strong>People that have liked you:</strong><br>";
       foreach($result as $row) {
-        echo "<a href='#'>X </a><a href='chat.php?view={$row['liker']}'> {$row['liker']} </a><br>";
+        echo "<a href='chat.php?remlike={$row['id']}'>X </a><a href='chat.php?view={$row['liker']}'> {$row['liker']} </a><br>";
       }
     }
 
