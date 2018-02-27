@@ -71,7 +71,7 @@
             <br>
             </script>
             <div class="buttonDiv">
-              <input type="submit" name="submit" value="submit" id="submitButton">
+              <input class="inputButton" type="submit" name="submit" value="submit" id="submitButton">
             </div>
           </form>
           </div>
