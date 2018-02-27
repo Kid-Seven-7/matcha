@@ -23,6 +23,9 @@ try {
                             VALUES(:likee, :liker)");
 
     $stmt->execute(array(':likee' => $_SESSION['checkingout'], ':liker' => $_SESSION['username']));
+
+    // include_once 'chat_init.php'
+
   }else {
 
     // Adding like to likes table

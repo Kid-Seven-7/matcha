@@ -3,6 +3,7 @@
 
   if(isset($_GET['remcon']) && $_GET['remcon'] != "null"){
     // Header("location: chat.php");
+    $i = 0;
     try {
       //Inserting data to the database
       $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
@@ -32,7 +33,6 @@
   }
 
   try {
-    $i = 0;
     //Inserting data to the database
     $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

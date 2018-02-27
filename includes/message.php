@@ -14,7 +14,7 @@
     if (count($result)) {
       echo "<br><strong>Connections:</strong><br>";
       foreach($result as $row) {
-        echo "<a href='#'>{$row['user2']}</a><br>";
+        echo "<a href='chat.php?conn_id={$row['id']}'>{$row['user2']}</a><br>";
         $i++;
       }
     }
@@ -29,7 +29,7 @@
         echo "<br><strong>Connections:</strong><br>";
       }
       foreach($result as $row) {
-        echo "<a href='#'>{$row['user1']}</a><br>";
+        echo "<a href='chat.php?conn_id={$row['id']}'>{$row['user1']}</a><br>";
       }
     }
   }catch(PDOException $e) {
