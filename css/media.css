@@ -19,6 +19,18 @@
     text-align: left;
     margin-top: -50px;
   }
+  .checkingOut .searchpic {
+    width: 200px;
+    height: 200px;
+  }
+  .chatNotifications {
+    width: 10%;
+  }
+  .chatMainSection {
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+  }
 }
 
 /* max-width:586px */
@@ -56,14 +68,33 @@
   table, thead, tbody, th, td, tr {
     display: block;
   }
+  .checkingOut .rightDiv {
+    width: 100%;
+    clear: both;
+    float: left;
+  }
 }
 
 /* max-width:780px */
 @media screen and (max-width:780px) {
   .suggestions {
     width: 100%;
+    clear: both;
+  }
+  .chatMainSection {
+    margin-top: 10px;
+    width: 100%;
     float: left;
-  }  
+  }
+  .msgBoxSent {
+    width: 75%;
+  }
+  .msgBoxReceived {
+    width: 75%;
+  }
+  .chatNotifications {
+    width: 100%;
+  }
 }
 
 /* max-width:920px */
@@ -81,6 +112,9 @@
     width: 95%;
     float: none;
   }
+  .chatMainSection {
+    width: 75%;
+  }
 }
 
 /* max-width:1300px */
@@ -91,6 +125,12 @@
   }
 }
 
+/* max-width:1528px */
+@media screen and (max-width:1528px) {
+  .checkingOut .rightDiv {
+    width: 50%;
+  }
+}
 
 /* max-width:1600px */
 @media screen and (max-width:1600px) {
