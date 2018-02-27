@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +8,7 @@
   <body>
     <?php include_once 'includes/header.php' ?>
     <div class="chatContainer">
-      <aside class="chatNotifications">
+      <div class="chatNotifications">
         <h2>Notifications</h2>
         <br>
         <?php include_once 'includes/likes.php' ?>
@@ -16,10 +17,10 @@
         <?php include_once 'includes/unlike.php' ?>
         <?php include_once 'includes/blocked.php' ?>
         <?php include_once 'includes/chat.php' ?>
-      </aside>
-      <section class="chatMainSection">
+      </div>
+      <div class="chatMainSection">
         <?php include_once 'includes/im.php' ?>
-      </section>
+      </div>
     </div>
   </body>
 </html>
