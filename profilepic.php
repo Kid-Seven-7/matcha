@@ -75,18 +75,18 @@ if (isset($_POST['submit'])){
         <button type="submit" name="submit">Upload</button>
       </form>
       <br><br>
+      <?php ($fileDestination); ?>
+      <div id="image">
+        <?php
+          if(!empty($_FILES['image']['name'])){
+            echo "<a href='includes/setprofile.php'>set as profilePic</a><br>";
+          }
+         ?>
+        <img src="<?php echo $fileDestination ?>" alt="" width="400px" height="400px">
+      </div>
       <div class="webcam">
         <?php include_once 'test2.php' ?>
       </div>
-    </div>
-    <?php ($fileDestination); ?>
-    <div id="image">
-      <?php
-        if(!empty($_FILES['image']['name'])){
-          echo "<a href='includes/setprofile.php'>set as profilePic</a><br>";
-        }
-       ?>
-      <img src="<?php echo $fileDestination ?>" alt="" width="400px" height="400px">
     </div>
   </body>
 </html>
