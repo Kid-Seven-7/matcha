@@ -154,7 +154,8 @@
     $stmt = $conn->prepare('CREATE TABLE connections (
       id int(11) not null PRIMARY KEY AUTO_INCREMENT,
       user1 varchar(255) not null,
-      user2 varchar(255) not null
+      user2 varchar(255) not null,
+      seen int(1) not null
       );'
     );
     //executing the query
