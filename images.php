@@ -20,7 +20,6 @@
         // set the resulting array to associative
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         foreach($stmt->fetchAll() as $k=>$v) {
-          // var_dump($v);
           echo "<div class='picResults'>";
           echo "<img src='uploads/{$v['name']}' alt='profilePic'><br>";
           echo "<ul>
