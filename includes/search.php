@@ -25,7 +25,7 @@ try {
     foreach($result as $row) {
       if ($row['user_name'] != $_SESSION['username']){
         echo "<div class='suggestions'>";
-        echo "<a href='checkout.php?user={$row['id']}'><img src='uploads/{$row['profilePic']}'></a>";
+        echo "<a href='checkout.php?user={$row['id']}'><img alt='{$row['user_name']}' title='{$row['user_name']}' src='uploads/{$row['profilePic']}'></a>";
         echo "</div>";
       }
     }
