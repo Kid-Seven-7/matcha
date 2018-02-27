@@ -233,7 +233,7 @@
     float: left;
   }
   .checkingOut .rightDiv {
-    width: 80%;
+    width: 75%;
     float: right;
   }
 
@@ -253,8 +253,9 @@
 
   /* chatMainSection */
   .chatMainSection {
+    padding: 10px 10px 10px 10px;
     float: right;
-    width: 80%;
+    width: 78%;
     border: 1px solid black;
     background-color: rgba(255,105,180, 0.7);
   }
@@ -279,6 +280,47 @@
   .ajaxDiv #txtHint {
     float: right;
     width: 80%;
+  }
+
+  /* msgBoxReceived */
+  .msgBoxReceived {
+    margin-left: 50px;
+    padding: 5px 5px 5px 5px;
+    width: 20%;
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+  }
+
+  /* msgBoxSent */
+  .msgBoxSent {
+    padding: 5px 5px 5px 5px;
+    width: 20%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+  /* replyBox */
+  .replyBox {
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  /* searchpic */
+  .searchpic {
+    padding-left: 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  /* inputButton */
+  .inputButton {
+    background-color: Red;
+    line-height: 20px;
+    border-radius: 5px;
+    width: 65px;
   }
   /*  */
   /*  */
