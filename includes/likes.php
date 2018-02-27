@@ -15,7 +15,7 @@
     if (count($result)) {
       echo "<br><strong>People that you have liked:</strong><br>";
       foreach($result as $row) {
-        echo "<a href='#'>X </a>{$row['likee']}<br>";
+        echo "<a href='chat.php?view={$row['liker']}'>X </a>{$row['likee']}<br>";
       }
     }
 
@@ -29,7 +29,7 @@
     if (count($result)) {
       echo "<br><strong>People that have liked you:</strong><br>";
       foreach($result as $row) {
-        echo "<a href='#'>X </a><a href='#'> {$row['liker']} </a><br>";
+        echo "<a href='#'>X </a><a href='chat.php?view={$row['liker']}'> {$row['liker']} </a><br>";
       }
     }
 
