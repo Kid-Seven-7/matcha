@@ -18,11 +18,13 @@ if (isset($_POST['submit'])){
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-    $stmt = $conn->prepare("INSERT INTO chats (sent_to, sent_by, message, connection_id)
-                            VALUES (:send_to, :sent_by, :message, :conn_id)");
+    $stmt = $conn->prepare("INSERT INTO chats (sent_to, sent_by, message, sent_on, opened, connection_id)
+                            VALUES (:send_to, :sent_by, :message, :sent_on, :opened, :conn_id)");
     $stmt->execute(array(':send_to' => $send_to,
                           ':sent_by' => $sent_by,
                           ':message' => $msg,
+                          'sent_on' => date("Y-m-d h:i:s"),
+                          'opened' => 0,
                           ':conn_id' => $conn_id));
   }catch(PDOException $e){
     echo "error: {$e}";

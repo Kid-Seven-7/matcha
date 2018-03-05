@@ -32,9 +32,9 @@ if (isset($_POST['submit'])) {
 
             //User is online
             $stmt = $conn->prepare('UPDATE users
-                                    SET online=1
+                                    SET lastseen= :now
                                     WHERE email = :email OR user_name = :username');
-            $stmt->execute(array(':email' => $login, ':username' => $login));
+            $stmt->execute(array(':now' => date("Y-m-d h:i:s"), ':email' => $login, ':username' => $login));
 
             if (file_exists("upload/".$folder_name)) {
               mkdir("upload/".$folder_name);

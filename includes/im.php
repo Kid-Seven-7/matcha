@@ -2,6 +2,27 @@
 session_start();
 
 if ($_GET['conn_id']){
+
+  try{
+    $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $conn->prepare("UPDATE chats
+                            SET opened = 1
+                            WHERE connection_id = :conn_id
+                            AND sent_to = :user");
+    $stmt->execute(array(':conn_id' => $_GET['conn_id'], ':user' => $_SESSION['username']));
+
+    $stmt = $conn->prepare("UPDATE users
+                            SET lastseen = :now
+                            WHERE user_name = :user");
+    $stmt->execute(array(':now' => date("Y-m-d h:i:s"), ':user' => $_SESSION['username']));
+
+
+  }catch (PDOException $e){
+    echo "Unable to add picture to table: $e";
+  }
+
   try {
     //Inserting data to the database
     $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');

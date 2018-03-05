@@ -19,7 +19,7 @@
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           $msg = count($result);
           if (count($result) >= 1) {
-            echo "<a href='chat.php'><h1>Matcha<span class='noti'>*{$msgs}</span></h1></a>";
+            echo "<a href='chat.php'><h1>Matcha<span>*{$msgs}</span></h1></a>";
           }
           else{
             echo "<a href='chat.php'><h1>Matcha</h1></a>";
