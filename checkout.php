@@ -18,7 +18,8 @@ if(isset($_GET['user'])){
     <div class="checkingOut">
       <?php
       try {
-        $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "SELECT *
