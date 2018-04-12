@@ -1,6 +1,6 @@
 <?php
-session_start();
-include ("../config/database.php");
+// session_start();
+include ("config/database.php");
 
   // define variables and set to empty values
   $surname = $name = $gender = $preference = $bio = $age = $interests = "";
@@ -24,7 +24,8 @@ include ("../config/database.php");
   }
 
   try {
-    $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if($name){
@@ -82,7 +83,7 @@ include ("../config/database.php");
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[0]){
+    if(isset($interests[0])){
       $sql = "UPDATE users
       SET Tattoos=1
       WHERE email='$email'";
@@ -90,77 +91,77 @@ include ("../config/database.php");
       $stmt->execute();
     }
 
-    if($interests[1]){
+    if(isset($interests[1])){
       $sql = "UPDATE users
       SET Piercings=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[2]){
+    if(isset($interests[2])){
       $sql = "UPDATE users
       SET Music=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[3]){
+    if(isset($interests[3])){
       $sql = "UPDATE users
       SET Art=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[4]){
+    if(isset($interests[4])){
       $sql = "UPDATE users
       SET Gaming=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[5]){
+    if(isset($interests[5])){
       $sql = "UPDATE users
       SET Cooking=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[6]){
+    if(isset($interests[6])){
       $sql = "UPDATE users
       SET Anime=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[7]){
+    if(isset($interests[7])){
       $sql = "UPDATE users
       SET Cycling=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[8]){
+    if(isset($interests[8])){
       $sql = "UPDATE users
       SET Sports=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[9]){
+    if(isset($interests[9])){
       $sql = "UPDATE users
       SET Fitness=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[10]){
+    if(isset($interests[10])){
       $sql = "UPDATE users
       SET Pets=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($interests[11]){
+    if(isset($interests[11])){
       $sql = "UPDATE users
       SET Nature=1
       WHERE email='$email'";
@@ -215,7 +216,8 @@ include ("../config/database.php");
   <br><br>
   <?php
     try {
-      $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+      $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       $sql = "SELECT *
