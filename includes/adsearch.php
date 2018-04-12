@@ -2,13 +2,13 @@
 session_start();
 
 
-if ($_POST['gender']){
+if (isset($_POST['gender'])){
   echo "gender is {$_POST['gender']}<br>";
   $_SESSION['preference'] = $_POST['gender'];
   echo "pref is {$_SESSION['preference']}<br>";
 }
 
-if ($_POST['interests0']){
+if (isset($_POST['interests0'])){
   echo "likes tats";
 }
 
