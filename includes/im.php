@@ -1,10 +1,10 @@
 <?php
-session_start();
 
-if ($_GET['conn_id']){
+if (isset($_GET['conn_id'])){
 
   try{
-    $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stmt = $conn->prepare("UPDATE chats
@@ -25,7 +25,8 @@ if ($_GET['conn_id']){
 
   try {
     //Inserting data to the database
-    $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
@@ -37,15 +38,15 @@ if ($_GET['conn_id']){
     foreach($result as $row) {
       $send_to = null;
       $i = 0;
-      if($row[sent_by] == $_SESSION['username']){
-        $send_to = $row[sent_to];
+      if($row['sent_by'] == $_SESSION['username']){
+        $send_to = $row['sent_to'];
       }else{
-        $send_to = $row[sent_by];
+        $send_to = $row['sent_by'];
       }
-      if ($row[sent_by] == $_SESSION['username']){
-        echo "<div class='msgBoxSent'><strong>Me:</strong><br> {$row[message]}</div><br>";
+      if ($row['sent_by'] == $_SESSION['username']){
+        echo "<div class='msgBoxSent'><strong>Me:</strong><br> {$row['message']}</div><br>";
       }else{
-        echo "<div class='msgBoxReceived'><strong>{$row[sent_by]}:</strong><br> {$row[message]}</div><br>";
+        echo "<div class='msgBoxReceived'><strong>{$row['sent_by']}:</strong><br> {$row['message']}</div><br>";
       }
       $i++;
     }
@@ -54,7 +55,7 @@ if ($_GET['conn_id']){
     }
     echo "<form action='includes/sendmsg.php' method='POST'>
       <textarea class='replyBox' name='message' rows='8' cols='80' placeholder='reply'></textarea><br>
-      <input type='hidden' name='conn_id' value='{$_GET[conn_id]}'>
+      <input type='hidden' name='conn_id' value='{$_GET['conn_id']}'>
       <input type='hidden' name='send_to' value='{$send_to}'>
       <input class='inputButton' type='submit' name='submit' value='reply'>
     </form>";
@@ -76,11 +77,12 @@ if ($_GET['conn_id']){
   //   echo "error: ".$e;
   // }
 
-}elseif ($_GET['view']) {
+}elseif (isset($_GET['view'])) {
   try {
     $user = $_GET['view'];
     //Inserting data to the database
-    $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
