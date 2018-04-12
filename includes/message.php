@@ -1,9 +1,9 @@
 <?php
-  session_start();
   try {
     $i = 0;
     //Inserting data to the database
-    $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stmt = $conn->prepare("SELECT *
