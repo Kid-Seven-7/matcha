@@ -1,6 +1,8 @@
 <header>
   <div class="TitleBar">
     <?php
+    require_once('config/database.php');
+
       //Not logged in
       if (!isset($_SESSION['username'])) {
         echo "<h1>Matcha</h1>";
@@ -9,7 +11,8 @@
       //Logged in
       if (isset($_SESSION['username'])) {
         try {
-          $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+          $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+          // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           $stmt = $conn->prepare("SELECT *
                                   FROM chats
@@ -33,7 +36,6 @@
   </div>
   <div class="NavBar">
     <?php
-    session_start();
 
       /* Not logged in */
       if (!isset($_SESSION['username'])) {
