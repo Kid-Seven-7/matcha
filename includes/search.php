@@ -1,15 +1,16 @@
 
 <?php include_once 'includes/header.php' ?>
+<?php include_once 'config/database.php' ?>
 <?php
-session_start();
 try {
-  $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+  $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+  // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  if($_SESSION['preference'] == 'male'){
+  if(isset($_SESSION['preference']) && $_SESSION['preference'] == 'male'){
     $sql = "SELECT *
             FROM users
             WHERE gender='male'";
-  }elseif ($_SESSION['preference'] == 'female') {
+  }elseif (isset($_SESSION['preference']) && $_SESSION['preference'] == 'female') {
     $sql = "SELECT *
             FROM users
             WHERE gender='female'";
