@@ -14,9 +14,6 @@
         <?php include_once 'includes/likes.php' ?>
         <?php include_once 'includes/connections.php' ?>
         <?php include_once 'includes/message.php' ?>
-        <?php include_once 'includes/unlike.php' ?>
-        <?php include_once 'includes/blocked.php' ?>
-        <?php include_once 'includes/chat.php' ?>
       </div>
       <div class="chatMainSection">
         <?php include_once 'includes/im.php' ?>
