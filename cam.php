@@ -38,9 +38,27 @@
           <h3>What are you looking for?</h3>
           <form class="" action="includes/adsearch.php" method="post">
             <label for="">Gender:</label><br>
-            <input type="radio" name="gender" value="male"> Male<br>
-            <input type="radio" name="gender" value="female"> Female<br>
-            <input type="radio" name="gender" value="both" checked> Both
+            <?php
+              if(isset($_SESSION['preference'])){
+                switch($_SESSION['preference']){
+                  case 'male':
+                    echo "<input type='radio' name='gender' value='male' checked> Male<br>
+                    <input type='radio' name='gender' value='female'> Female<br>
+                    <input type='radio' name='gender' value='both'> Both<br>";
+                    break;
+                  case 'female':
+                    echo "<input type='radio' name='gender' value='male'> Male<br>
+                    <input type='radio' name='gender' value='female' checked> Female<br>
+                    <input type='radio' name='gender' value='both'> Both<br>";
+                    break;
+                  case 'both':
+                    echo "<input type='radio' name='gender' value='male'> Male<br>
+                    <input type='radio' name='gender' value='female'> Female<br>
+                    <input type='radio' name='gender' value='both' checked> Both<br>";
+                    break;
+                }
+              }
+            ?>
             <br><br>
             <label for="">Interests:</label>
             <div class="tableDiv">
