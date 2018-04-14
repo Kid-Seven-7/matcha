@@ -2,9 +2,22 @@
 <?php include_once 'includes/header.php' ?>
 <?php include_once 'config/database.php' ?>
 <?php
+
+function printResult($row){
+  if(isset($_SESSION['interests'])){
+    foreach ($_SESSION['interests'] as $interest){
+      if($row[$interest] == 1){
+        echo "<div class='suggestions'>";
+        echo "<a href='checkout.php?user={$row['id']}'><img alt='{$row['user_name']}' title='{$row['user_name']}' src='uploads/{$row['profilePic']}'></a>";
+        echo "</div>";
+        break;
+      }
+    }
+  }
+}
+
 try {
   $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-  // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   if(isset($_SESSION['preference']) && $_SESSION['preference'] == 'male'){
     $sql = "SELECT *
@@ -25,12 +38,11 @@ try {
   if (count($result)) {
     foreach($result as $row) {
       if ($row['user_name'] != $_SESSION['username']){
-        echo "<div class='suggestions'>";
-        echo "<a href='checkout.php?user={$row['id']}'><img alt='{$row['user_name']}' title='{$row['user_name']}' src='uploads/{$row['profilePic']}'></a>";
-        echo "</div>";
+        printResult($row);
       }
     }
   }
+  $_SESSION['interests'] = null;
 }catch(PDOException $e) {
   echo "error: ".$e;
 }
