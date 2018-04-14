@@ -1,38 +1,38 @@
 <?php
 session_start();
 
-
 if (isset($_POST['gender'])){
-  echo "gender is {$_POST['gender']}<br>";
   $_SESSION['preference'] = $_POST['gender'];
-  echo "pref is {$_SESSION['preference']}<br>";
 }
 
+$array = [];
 if (isset($_POST['interests0'])){
-  echo "likes tats";
+  $array[] = $_POST['interests0'];
+}if (isset($_POST['interests1'])){
+  $array[] = $_POST['interests1'];
+}if (isset($_POST['interests2'])){
+  $array[] = $_POST['interests2'];
+}if (isset($_POST['interests3'])){
+  $array[] = $_POST['interests3'];
+}if (isset($_POST['interests4'])){
+  $array[] = $_POST['interests4'];
+}if (isset($_POST['interests5'])){
+  $array[] = $_POST['interests5'];
+}if (isset($_POST['interests6'])){
+  $array[] = $_POST['interests6'];
+}if (isset($_POST['interests7'])){
+  $array[] = $_POST['interests7'];
+}if (isset($_POST['interests8'])){
+  $array[] = $_POST['interests8'];
+}if (isset($_POST['interests9'])){
+  $array[] = $_POST['interests9'];
+}if (isset($_POST['interests10'])){
+  $array[] = $_POST['interests10'];
+}if (isset($_POST['interests11'])){
+  $array[] = $_POST['interests11'];
 }
 
-
-// if(isset($_GET['gender'])){
-// }
-// if(isset($_GET[''])){
-// }
-// if(isset($_GET[''])){
-// }
-// if(isset($_GET[''])){
-// }
-// if(isset($_GET[''])){
-// }
-// if(isset($_GET[''])){
-// }
-// if(isset($_GET[''])){
-// }
-// if(isset($_GET[''])){
-// }
-// if(isset($_GET[''])){
-// }
-// if(isset($_GET[''])){
-// }
+$_SESSION['interests'] = $array;
 
 header("location: ../cam.php");
 
