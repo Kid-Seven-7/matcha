@@ -121,6 +121,12 @@
                 ?>
               </table>
             </div>
+            <div class="">
+              <br><label for="">Maximum Age: <span id="range"></span></label><br>
+              <div class="slidecontainer">
+                <input type="number" name="age" value="age" id="age_range">
+              </div>
+            </div>
             <br>
             <div class="buttonDiv">
               <input class="inputButton" type="submit" name="submit" value="submit" id="submitButton">

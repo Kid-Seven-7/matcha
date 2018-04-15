@@ -5,6 +5,10 @@ if (isset($_POST['gender'])){
   $_SESSION['preference'] = $_POST['gender'];
 }
 
+if (isset($_POST['age'])){
+  $_SESSION['age_range'] = $_POST['age'];
+}
+
 $array = [];
 if (isset($_POST['interests0'])){
   $array[] = $_POST['interests0'];

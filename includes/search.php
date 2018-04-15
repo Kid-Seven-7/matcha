@@ -4,7 +4,19 @@
 <?php
 
 function printResult($row){
-  if(isset($_SESSION['interests'])){
+  if(isset($_SESSION['age_range'])){
+    $range = $_SESSION['age_range'];
+  }
+  if(isset($_SESSION['interests']) && $range){
+    foreach ($_SESSION['interests'] as $interest){
+      if($row[$interest] == 1 && $_SESSION['age_range'] >= $row['age']){
+        echo "<div class='suggestions'>";
+        echo "<a href='checkout.php?user={$row['id']}'><img alt='{$row['user_name']}' title='{$row['user_name']}' src='uploads/{$row['profilePic']}'></a>";
+        echo "</div>";
+        break;
+      }
+    }
+  }elseif(isset($_SESSION['interests'])){
     foreach ($_SESSION['interests'] as $interest){
       if($row[$interest] == 1){
         echo "<div class='suggestions'>";
