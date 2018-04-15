@@ -380,11 +380,8 @@ include ("config/database.php");
 </form>
 <br>
 <?php
-  if($_SESSION['updated'] == "yes"){
-    echo "<a href='geocode.php'>set location manually</a> or
-    <a href='location.php'>set location automatically</a>";
-  }
-
+  echo "<a href='geocode.php'>set location manually</a> or
+  <a href='location.php'>set location automatically</a>";
 ?>
 <br><br>
 <a href="delete.php">Delete account</a>

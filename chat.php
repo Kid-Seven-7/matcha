@@ -15,7 +15,14 @@
         <?php include_once 'includes/connections.php' ?>
         <?php include_once 'includes/message.php' ?>
       </div>
-      <div class="chatMainSection">
+      <script type="text/javascript">
+      var autoload = setInterval(
+        function(){
+          $('#load').load('includes/im.php').fadein("Slow");
+        },1000);
+      )
+      </script>
+      <div class="chatMainSection" id="MainChat">
         <?php include_once 'includes/im.php' ?>
       </div>
     </div>

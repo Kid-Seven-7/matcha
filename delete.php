@@ -1,5 +1,5 @@
 <!-- TODO -->
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <?php include_once 'includes/meta.php' ?>
@@ -13,4 +13,4 @@
       <a href="profile.php">No</a>
     </div>
   </body>
-</html> -->
+</html>
