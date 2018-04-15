@@ -83,87 +83,159 @@ include ("config/database.php");
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if(isset($interests[0])){
+
+    if(isset($interests[0]) && $interests[0] != null){
       $sql = "UPDATE users
       SET Tattoos=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Tattoos=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-
-    if(isset($interests[1])){
+    if(isset($interests[1]) && $interests[1] != null){
       $sql = "UPDATE users
       SET Piercings=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Piercings=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[2])){
+    if(isset($interests[2]) && $interests[2] != null){
       $sql = "UPDATE users
       SET Music=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Music=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[3])){
+    if(isset($interests[3]) && $interests[3] != null){
       $sql = "UPDATE users
       SET Art=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Art=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[4])){
+    if(isset($interests[4]) && $interests[4] != null){
       $sql = "UPDATE users
       SET Gaming=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Gaming=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[5])){
+    if(isset($interests[5]) && $interests[5] != null){
       $sql = "UPDATE users
       SET Cooking=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Cooking=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[6])){
+    if(isset($interests[6]) && $interests[6] != null){
       $sql = "UPDATE users
       SET Anime=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Anime=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[7])){
+    if(isset($interests[7]) && $interests[7] != null){
       $sql = "UPDATE users
       SET Cycling=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Cycling=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[8])){
+    if(isset($interests[8]) && $interests[8] != null){
       $sql = "UPDATE users
       SET Sports=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Sports=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[9])){
+    if(isset($interests[9]) && $interests[9] != null){
       $sql = "UPDATE users
       SET Fitness=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Fitness=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[10])){
+    if(isset($interests[10]) && $interests[10] != null){
       $sql = "UPDATE users
       SET Pets=1
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Pets=0
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
     }
-    if(isset($interests[11])){
+    if(isset($interests[11]) && $interests[11] != null){
       $sql = "UPDATE users
       SET Nature=1
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }else{
+      $sql = "UPDATE users
+      SET Nature=0
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -230,7 +302,7 @@ include ("config/database.php");
         foreach($result as $row) {
           echo "Interests: <br><table>";
           echo "<tr>";
-          if(($row['Tattoos'] == 1)){
+          if(($interests[0])){
             echo "<td><input class='box' type='checkbox' name='interests0' value='Tattoos' checked>Tattoos</td>";
           }else{
             echo "<td><input class='box' type='checkbox' name='interests0' value='Tattoos'>Tattoos</td>";

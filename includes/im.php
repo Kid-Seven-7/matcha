@@ -63,18 +63,18 @@ if (isset($_GET['conn_id'])){
     echo "error: ".$e;
   }
 
-  try{
-    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-    $stmt = $conn->prepare("UPDATE *
-                            FROM chats
-                            WHERE connection_id = :conn_id");
-    $stmt->execute(array(':conn_id' => $_GET['conn_id']));
-  }catch(PDOException $e){
-    echo "error: ".$e;
-  }
+  // try{
+  //   $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+  //   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  //
+  //
+  //   $stmt = $conn->prepare("UPDATE *
+  //                           FROM chats
+  //                           WHERE connection_id = :conn_id");
+  //   $stmt->execute(array(':conn_id' => $_GET['conn_id']));
+  // }catch(PDOException $e){
+  //   echo "error: ".$e;
+  // }
 
 }elseif (isset($_GET['view'])) {
   try {

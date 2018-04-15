@@ -83,19 +83,19 @@ $email = $_SESSION['email'];
                 echo "<strong>Preference:</strong> {$row['preference']}<br>";
               }
               echo "<strong>Interests:</strong><br>";
-              if(($row['Tattoos'])){
+              if(($row['Tattoos'] == 1)){
                 echo "<pre>    #Tattoos<a href='includes/del.php?rem=tattoos'>remove</a></pre>";
               }
-              if(($row['Piercings'])){
+              if(($row['Piercings'] == 1)){
                 echo "<pre>    #Piercings<a href='includes/del.php?rem=piercings'>remove</a></pre>";
               }
-              if(($row['Music'])){
+              if(($row['Music'] == 1)){
                 echo "<pre>    #Music<a href='includes/del.php?rem=music'>remove</a></pre>";
               }
-              if(($row['Art'])){
+              if(($row['Art'] == 1)){
                 echo "<pre>    #Art<a href='includes/del.php?rem=art'>remove</a></pre>";
               }
-              if(($row['Gaming'])){
+              if(($row['Gaming'] == 1)){
                 echo "<pre>    #Gaming<a href='includes/del.php?rem=gaming'>remove</a></pre>";
               }
               if(($row['Cooking'])){

@@ -121,10 +121,16 @@
                 ?>
               </table>
             </div>
-            <div class="">
+            <div class="Age_range">
               <br><label for="">Maximum Age: <span id="range"></span></label><br>
               <div class="slidecontainer">
                 <input type="number" name="age" value="age" id="age_range">
+              </div>
+            </div>
+            <div class="fame">
+              <br><label for="">minimum fame rating: <span id="fame"></span></label><br>
+              <div class="slidecontainer">
+                <input type="number" name="fame" value="fame" id="fame_range">
               </div>
             </div>
             <br>

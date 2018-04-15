@@ -17,9 +17,11 @@ if(isset($_GET['user'])){
     <?php include_once 'includes/header.php' ?>
     <div class="checkingOut">
       <?php
+
+
+
       try {
         $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-        // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql = "SELECT *
@@ -102,14 +104,41 @@ if(isset($_GET['user'])){
             if(($row['Nature'])){
               echo "<pre>    #Nature</pre>";
             }
-            echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
-            echo "</div>";
-            echo "<br>";
           }
         }
       }catch(PDOException $e) {
         echo "error: ".$e;
       }
+
+      $name = $_SESSION['username'];
+      try{
+        $liked = 0;
+        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "SELECT *
+                FROM likes
+                WHERE liker='$name'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $key) {
+          if($key['likee'] == $_SESSION['checkingout']){
+            $liked = 1;
+          }
+        }
+        if($liked == 0){
+          echo "<a href='includes/like.php?liker={$user_id}'><img src='resources/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
+          // echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
+        }else{
+          // echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Unike</a>";
+          echo "<a href='includes/unlike.php'><img src='resources/thumb.png' alt='like' width='30px' height='30px'>Unike</a>";
+        }
+      }catch(PDOException $e) {
+        echo "error: ".$e;
+      }
+
+
       ?>
     </div>
   </body>

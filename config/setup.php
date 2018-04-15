@@ -48,6 +48,7 @@
       $stmt = $conn->prepare('CREATE TABLE users (
         id int(11) not null PRIMARY KEY AUTO_INCREMENT,
         online int(1) not null default 0,
+        fame int(11) not null default 0,
         profilePic varchar(255) default "../uploads/undefined.png",
         user_name varchar(255) not null,
         first_name varchar(255),

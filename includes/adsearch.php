@@ -9,6 +9,10 @@ if (isset($_POST['age'])){
   $_SESSION['age_range'] = $_POST['age'];
 }
 
+if (isset($_POST['fame'])){
+  $_SESSION['fame_range'] = $_POST['fame'];
+}
+
 $array = [];
 if (isset($_POST['interests0'])){
   $array[] = $_POST['interests0'];

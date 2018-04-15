@@ -1,11 +1,12 @@
 <?php
 session_start();
-include_once ('database.php');
+include_once ('../config/database.php');
 
 try {
 
   //Inserting data to the database
-  $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+  $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+  // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   // Checking to see if there is a connection to be made
@@ -38,5 +39,6 @@ try {
   echo "error: ".$e;
 }
 
-Header("location: ../cam.php")
+Header("location: fame_count.php")
+// Header("location: ../cam.php")
 ?>
