@@ -1,162 +1,239 @@
-sections
+SCALE FOR PROJECT MATCHA
+Introduction
+Please respect the following rules:
 
-preliminaries
+- Remain polite, courteous, respectful and constructive
+throughout the correction process. The well-being of the community
+depends on it.
 
-preliminary instructions
+- Identify with the person (or the group) graded the eventual
+dysfunctions of the work. Take the time to discuss
+and debate the problems you have identified.
 
-The subject allows the use of a micro-framework, and only this. If the tool used by the student (if tool ago) is not in the list of suggestions of the subject,
-make sure it is indeed a micro-framework as defined by the subject. As a reminder:
+- You must consider that there might be some difference in how your
+peers might have understood the project's instructions and the
+scope of its functionalities. Always keep an open mind and grade
+him/her as honestly as possible. The pedagogy is valid only if
+the peer-evaluation is conducted seriously.
+Guidelines
+- Only grade the work that is in the student or group's
+GiT repository.
 
-Consider a "micro-framework" is a router, and possibly templa- ting, but not ORM, validators or management of user accounts.
+- Double-check that the GiT repository belongs to the student
+or the group. Ensure that the work is for the relevant project
+and also check that "git clone" is used in an empty folder.
 
-If the tool used is not a micro-framework, the defense stops.
+- Check carefully that no malicious aliases was used to fool you
+and make you evaluate something other than the content of the
+official repository.
 
-Also, if, for the defense, there is only one warning, or user error in the web console, select Crash top of the scale.
+- To avoid any surprises, carefully check that both the correcting
+and the corrected students have reviewed the possible scripts used
+to facilitate the grading.
 
-An error code of 500 to 599 is considered a crash.
+- If the correcting student has not completed that particular
+project yet, it is mandatory for this student to read the
+entire subject prior to starting the defence.
 
-security
+- Use the flags available on this scale to signal an empty repository,
+non-functioning program, a norm error, cheating etc. In these cases,
+the grading is over and the final grade is 0 (or -42 in case of
+cheating). However, with the exception of cheating, you are
+encouraged to continue to discuss your work (even if you have not
+finished it) in order to identify any issues that may have caused
+this failure and avoid repeating the same mistake in the future.
+Attachments
+ Sujet   Subject
+Preliminaries
+Preliminaries
+Subject allows the use of a micro-framework and only this. If
+the tool used by the student (if tool there is) isn't in the
+suggestion list, check that it's a micro-framework following
+the subject definition. As a reminder:
 
-The subject insisted on this point: the site must be secure. Check that minimum
+> We will consider that a micro-framework has a router,
+and eventually templating, but no ORM, validators or User
+Accounts Manager.
 
-passwords are encrypted in the database
+If the tool used isn't a micro-framework, defense stops.
 
-entry forms and upload have correct validation
+If at any time during defense, there is any warning, error or
+notice in the web console, click on the "Crash" button at the
+top of the scale. An error code from 500 to 599 is also
+considered a Crash.
+ Yes
+ No
+Security
+The subject insisted on that point: the website must be secured.
+Check at least the following points:
+- Password are encripted in the database.
+- Forms and uploads have correct validations.
+- SQL injection isn't possible.
 
-no possible SQL injection
+If at least one fails, the defense stops.
+ Yes
+ No
+Features
+User account management
+The app must allow a user to register asking at least an
+email address, a username, a last name, a first name and
+a password that is somehow protected. (An english common
+word shouldn't be accepted for example.)
 
-If only one of these points is invalid, the defense stops.
+A connected user must be able to fill an extended profile,
+and must be able to update his information as well as the
+one given during registration, at any time.
+ Yes
+ No
+User connexion
+The user must then be able to connect with his username
+and password. He must be able to receive an email
+allowing him to re-initialize his password should
+the first one be forgotten.
 
-features
+To disconnect must be possible from any page on the site
+with one click.
+ Yes
+ No
+Consultations
+The user must be able to check out the people that looked at his
+profile (there mush be an history of visits) as well as the people
+that "liked" him.
+ Yes
+ No
+Fame rating
+Each user must have a public fame rating. Ask the student to explain
+his stategy regarding the computing of that score, it must be consistent
+and a minimum relevant.
+ Yes
+ No
+Geolocalisation
+The user must be located using GPS positionning, up to his
+neighborhood. If the user does not want to be positionned,
+a way must found to locate him even without his knowledge.
 
-User Account Management
+The user must be able to modify his GPS position in his
+profile.
+ Yes
+ No
+Profile suggestion
+The user must be able to easily get a list of suggestions when
+connecting that match his profile.
 
-A user must register, providing the minimum email address, username, name and password (Secure, a french word any current must not be
-accepted, for example).
+Suggested profiles must be consistant with sexuality. If the
+sexual orientation isn’t specified, the user will be considered
+bi-sexual.
 
-A connected user must complete an extended profile, and should be able to change this information, as well as those provided during registration at any time.
-user login
+Check with the student that profile suggestions are weighted on
+three criterias:
+- Same geographic area as the user.
+- With a maximum of common tags.
+- With a maximum fame rating.
 
-The user must be able to connect with his credentials and must be able to receive mail from réinitialisafion password if forgotten.
-
-The disconnection must be possible from any site page.
-
-consultations
-
-The user must consult the people who viewed their profile (so it must be a history of the profile visits), as well as people who "like".
-
-Popularity Score
-
-Each user must have a popularity score. Ask the student to explain his strategy for calculating this score, it must be consistent and relevant minimum.
-Geolocation
-
-The user must be geolocated to the district nearby. If the user does not want to be geolocated, strategies must be put in place to do despite himself.
-The user must change his location on his profile.
-
-Proposals profiles
-
-The user must be able to easily find, when it connects, a list of profiles of suggestions.
-
-Relevant profiles are to be offered to the user. corresponding to sexuality. If the user does not inform his sexuality, he will be considered bisexual.
-Check with the student profiles that proposals are weighted according to three criteria:
-
-same geographical area that the user
-
-Maximum common interest tags
-
-Maximum Popularity
-
-Ask the student to explain its strategy for a list of relevant suggestions.
-
+Ask the student to explain his strategy to display a list of
+relevant suggestions.
+ Yes
+ No
 Research
+The user must be able to run an advanced research selecting
+one or a few criterias such as:
+- A age gap.
+- A fame rating gap.
+- A location.
+- One or multiple interests tags.
+ Yes
+ No
+Sort and filters
+The suggestion list as well as the resulting list of a search must be
+sortable and filterable by:
+- Age.
+- Location.
+- Fame rating.
+- Tags.
+ Yes
+ No
+Profile of other users
+A user must be able to consult the profile of other users,
+that must contain all the information available about them,
+except for the email address and the password.
 
-The user must be able to perform an advanced search by selecting one or more criteria such as
+The profile must show the fame rating and if the user is
+connected and if not see the last connection date and time.
+ Yes
+ No
+Connexion between users
+A user can like or unlike the profile of another user. When two people
+like each other, we will say that they are connected and can be able to
+chat.
 
-age interval
+A user that doesn't have a profile picture can't like another user.
 
-popularity score interval
+The profile of other users must clearly display if they're connected
+with the current user or if they like the current user.
+ Yes
+ No
+Report et bloking
+It's possible to report a profile as "fake account" and block a specific
+user. A blocked user won’t appear anymore in the research results (or in
+suggestions) and won’t generate additional notifications.
+ Yes
+ No
+Chat
+When two users are connected, they must be able to chat in real time.
+(We'll tolerate a 10 secondes delay).
 
-location
-
-one or more tags of interest
-
-Sorts and filters
-
-The list of profiles of proposals and research results must be sortable and filterable by
-
-age
-
-location
-
-popularity
-
-tags
-
-Profile of others
-
-The public profile of a user must contain all the information provided, except his email address and password.
-
-It must also include its popularity score, and connection status - if the user appears offline, you should see the date of last visit.
-
-Connection between users
-
-A user can liker and unliker. the profile of another user. When two users have each other "Iikés", they say they are connected: they can then engage in conversation.
-A user who does not have photo must be liker the other user profile.
-
-The other user profile should show clearly whether it is connected to the current user or is "like" the current user.
-Report and blocking
-
-One can see a profile "fake account" and block a given user. A blocked user should no longer appear in search results (or suggestions), and should not
-generate notifications.
-
-Cat
-
-Two connected users can chat in real time (we tolerate a margin of 10 seconds).
-
-The user must be able to see which page nimporte since he received a message.
-
+The user must be able to see from any page if a new message is received.
+ Yes
+ No
 Notifications
+A user must be notified in real time (We'll also tolerate a
+10 secondes delay) of the following events:
 
-In addition, a user must be notified in real time (we tolerate a margin of 10 seconds), the following events:
+- The user received a "like".
+- The user received a visit.
+- The user received a message.
+- A "liked" user "liked" back.
+- A connected user "unliked" the current user.
 
-a "like" profile of
-
-someone has visited his profile
-
-a user "like" a "Iike" back
-
-a connected user "like" more current user
-
-It must be able to see from any page that a notification has not been read.
-
-Good practices
-
+A user must be able to see, from any page that a notification
+hasn’t been read.
+ Yes
+ No
+Good practice
 Compatibility
-
-The site is compatible to Firefox (> = 41) and Chrome (> 46)
-
+Is the website compatible with Firefox (>= 41) and Chrome (>= 46)?
+ Yes
+ No
 Mobile
+Is the website usable on a mobile and on very small resolution?
+ Yes
+ No
+Bonus
+Omniauth strategy
+The user can connect via Omniauth?
+ Yes
+ No
+Additional bonus
+It's possible here to give reward up to 5 additional bonuses. The
+usefullness and relevance is up to the corrector to judge.
 
-The site is presentable on mobile and on small resolutions
-
-bonus
-
-Omniauth strategies
-
-The user can connect via Omniauth
-
-Good practices
-Compatibility
-The site is compatible to Firefox (> = 41) and Chrome (> 46)
-Mobile
-The site is presentable on mobile and on small resolutions
-bonus
-Omniauth strategies
-The user can connect via Omniauth
-Other bonuses
-Here it is possible to record up to 5 bonus, the usefulness and relevance are judged Ala corrector discretion.
-For example, here are the bonuses offered in the subject
-Depis Facebook loading images and / or Google+
-Interactive map Users
-etc ...
+As examples here are the bonuses proposed in the subject:
+- Import pictures from Facebook and/or Google+.
+- Interactive map of the users.
+- Etc...
 Rate it from 0 (failed) through 5 (excellent)
+
+Ratings
+Don’t forget to check the flag corresponding to the defense
+
+ Ok
+ Outstanding project
+ Empty work
+ Incomplete work
+ No author file
+ Invalid compilation
+ Norme
+ Cheat
+ Crash
+Conclusion
+Leave a comment on this evaluation
