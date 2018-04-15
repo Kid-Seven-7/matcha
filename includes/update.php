@@ -1,10 +1,10 @@
 <?php
-// session_start();
 include ("config/database.php");
 
   // define variables and set to empty values
   $surname = $name = $gender = $preference = $bio = $age = $interests = "";
 
+  //assign values to the variables
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = test_input($_POST["name"]);
     $surname = test_input($_POST["surname"]);
@@ -25,10 +25,10 @@ include ("config/database.php");
 
   try {
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-    // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        if($name){
+    //updating database values if needed
+    if($name){
       $sql = "UPDATE users
       SET first_name='$name'
       WHERE email='$email'";
@@ -173,6 +173,7 @@ include ("config/database.php");
     echo "error: ".$e;
   }
 
+  //the same as escaping string (no sql injections here)
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -217,7 +218,6 @@ include ("config/database.php");
   <?php
     try {
       $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-      // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       $sql = "SELECT *
@@ -230,7 +230,7 @@ include ("config/database.php");
         foreach($result as $row) {
           echo "Interests: <br><table>";
           echo "<tr>";
-          if(($row['Tattoos'])){
+          if(($row['Tattoos'] == 1)){
             echo "<td><input class='box' type='checkbox' name='interests0' value='Tattoos' checked>Tattoos</td>";
           }else{
             echo "<td><input class='box' type='checkbox' name='interests0' value='Tattoos'>Tattoos</td>";

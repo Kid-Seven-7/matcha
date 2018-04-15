@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once ('config/database.php');
 
 if (isset($_GET['user'])) {
@@ -33,7 +34,6 @@ $email = $_SESSION['email'];
         echo "<h2>{$username}'s Profile</h2><br>";
         try {
           $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-          // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           $sql = "SELECT *

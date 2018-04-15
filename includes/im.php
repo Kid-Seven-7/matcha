@@ -1,10 +1,10 @@
 <?php
+include ("config/database.php");
 
 if (isset($_GET['conn_id'])){
 
   try{
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-    // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stmt = $conn->prepare("UPDATE chats
@@ -26,7 +26,6 @@ if (isset($_GET['conn_id'])){
   try {
     //Inserting data to the database
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-    // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
@@ -64,25 +63,24 @@ if (isset($_GET['conn_id'])){
     echo "error: ".$e;
   }
 
-  // try{
-  //   $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
-  //   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  //
-  //
-  //   $stmt = $conn->prepare("UPDATE *
-  //                           FROM chats
-  //                           WHERE connection_id = :conn_id");
-  //   $stmt->execute(array(':conn_id' => $_GET['conn_id']));
-  // }catch(PDOException $e){
-  //   echo "error: ".$e;
-  // }
+  try{
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+    $stmt = $conn->prepare("UPDATE *
+                            FROM chats
+                            WHERE connection_id = :conn_id");
+    $stmt->execute(array(':conn_id' => $_GET['conn_id']));
+  }catch(PDOException $e){
+    echo "error: ".$e;
+  }
 
 }elseif (isset($_GET['view'])) {
   try {
     $user = $_GET['view'];
     //Inserting data to the database
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-    // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
