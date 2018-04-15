@@ -37,26 +37,30 @@
         <div class="SideBar">
           <h3>What are you looking for?</h3>
           <form class="" action="includes/adsearch.php" method="post">
-            <label for="">Gender:</label><br>
+            <label for="">Preference:</label><br>
             <?php
               if(isset($_SESSION['preference'])){
                 switch($_SESSION['preference']){
                   case 'male':
-                    echo "<input type='radio' name='gender' value='male' checked> Male<br>
-                    <input type='radio' name='gender' value='female'> Female<br>
-                    <input type='radio' name='gender' value='both'> Both<br>";
+                    echo "<input type='radio' name='gender' value='male' checked disabled> Male<br>
+                    <input type='radio' name='gender' value='female' disabled> Female<br>
+                    <input type='radio' name='gender' value='both' disabled> Both<br>";
                     break;
                   case 'female':
-                    echo "<input type='radio' name='gender' value='male'> Male<br>
-                    <input type='radio' name='gender' value='female' checked> Female<br>
-                    <input type='radio' name='gender' value='both'> Both<br>";
+                    echo "<input type='radio' name='gender' value='male' disabled> Male<br>
+                    <input type='radio' name='gender' value='female' checked disabled> Female<br>
+                    <input type='radio' name='gender' value='both' disabled> Both<br>";
                     break;
                   default:
-                    echo "<input type='radio' name='gender' value='male'> Male<br>
-                    <input type='radio' name='gender' value='female'> Female<br>
-                    <input type='radio' name='gender' value='both' checked> Both<br>";
+                    echo "<input type='radio' name='gender' value='male' disabled> Male<br>
+                    <input type='radio' name='gender' value='female' disabled> Female<br>
+                    <input type='radio' name='gender' value='both' checked disabled> Both<br>";
                     break;
                 }
+              }else{
+                echo "<input type='radio' name='gender' value='male' disabled> Male<br>
+                <input type='radio' name='gender' value='female' disabled> Female<br>
+                <input type='radio' name='gender' value='both' checked disabled> Both<br>";
               }
             ?>
             <br><br>
@@ -66,57 +70,51 @@
               <table>
                 <?php
                 function checkInterestBox(){
-                  $array = array("Tattoos",
-                  "Piercings",
-                  "Music",
-                  "Art",
-                  "Gaming",
-                  "Cooking",
-                  "Anime",
-                  "Cycling",
-                  "Sports",
-                  "Fitness",
-                  "Pets",
-                  "Nature");
+                  $array = array("Tattoos", "Piercings",
+                                  "Music", "Art",
+                                  "Gaming", "Cooking",
+                                  "Anime", "Cycling",
+                                  "Sports", "Fitness",
+                                  "Pets", "Nature");
                   if(isset($_SESSION['interests'])){
                     for ($i=0; $i < 12; $i++) {
-                      if($i == 0 || $i == 3 || $i == 6 || $i == 9){
+                      if($i%2 == 0){
                         echo "<tr>";
                       }
                       if (in_array($array[$i], $_SESSION['interests'])){
                         echo "<td><input class='box' type='checkbox' name='interests{$i}' value='{$array[$i]}' checked>{$array[$i]}</td>";
-                        // echo "{$array[$i]} was checked<br>";
                       }else {
                         echo "<td><input class='box' type='checkbox' name='interests{$i}' value='{$array[$i]}'>{$array[$i]}</td>";
-                        // echo "{$array[$i]} was not checked<br>";
                       }
-                      if($i == 2 || $i == 5 || $i == 8 || $i == 11){
+                      if($i%2 != 0){
                         echo "</tr>";
                       }
                     }
                   }else{
-                    echo `
+                    echo "
                     <tr>
-                    <td><input class="box" type="checkbox" name="interests0" value="Tattoos">Tattoos</td>
-                    <td><input class="box" type="checkbox" name="interests1" value="Piercings">Piercings</td>
-                    <td><input class="box" type="checkbox" name="interests2" value="Music">Music</td>
+                    <td><input class='box' type='checkbox' name='interests0' value='Tattoos'>Tattoos</td>
+                    <td><input class='box' type='checkbox' name='interests1' value='Piercings'>Piercings</td>
                     </tr>
                     <tr>
-                    <td><input class="box" type="checkbox" name="interests3" value="Art">Art</td>
-                    <td><input class="box" type="checkbox" name="interests4" value="Gaming">Gaming</td>
-                    <td><input class="box" type="checkbox" name="interests5" value="Cooking">Cooking</td>
+                    <td><input class='box' type='checkbox' name='interests2' value='Music'>Music</td>
+                    <td><input class='box' type='checkbox' name='interests3' value='Art'>Art</td>
+                    <tr>
+                    <td><input class='box' type='checkbox' name='interests4' value='Gaming'>Gaming</td>
+                    <td><input class='box' type='checkbox' name='interests5' value='Cooking'>Cooking</td>
                     </tr>
                     <tr>
-                    <td><input class="box" type="checkbox" name="interests6" value="Anime">Anime</td>
-                    <td><input class="box" type="checkbox" name="interests7" value="Cycling">Cycling</td>
-                    <td><input class="box" type="checkbox" name="interests8" value="Sports">Sports</td>
+                    <td><input class='box' type='checkbox' name='interests6' value='Anime'>Anime</td>
+                    <td><input class='box' type='checkbox' name='interests7' value='Cycling'>Cycling</td>
+                    </tr>
+                    <td><input class='box' type='checkbox' name='interests8' value='Sports'>Sports</td>
+                    <td><input class='box' type='checkbox' name='interests9' value='Fitness'>Fitness</td>
                     </tr>
                     <tr>
-                    <td><input class="box" type="checkbox" name="interests9" value="Fitness">Fitness</td>
-                    <td><input class="box" type="checkbox" name="interests10" value="Pets">Pets</td>
-                    <td><input class="box" type="checkbox" name="interests11" value="Nature">Nature</td>
+                    <td><input class='box' type='checkbox' name='interests10' value='Pets'>Pets</td>
+                    <td><input class='box' type='checkbox' name='interests11' value='Nature'>Nature</td>
                     </tr>
-                    `;
+                    ";
                   }
                 }
                 checkInterestBox();
@@ -124,7 +122,6 @@
               </table>
             </div>
             <br>
-            </script>
             <div class="buttonDiv">
               <input class="inputButton" type="submit" name="submit" value="submit" id="submitButton">
             </div>
