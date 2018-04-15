@@ -15,6 +15,6 @@ echo "string";
     echo "Error: {$e}";
   }
 
-  // header("Location: ../index.php");
+  header("Location: ../index.php");
 
 ?>

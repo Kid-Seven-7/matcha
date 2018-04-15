@@ -6,7 +6,6 @@ try {
 
   //Inserting data to the database
   $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-  // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   // Checking to see if there is a connection to be made
@@ -25,8 +24,6 @@ try {
 
     $stmt->execute(array(':likee' => $_SESSION['checkingout'], ':liker' => $_SESSION['username']));
 
-    // include_once 'chat_init.php'
-
   }else {
 
     // Adding like to likes table
@@ -40,5 +37,4 @@ try {
 }
 
 Header("location: fame_count.php")
-// Header("location: ../cam.php")
 ?>

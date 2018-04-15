@@ -37,6 +37,11 @@ if(isset($_GET['user'])){
             echo "<div class='leftDiv'>";
             echo "<img src='uploads/{$row['profilePic']}' class='searchpic'><br>";
             echo "</div><div class='rightDiv'>";
+            if(empty($row['fame'])){
+              echo "<strong>Fame rating:</strong> Not set<br>";
+            }else{
+              echo "<strong>Fame rating:</strong> {$row['fame']}<br>";
+            }
             if(empty($row['first_name'])){
               echo "<strong>Firstname:</strong> Not set<br>";
             }else{

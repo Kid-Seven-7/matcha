@@ -84,9 +84,9 @@ if (isset($_POST['submit'])){
          ?>
         <img src="<?php echo $fileDestination ?>" alt="" width="400px" height="400px">
       </div>
-      <div class="webcam">
+      <!-- <div class="webcam">
         <?php include_once 'test2.php' ?>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

@@ -46,6 +46,11 @@ $email = $_SESSION['email'];
             foreach($result as $row) {
               echo "<img src='uploads/{$row['profilePic']}' width='200px' height='180px'><br>";
               echo "<strong>Username:</strong> {$row['user_name']}<br>";
+              if(empty($row['fame'])){
+                echo "<strong>Fame rating:</strong> Not set<br>";
+              }else{
+                echo "<strong>Fame rating:</strong> {$row['fame']}<br>";
+              }
               if(empty($row['first_name'])){
                 echo "<strong>Firstname:</strong> Not set<br>";
               }else{
