@@ -8,10 +8,13 @@
     <?php include_once 'includes/header.php' ?>
     <div class="profilePicGallery">
       <?php
+        include ("config/database.php");
+
         session_start();
 
         try {
-        $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("SELECT * FROM pictures WHERE user = '{$_SESSION['username']}'");

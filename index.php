@@ -14,7 +14,7 @@ session_start();
   }elseif (isset($_GET['verify']) && $_GET['verify'] == 0) {
     echo ("<script>alert('A verification link has been sent to your email')</script>");
   }elseif (isset($_GET['signup']) && $_GET['signup'] == "invalid") {
-    echo "<script>alert('Invalid username entered')</script>";
+    echo "<script>alert('Username can only contain characters a-z')</script>";
   }elseif (isset($_GET['forgot']) && $_GET['forgot'] == 1) {
     echo ("<script>alert('A reset link has been sent to your email')</script>");
   }elseif (isset($_GET['pas']) && $_GET['pas'] == "weak") {

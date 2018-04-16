@@ -16,6 +16,7 @@ scope of its functionalities. Always keep an open mind and grade
 him/her as honestly as possible. The pedagogy is valid only if
 the peer-evaluation is conducted seriously.
 Guidelines
+
 - Only grade the work that is in the student or group's
 GiT repository.
 
@@ -42,10 +43,13 @@ cheating). However, with the exception of cheating, you are
 encouraged to continue to discuss your work (even if you have not
 finished it) in order to identify any issues that may have caused
 this failure and avoid repeating the same mistake in the future.
+
 Attachments
- Sujet   Subject
+
+Subject
+
 Preliminaries
-Preliminaries
+
 Subject allows the use of a micro-framework and only this. If
 the tool used by the student (if tool there is) isn't in the
 suggestion list, check that it's a micro-framework following
@@ -63,6 +67,7 @@ top of the scale. An error code from 500 to 599 is also
 considered a Crash.
  Yes
  No
+
 Security
 The subject insisted on that point: the website must be secured.
 Check at least the following points:
@@ -73,6 +78,7 @@ Check at least the following points:
 If at least one fails, the defense stops.
  Yes
  No
+
 Features
 User account management
 The app must allow a user to register asking at least an
@@ -85,6 +91,7 @@ and must be able to update his information as well as the
 one given during registration, at any time.
  Yes
  No
+
 User connexion
 The user must then be able to connect with his username
 and password. He must be able to receive an email

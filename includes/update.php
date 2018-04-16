@@ -1,11 +1,22 @@
 <?php
-include ("config/database.php");
 
+if (isset($_GET['signup']) && $_GET['signup'] == "invalid") {
+  echo "<script>alert('Username can only contain characters a-z')</script>";
+}
+
+include ("config/database.php");
   // define variables and set to empty values
-  $surname = $name = $gender = $preference = $bio = $age = $interests = "";
+  $username = $surname = $name = $gender = $preference = $bio = $age = $interests = "";
 
   //assign values to the variables
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST["username"])){
+      $username = test_input($_POST["username"]);
+      if (!preg_match("/^[a-zA-Z]*$/", $username)) {
+        echo "<script>alert('Username can only contain characters a-z')</script>";
+        // exit();
+      }
+    }
     $name = test_input($_POST["name"]);
     $surname = test_input($_POST["surname"]);
     $bio = test_input($_POST["bio"]);
@@ -28,6 +39,13 @@ include ("config/database.php");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     //updating database values if needed
+    if(preg_match("/^[a-zA-Z]*$/", $username)){
+      $sql = "UPDATE users
+      SET user_name='$username'
+      WHERE email='$email'";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+    }
     if($name){
       $sql = "UPDATE users
       SET first_name='$name'
@@ -260,6 +278,10 @@ include ("config/database.php");
 ?>
 <h2>Update Profile</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  Userame:
+  <br>
+  <input size="30" type="text" name="username" placeholder="username" value="<?php if(isset($_POST['username'])) echo htmlentities($_POST['username']); ?>">
+  <br><br>
   Name:
   <br>
   <input size="30" type="text" name="name" placeholder="name" value="<?php if(isset($_POST['name'])) echo htmlentities($_POST['name']); ?>">

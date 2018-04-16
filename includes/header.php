@@ -1,7 +1,7 @@
 <header>
   <div class="TitleBar">
     <?php
-    session_start();
+    // session_start();
     require_once('config/database.php');
 
       //Not logged in
