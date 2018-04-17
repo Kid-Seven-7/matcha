@@ -31,7 +31,7 @@ $email = $_SESSION['email'];
 
       <div class="FormFeedback">
         <?php
-        echo "<h2>{$username}'s Profile</h2><br>";
+        echo "<h2>{$_SESSION['username']}'s Profile</h2><br>";
         try {
           $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
