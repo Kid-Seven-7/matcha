@@ -12,15 +12,20 @@ include ("config/database.php");
   //assign values to the variables
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["username"])){
+      echo "username was set<br>";
       $username = test_input($_POST["username"]);
       if (!preg_match("/^[a-zA-Z]*$/", $username)) {
         echo "<script>alert('Username can only contain characters a-z')</script>";
+        echo "in if sess username is |{$_SESSION['username']}| username is  |{$username}|<br>";
       }else{
         $_SESSION['username'] = $username;
+        echo "in else sess username is |{$_SESSION['username']}| username is  |{$username}|<br>";
       }
-    }else{
-      $username = $_SESSION['username'];
     }
+    // else{
+    //   $username = $_SESSION['username'];
+    // }
+    echo "new email is |{$_POST['new_email']}|";
     $mail = test_input($_POST['new_email']);
     $name = test_input($_POST["name"]);
     $surname = test_input($_POST["surname"]);
@@ -30,7 +35,7 @@ include ("config/database.php");
     $preference = test_input($_POST["preference"]);
     $_SESSION['preference'] = $preference;
 
-    for($i =0; $i < 12; $i++){
+    for($i = 0; $i < 12; $i++){
       $interests[] = test_input($_POST["interests".$i]);
     }
   }
@@ -48,11 +53,13 @@ include ("config/database.php");
       $stmt->execute();
     }
     if($mail){
+      echo "hello";
       $sql = "UPDATE users
       SET email='$mail'
       WHERE user_name='$username'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
+      $_SESSION['email'] = $email;
     }
     if($name){
       $sql = "UPDATE users

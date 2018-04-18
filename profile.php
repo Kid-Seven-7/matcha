@@ -11,8 +11,7 @@ if (isset($_GET['user'])) {
 if (isset($_GET['avatar'])) {
   echo ("<script>alert('This image has already been uploaded');</script>");
 }
-$username = $_SESSION['username'];
-$email = $_SESSION['email'];
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +30,11 @@ $email = $_SESSION['email'];
 
       <div class="FormFeedback">
         <?php
-        echo "<h2>{$_SESSION['username']}'s Profile</h2><br>";
+        $username = $_SESSION['username'];
+        $email = $_SESSION['email'];
+        echo "<h2>{$_SESSION['username']}'s Profile</h2><br>
+        sess email is |{$_SESSION['email']}| email is  |{$email}<br>
+        sess username is |{$_SESSION['username']}| username is  |{$username}|<br>";
         try {
           $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
