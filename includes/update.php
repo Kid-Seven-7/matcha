@@ -7,36 +7,47 @@ if (isset($_GET['signup']) && $_GET['signup'] == "invalid") {
 
 include ("config/database.php");
   // define variables and set to empty values
-  $mail = $username = $surname = $name = $gender = $preference = $bio = $age = $interests = "";
+  $email = $username = $surname = $name = $gender = $preference = $bio = $age = $interests = "";
 
   //assign values to the variables
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["username"])){
-      echo "username was set<br>";
       $username = test_input($_POST["username"]);
       if (!preg_match("/^[a-zA-Z]*$/", $username)) {
         echo "<script>alert('Username can only contain characters a-z')</script>";
-        echo "in if sess username is |{$_SESSION['username']}| username is  |{$username}|<br>";
       }else{
         $_SESSION['username'] = $username;
-        echo "in else sess username is |{$_SESSION['username']}| username is  |{$username}|<br>";
       }
     }
-    // else{
-    //   $username = $_SESSION['username'];
-    // }
-    echo "new email is |{$_POST['new_email']}|";
-    $mail = test_input($_POST['new_email']);
-    $name = test_input($_POST["name"]);
-    $surname = test_input($_POST["surname"]);
-    $bio = test_input($_POST["bio"]);
-    $age = test_input($_POST["age"]);
-    $gender = test_input($_POST["gender"]);
-    $preference = test_input($_POST["preference"]);
+    if(isset($_POST['new_email']) && $_POST['new_email'] != null){
+      $email = $_POST['new_email'];
+    }else{
+      $email = test_input($_SESSION['email']);
+    }
+    if(isset($_POST["name"])){
+      $name  = test_input($_POST["name"]);
+    }
+    if(isset($_POST["surname"])){
+      $surname = test_input($_POST["surname"]);
+    }
+    if(isset($_POST["bio"])){
+      $bio = test_input($_POST["bio"]);
+    }
+    if(isset($_POST["age"])){
+      $age = test_input($_POST["age"]);
+    }
+    if(isset($_POST["gender"])){
+      $gender = test_input($_POST["gender"]);
+    }
+    if(isset($_POST["preference"])){
+      $preference = test_input($_POST["preference"]);
+    }
     $_SESSION['preference'] = $preference;
 
     for($i = 0; $i < 12; $i++){
-      $interests[] = test_input($_POST["interests".$i]);
+      if(isset($_POST["interests".$i])){
+        $interests[] = test_input($_POST["interests".$i]);
+      }
     }
   }
 
@@ -52,10 +63,9 @@ include ("config/database.php");
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($mail){
-      echo "hello";
+    if($email){
       $sql = "UPDATE users
-      SET email='$mail'
+      SET email='$email'
       WHERE user_name='$username'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -95,20 +105,59 @@ include ("config/database.php");
       WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
-      if($gender == 'female'){
-        $sql = "UPDATE users
-        SET profilePic='../uploads/female.png'
-        WHERE email='$email'";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-      }else{
-        $sql = "UPDATE users
-        SET profilePic='../uploads/male.png'
-        WHERE email='$email'";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+    }
+
+    $sql = "SELECT *
+            FROM users
+            WHERE email='$email'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(count($result)){
+      foreach ($result as $row) {
+        if($row['profilePic'] != '../uploads/undefined.png' &&
+        $row['profilePic'] != '../uploads/male.png' &&
+        $row['profilePic'] != '../uploads/female.png'){
+          echo "has pic";
+        }
+        else{
+          // $sql = "SELECT *
+          //         FROM users
+          //         WHERE email='$email'
+          //         SET profilePic=':pic'";
+          // $stmt = $conn->prepare($sql);
+          if($gender == 'male'){
+            echo "male";
+            $sql = "SELECT *
+                    FROM users
+                    WHERE email='$email'
+                    SET profilePic='../uploads/male.png'";
+            $stmt = $conn->prepare($sql);
+            // echo "dude";
+            // $stmt->execute(array(':pic' => "../uploads/male.png"));
+          }elseif($gender == 'female'){
+            echo "female";
+            $sql = "SELECT *
+                    FROM users
+                    WHERE email='$email'
+                    SET profilePic='../uploads/female.png'";
+            $stmt = $conn->prepare($sql);
+            // echo "dudette";
+            // $stmt->execute(array(':pic' => "../uploads/female.png"));
+          }
+        }
+        // else{
+        //   echo $email;
+        //   $sql = "SELECT *
+        //           FROM users
+        //           WHERE email='$email'
+        //           SET profilePic='../uploads/male.png'";
+        //   $stmt = $conn->prepare($sql);
+        //   $stmt->execute();
+        // }
       }
     }
+
     if($preference){
       $sql = "UPDATE users
       SET preference='$preference'

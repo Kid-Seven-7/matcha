@@ -32,9 +32,7 @@ if (isset($_GET['avatar'])) {
         <?php
         $username = $_SESSION['username'];
         $email = $_SESSION['email'];
-        echo "<h2>{$_SESSION['username']}'s Profile</h2><br>
-        sess email is |{$_SESSION['email']}| email is  |{$email}<br>
-        sess username is |{$_SESSION['username']}| username is  |{$username}|<br>";
+        echo "<h2>{$_SESSION['username']}'s Profile</h2><br>";
         try {
           $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
