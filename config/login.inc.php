@@ -18,7 +18,8 @@ if (isset($_POST['submit'])) {
 
       $stmt = $conn->prepare('SELECT *
                               FROM users
-                              WHERE email = :email OR user_name = :username');
+                              WHERE email = :email
+                              OR user_name = :username');
       $stmt->execute(array(':email' => $login, ':username' => $login));
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -28,17 +29,18 @@ if (isset($_POST['submit'])) {
           if ($row['active'] == 1 && password_verify($passwd ,$row['passwd'])) {
             $_SESSION['username'] = $row['user_name'];
             $_SESSION['email'] = $row['email'];
-            $folder_name = $_SESSION['username'];
+            // $folder_name = $_SESSION['username'];
 
             //User is online
             $stmt = $conn->prepare('UPDATE users
                                     SET lastseen= :now
-                                    WHERE email = :email OR user_name = :username');
+                                    WHERE email = :email
+                                    OR user_name = :username');
             $stmt->execute(array(':now' => date("Y-m-d h:i:s"), ':email' => $login, ':username' => $login));
 
-            if (file_exists("upload/".$folder_name)) {
-              mkdir("upload/".$folder_name);
-            }
+            // if (file_exists("upload/".$folder_name)) {
+              // mkdir("upload/".$folder_name);
+            // }
             header("Location: ../login.php?verify=1");
             exit();
           }elseif ($row['active'] == 0) {
