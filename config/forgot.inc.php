@@ -2,19 +2,22 @@
 
 require_once('database.php');
 
+//checking for email/username
 if (isset($_POST['email'])) {
   $username = $_POST['user_name'];
   $email = $_POST['email'];
+  //valid email- not really needed
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     header("Location: ../forgot.php?invalid=1");
-  }
-  else if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  }else if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
     //Checking if the email exists in the database
     try {
       $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
+      $stmt = $conn->prepare("SELECT *
+                              FROM users
+                              WHERE email = :email");
       $stmt->execute(array(':email' => $email));
 
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -29,8 +32,7 @@ if (isset($_POST['email'])) {
             $headers = 'From: noreply@Matcha.com';
             mail($to, $subject, $msg, $headers);
             header("Location: ../forgot.php?reset=1");
-          }
-          else {
+          }else {
             header("Location: ../forgot.php?verify=-1");
             exit();
           }
@@ -45,7 +47,7 @@ if (isset($_POST['email'])) {
       exit();
     }
   }
-}                   else {
+}else {
   header("Location: ../forgot.php?email");
   exit();
 }
