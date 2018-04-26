@@ -11,7 +11,7 @@ include ("config/database.php");
 
   //assign values to the variables
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST["username"])){
+    if(isset($_POST["username"]) && $_POST["username"] != ""){
       $username = test_input($_POST["username"]);
       if (!preg_match("/^[a-zA-Z]*$/", $username)) {
         echo "<script>alert('Username can only contain characters a-z')</script>";
@@ -52,57 +52,57 @@ include ("config/database.php");
   }
 
   try{
-    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     //updating database values if needed
     if($username){
       $sql = "UPDATE users
-      SET user_name='$username'
-      WHERE email='$email'";
+              SET user_name='$username'
+              WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
     if($email){
       $sql = "UPDATE users
-      SET email='$email'
-      WHERE user_name='$username'";
+              SET email='$email'
+              WHERE user_name='$username'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
       $_SESSION['email'] = $email;
     }
     if($name){
       $sql = "UPDATE users
-      SET first_name='$name'
-      WHERE email='$email'";
+              SET first_name='$name'
+              WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
     if($surname){
       $sql = "UPDATE users
-      SET surname='$surname'
-      WHERE email='$email'";
+              SET surname='$surname'
+              WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
     if($bio){
       $sql = "UPDATE users
-      SET bio='$bio'
-      WHERE email='$email'";
+              SET bio='$bio'
+              WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
     if($age){
       $sql = "UPDATE users
-      SET age='$age'
-      WHERE email='$email'";
+              SET age='$age'
+              WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
     if($gender){
       $sql = "UPDATE users
-      SET gender='$gender'
-      WHERE email='$email'";
+              SET gender='$gender'
+              WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
@@ -115,17 +115,10 @@ include ("config/database.php");
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if(count($result)){
       foreach ($result as $row) {
-        if($row['profilePic'] != '../uploads/undefined.png' &&
+        if(!($row['profilePic'] != '../uploads/undefined.png' &&
         $row['profilePic'] != '../uploads/male.png' &&
-        $row['profilePic'] != '../uploads/female.png'){
+        $row['profilePic'] != '../uploads/female.png')){
           echo "has pic";
-        }
-        else{
-          // $sql = "SELECT *
-          //         FROM users
-          //         WHERE email='$email'
-          //         SET profilePic=':pic'";
-          // $stmt = $conn->prepare($sql);
           if($gender == 'male'){
             echo "male";
             $sql = "SELECT *
@@ -133,8 +126,6 @@ include ("config/database.php");
                     WHERE email='$email'
                     SET profilePic='../uploads/male.png'";
             $stmt = $conn->prepare($sql);
-            // echo "dude";
-            // $stmt->execute(array(':pic' => "../uploads/male.png"));
           }elseif($gender == 'female'){
             echo "female";
             $sql = "SELECT *
@@ -142,112 +133,103 @@ include ("config/database.php");
                     WHERE email='$email'
                     SET profilePic='../uploads/female.png'";
             $stmt = $conn->prepare($sql);
-            // echo "dudette";
-            // $stmt->execute(array(':pic' => "../uploads/female.png"));
           }
         }
-        // else{
-        //   echo $email;
-        //   $sql = "SELECT *
-        //           FROM users
-        //           WHERE email='$email'
-        //           SET profilePic='../uploads/male.png'";
-        //   $stmt = $conn->prepare($sql);
-        //   $stmt->execute();
-        // }
       }
     }
 
     if($preference){
       $sql = "UPDATE users
-      SET preference='$preference'
-      WHERE email='$email'";
+              SET preference='$preference'
+              WHERE email='$email'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if(isset($interests[0]) && $interests[0] != null){
-      $sql = "UPDATE users
-      SET Tattoos=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[1]) && $interests[1] != null){
-      $sql = "UPDATE users
-      SET Piercings=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[2]) && $interests[2] != null){
-      $sql = "UPDATE users
-      SET Music=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[3]) && $interests[3] != null){
-      $sql = "UPDATE users
-      SET Art=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[4]) && $interests[4] != null){
-      $sql = "UPDATE users
-      SET Gaming=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[5]) && $interests[5] != null){
-      $sql = "UPDATE users
-      SET Cooking=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[6]) && $interests[6] != null){
-      $sql = "UPDATE users
-      SET Anime=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[7]) && $interests[7] != null){
-      $sql = "UPDATE users
-      SET Cycling=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[8]) && $interests[8] != null){
-      $sql = "UPDATE users
-      SET Sports=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[9]) && $interests[9] != null){
-      $sql = "UPDATE users
-      SET Fitness=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[10]) && $interests[10] != null){
-      $sql = "UPDATE users
-      SET Pets=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
-    }
-    if(isset($interests[11]) && $interests[11] != null){
-      $sql = "UPDATE users
-      SET Nature=1
-      WHERE email='$email'";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
+    if((count($interests) >= 1) && $interests[0] != ""){
+      if(in_array("Tattoos", $interests)){
+        $sql = "UPDATE users
+        SET Tattoos=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Piercings", $interests)){
+        $sql = "UPDATE users
+        SET Piercings=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Music", $interests)){
+        $sql = "UPDATE users
+        SET Music=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Art", $interests)){
+        $sql = "UPDATE users
+        SET Art=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Gaming", $interests)){
+        $sql = "UPDATE users
+        SET Gaming=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Cooking", $interests)){
+        $sql = "UPDATE users
+        SET Cooking=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Anime", $interests)){
+        $sql = "UPDATE users
+        SET Anime=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Cycling", $interests)){
+        $sql = "UPDATE users
+        SET Cycling=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Sports", $interests)){
+        $sql = "UPDATE users
+        SET Sports=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Fitness", $interests)){
+        $sql = "UPDATE users
+        SET Fitness=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Pets", $interests)){
+        $sql = "UPDATE users
+        SET Pets=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
+      if(in_array("Nature", $interests)){
+        $sql = "UPDATE users
+        SET Nature=1
+        WHERE email='$email'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+      }
     }
   }
   catch(PDOException $e) {
@@ -301,6 +283,7 @@ include ("config/database.php");
   <input type="radio" name="preference" value="both">Both
   <br><br>
   <?php
+  $email = $_SESSION['email'];
     try {
       $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

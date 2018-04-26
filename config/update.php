@@ -41,7 +41,9 @@ if (isset($_POST['newpd']) && isset($_POST['conpd'])) {
         $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("UPDATE users SET passwd = :passwd WHERE email = :email");
+        $stmt = $conn->prepare("UPDATE users
+                                SET passwd = :passwd
+                                WHERE email = :email");
         $stmt->execute(array(':passwd' => $passwd, 'email' => $email));
         session_destroy();
         header("Location: ../login.php?reset=suc");

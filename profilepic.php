@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include ("config/database.php");
+
 if (isset($_POST['submit'])){
   if($_FILES['image']['name']){
     $fileName = $_FILES['image']['name'];
@@ -15,29 +17,41 @@ if (isset($_POST['submit'])){
 
     if(in_array($fileActualExt, $allowed)){
       if($fileError === 0){
-        if($filesize < 1000000){
+        if($fileSize < 1000000){
           // $fileNameNew = uniqid('', true). ".".$fileActualExt;
           $fileDestination ='uploads/'.$fileName;
           $_SESSION['profilePic'] = $fileName;
           move_uploaded_file($fileTmpName, $fileDestination);
 
-          // Check for duplicate files
           try {
-            $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+            // Check for duplicate files
             $result = $conn->prepare("SELECT name, user, current
                                       FROM pictures
-                                      WHERE name='{$fileName}' AND user='{$_SESSION['username']}'");
+                                      WHERE name='{$fileName}'
+                                      AND user='{$_SESSION['username']}'");
             $result->execute();
-            $conn= null;
+            // $conn= null;
 
             // Check for 5 pic limit
             //TODO
+            $i = 0;
+            $result = $conn->prepare("SELECT *
+                                      FROM pictures
+                                      WHERE user='{$_SESSION['username']}'");
+            $result->execute();
+            $j = count($result);
+            foreach ($result as $key) {
+              $i++;
+            }
+
+            echo "i is :{$i}";
 
             // Anding image to database
-            $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("INSERT INTO pictures (name, user, current)
                                     VALUES (:name, :user, :current)");
             $stmt->execute(array(':name' => $fileName, ':user' => $_SESSION['username'], ':current' => 1));

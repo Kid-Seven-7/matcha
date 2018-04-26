@@ -11,7 +11,9 @@
       $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
+      $stmt = $conn->prepare("SELECT *
+                              FROM users
+                              WHERE email = :email");
       $stmt->execute(array(':email' => $user));
 
       //getting the row
@@ -25,12 +27,16 @@
               $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
               $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-              $stmt = $conn->prepare('UPDATE users SET active = :active WHERE email = :email');
+              $stmt = $conn->prepare('UPDATE users
+                                      SET active = :active
+                                      WHERE email = :email');
               $stmt->execute(array(':active' => '1', ':email' => $user));
 
               //Updating the con_code
               $new_code = hash('whirlpool', rand(0,100000));
-              $stmt = $conn->prepare('UPDATE users SET con_code = :new_code WHERE email = :email');
+              $stmt = $conn->prepare('UPDATE users
+                                      SET con_code = :new_code
+                                      WHERE email = :email');
               $stmt->execute(array(':new_code' => $new_code, ':email' => $user));
               echo ("<script>alert('Account is now active!')</script>");
             }catch(PDOException $e) {

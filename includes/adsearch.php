@@ -3,13 +3,9 @@ session_start();
 
 if (isset($_POST['gender'])){
   $_SESSION['preference'] = $_POST['gender'];
-}
-
-if (isset($_POST['age'])){
+}if (isset($_POST['age'])){
   $_SESSION['age_range'] = $_POST['age'];
-}
-
-if (isset($_POST['fame'])){
+}if (isset($_POST['fame'])){
   $_SESSION['fame_range'] = $_POST['fame'];
 }
 

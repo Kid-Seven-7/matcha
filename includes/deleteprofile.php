@@ -3,6 +3,7 @@ echo "string";
   session_start();
   include_once '../config/database.php';
   $name = $_SESSION['username'];
+  
   try {
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

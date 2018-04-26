@@ -34,5 +34,4 @@ if (isset($_POST['submit'])){
 
 header("Location: ../chat.php?conn_id={$conn_id}")
 
-
 ?>
