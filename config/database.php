@@ -6,4 +6,7 @@ $DB_NAME = 'Matcha';
 $DB_USER = 'root';
 $DB_PASSWORD = '';
 
+$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 ?>
