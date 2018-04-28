@@ -37,30 +37,22 @@
         <div class="SideBar">
           <h3>What are you looking for?</h3>
           <form class="" action="includes/adsearch.php" method="post">
-            <label for="">Preference:</label><br>
+            <label for="">Your preference is:</label><br>
             <?php
               if(isset($_SESSION['preference'])){
                 switch($_SESSION['preference']){
                   case 'male':
-                    echo "<input type='radio' name='gender' value='male' checked disabled> Male<br>
-                    <input type='radio' name='gender' value='female' disabled> Female<br>
-                    <input type='radio' name='gender' value='both' disabled> Both<br>";
+                    echo "<a href='profile.php'>Male</a>";
                     break;
                   case 'female':
-                    echo "<input type='radio' name='gender' value='male' disabled> Male<br>
-                    <input type='radio' name='gender' value='female' checked disabled> Female<br>
-                    <input type='radio' name='gender' value='both' disabled> Both<br>";
+                    echo "<a href='profile.php'>Female</a>";
                     break;
                   default:
-                    echo "<input type='radio' name='gender' value='male' disabled> Male<br>
-                    <input type='radio' name='gender' value='female' disabled> Female<br>
-                    <input type='radio' name='gender' value='both' checked disabled> Both<br>";
+                    echo "<a href='profile.php'>Both</a>";
                     break;
                 }
               }else{
-                echo "<input type='radio' name='gender' value='male' disabled> Male<br>
-                <input type='radio' name='gender' value='female' disabled> Female<br>
-                <input type='radio' name='gender' value='both' checked disabled> Both<br>";
+                echo "<a href='profile.php'>Both</a>";
               }
             ?>
             <br><br>
