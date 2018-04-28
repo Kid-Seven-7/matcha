@@ -3,7 +3,6 @@ session_start();
 if(isset($_GET['user'])){
   $user_id = $_GET['user'];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +16,7 @@ if(isset($_GET['user'])){
     <?php include_once 'includes/header.php' ?>
     <div class="checkingOut">
       <?php
-
       try {
-        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         $sql = "SELECT *
                 FROM users
                 WHERE id='$user_id'";
@@ -116,9 +111,6 @@ if(isset($_GET['user'])){
       $name = $_SESSION['username'];
       try{
         $liked = 0;
-        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         $sql = "SELECT *
                 FROM likes
                 WHERE liker='$name'";
@@ -130,18 +122,18 @@ if(isset($_GET['user'])){
             $liked = 1;
           }
         }
+        //Check to if see user has been liked before
         if($liked == 0){
           echo "<a href='includes/like.php?liker={$user_id}'><img src='resources/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
-          // echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
         }else{
-          // echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Unike</a>";
           echo "<a href='includes/unlike.php'><img src='resources/thumb.png' alt='like' width='30px' height='30px'>Unike</a>";
         }
+
+        echo "<br><br><a href=#> report as fake <a>";
+        echo "<br><br><a href=#>block<a>";
       }catch(PDOException $e) {
         echo "error: ".$e;
       }
-
-
       ?>
     </div>
   </body>
