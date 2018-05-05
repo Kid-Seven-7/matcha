@@ -31,6 +31,16 @@ $email = $_SESSION['email'];
 
       <div class="FormFeedback">
         <?php
+
+        //Ha Ha got your location- kinda
+        $location = file_get_contents('http://ip-api.com/json');
+        $json = json_decode($location, true);
+
+        $address = $json['city'] .
+            ", " . $json['zip'] .
+            ", " . $json['regionName'] .
+            ", " . $json['country'];
+
         echo "<h2>{$username}'s Profile</h2><br>";
         try {
           $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
@@ -63,7 +73,7 @@ $email = $_SESSION['email'];
               }
               echo "<strong>email:</strong> {$row['email']}<br>";
               if(empty($row['address'])){
-                echo "<strong>address:</strong> Not set<br>";
+                echo "<strong>address:</strong> {$address}<br>";
               }else{
                 echo "<strong>address:</strong> {$row['address']}<br>";
               }

@@ -27,11 +27,7 @@ include ("config/database.php");
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // TODO: forced geolocation
-    $location = file_get_contents('http://ip-api.com/json');
-    $json = json_decode($location);
-
-    var_dump($json);
+  
 
     //updating database values if needed
     if($name){
