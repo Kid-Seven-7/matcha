@@ -1,0 +1,9 @@
+//messages html that will be added by the ajax
+Messages go here
+<div class="message">
+  <a href="#">username: </a>
+  <p>The message displays here</p>
+</div>
+
+
+CORE.PHP

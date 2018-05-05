@@ -1,0 +1,162 @@
+sections
+
+preliminaries
+
+preliminary instructions
+
+The subject allows the use of a micro-framework, and only this. If the tool used by the student (if tool ago) is not in the list of suggestions of the subject,
+make sure it is indeed a micro-framework as defined by the subject. As a reminder:
+
+Consider a "micro-framework" is a router, and possibly templa- ting, but not ORM, validators or management of user accounts.
+
+If the tool used is not a micro-framework, the defense stops.
+
+Also, if, for the defense, there is only one warning, or user error in the web console, select Crash top of the scale.
+
+An error code of 500 to 599 is considered a crash.
+
+security
+
+The subject insisted on this point: the site must be secure. Check that minimum
+
+passwords are encrypted in the database
+
+entry forms and upload have correct validation
+
+no possible SQL injection
+
+If only one of these points is invalid, the defense stops.
+
+features
+
+User Account Management
+
+A user must register, providing the minimum email address, username, name and password (Secure, a french word any current must not be
+accepted, for example).
+
+A connected user must complete an extended profile, and should be able to change this information, as well as those provided during registration at any time.
+user login
+
+The user must be able to connect with his credentials and must be able to receive mail from réinitialisafion password if forgotten.
+
+The disconnection must be possible from any site page.
+
+consultations
+
+The user must consult the people who viewed their profile (so it must be a history of the profile visits), as well as people who "like".
+
+Popularity Score
+
+Each user must have a popularity score. Ask the student to explain his strategy for calculating this score, it must be consistent and relevant minimum.
+Geolocation
+
+The user must be geolocated to the district nearby. If the user does not want to be geolocated, strategies must be put in place to do despite himself.
+The user must change his location on his profile.
+
+Proposals profiles
+
+The user must be able to easily find, when it connects, a list of profiles of suggestions.
+
+Relevant profiles are to be offered to the user. corresponding to sexuality. If the user does not inform his sexuality, he will be considered bisexual.
+Check with the student profiles that proposals are weighted according to three criteria:
+
+same geographical area that the user
+
+Maximum common interest tags
+
+Maximum Popularity
+
+Ask the student to explain its strategy for a list of relevant suggestions.
+
+Research
+
+The user must be able to perform an advanced search by selecting one or more criteria such as
+
+age interval
+
+popularity score interval
+
+location
+
+one or more tags of interest
+
+Sorts and filters
+
+The list of profiles of proposals and research results must be sortable and filterable by
+
+age
+
+location
+
+popularity
+
+tags
+
+Profile of others
+
+The public profile of a user must contain all the information provided, except his email address and password.
+
+It must also include its popularity score, and connection status - if the user appears offline, you should see the date of last visit.
+
+Connection between users
+
+A user can liker and unliker. the profile of another user. When two users have each other "Iikés", they say they are connected: they can then engage in conversation.
+A user who does not have photo must be liker the other user profile.
+
+The other user profile should show clearly whether it is connected to the current user or is "like" the current user.
+Report and blocking
+
+One can see a profile "fake account" and block a given user. A blocked user should no longer appear in search results (or suggestions), and should not
+generate notifications.
+
+Cat
+
+Two connected users can chat in real time (we tolerate a margin of 10 seconds).
+
+The user must be able to see which page nimporte since he received a message.
+
+Notifications
+
+In addition, a user must be notified in real time (we tolerate a margin of 10 seconds), the following events:
+
+a "like" profile of
+
+someone has visited his profile
+
+a user "like" a "Iike" back
+
+a connected user "like" more current user
+
+It must be able to see from any page that a notification has not been read.
+
+Good practices
+
+Compatibility
+
+The site is compatible to Firefox (> = 41) and Chrome (> 46)
+
+Mobile
+
+The site is presentable on mobile and on small resolutions
+
+bonus
+
+Omniauth strategies
+
+The user can connect via Omniauth
+
+Good practices
+Compatibility
+The site is compatible to Firefox (> = 41) and Chrome (> 46)
+Mobile
+The site is presentable on mobile and on small resolutions
+bonus
+Omniauth strategies
+The user can connect via Omniauth
+Other bonuses
+Here it is possible to record up to 5 bonus, the usefulness and relevance are judged Ala corrector discretion.
+For example, here are the bonuses offered in the subject
+Depis Facebook loading images and / or Google+
+Interactive map Users
+etc ...
+Rate it from 0 (failed) through 5 (excellent)
