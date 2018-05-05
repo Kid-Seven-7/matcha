@@ -17,6 +17,8 @@ if(isset($_GET['user'])){
     <div class="checkingOut">
       <?php
       try {
+        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT *
                 FROM users
                 WHERE id='$user_id'";
@@ -110,6 +112,8 @@ if(isset($_GET['user'])){
 
       $name = $_SESSION['username'];
       try{
+        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $liked = 0;
         $sql = "SELECT *
                 FROM likes

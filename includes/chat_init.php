@@ -7,6 +7,8 @@ $sent = date("Y-m-d h:i:s");
 $msg = "A new connection has been formed, you may now send DM's"
 
 try{
+  $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $stmt = $conn->prepare("SELECT *
                           FROM connections
                           WHERE user1 = :user
@@ -23,6 +25,8 @@ try{
                           ':sent_on' => $sent,
                           ':connection_id' => $conn_id));
   }else{
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->prepare("SELECT *
                             FROM connections
                             WHERE user2 = :user
@@ -30,6 +34,8 @@ try{
     $stmt->execute(array(':user' => $_SESSION['username']));
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (count($result)) {
+      $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $conn_id = $result['id']
       $stmt = $conn->prepare("INSERT INTO chats (sent_to, sent_by, message, sent_on, connection_id)
                               VALUES(:user, :match_bot, :msg, :sent_on, connection_id)");

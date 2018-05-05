@@ -8,6 +8,8 @@
 
     try {
       //veryfying the user in the database
+      $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $stmt = $conn->prepare("SELECT *
                               FROM users
                               WHERE email = :email");
@@ -21,12 +23,16 @@
           if ($row['con_code'] == $code) {
             try {
               //Updating user info from active = 0 to active = 1
+              $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               $stmt = $conn->prepare('UPDATE users
                                       SET active = :active
                                       WHERE email = :email');
               $stmt->execute(array(':active' => '1', ':email' => $user));
 
               //Updating the con_code
+              $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
               $new_code = hash('whirlpool', rand(0,100000));
               $stmt = $conn->prepare('UPDATE users
                                       SET con_code = :new_code

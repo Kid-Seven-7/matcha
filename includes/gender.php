@@ -7,9 +7,11 @@ if (isset($_GET["q"])) {
   }else{
     $var = '*';
   }
+  include ("config/database.php");
+  
   session_start();
   try {
-    $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     while ($i < $j){
       $sql = "SELECT *

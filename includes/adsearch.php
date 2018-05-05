@@ -1,5 +1,6 @@
 <?php
 session_start();
+include ("config/database.php");
 
 if (isset($_POST['gender'])){
   $_SESSION['preference'] = $_POST['gender'];

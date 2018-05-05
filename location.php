@@ -9,7 +9,9 @@
     <?php include_once 'includes/header.php' ?>
     <div id="map"></div>
     <script>
+
       var map;
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -26, lng: 28},

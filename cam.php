@@ -127,7 +127,7 @@
             </div>
             <br>
             <div class="buttonDiv">
-              <input class="inputButton" type="submit" name="submit" id="submitButton">
+              <input class="inputButton" type="submit" name="submit" value="Submit" id="submitButton">
             </div>
           </form>
           </div>

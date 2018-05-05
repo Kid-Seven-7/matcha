@@ -5,7 +5,6 @@ session_start();
 
 try {
   $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-  // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   $stmt = $conn->prepare("UPDATE users

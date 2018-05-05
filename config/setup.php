@@ -19,18 +19,16 @@
     $found = 0;
     echo "Database not found<br/>";
   }
-  $conn = null;
 
   //Re-creating the database
   try {
-    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    $conn = new PDO('mysql:host=127.0.0.1', $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    //Preparing the query
     $stmt = $conn->prepare('CREATE DATABASE Matcha');
 
-    //executing the query
     $stmt->execute();
+
     if ($found == 1) {
       echo "Re-creating database <br/>";
     }else {

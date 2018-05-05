@@ -7,6 +7,8 @@ try {
 //Inserting data to the database
 
 // Checking to see if there is a connection to be made
+$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $stmt = $conn->prepare("SELECT *
 FROM likes
 WHERE likee = :likee

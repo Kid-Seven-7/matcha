@@ -1,5 +1,7 @@
 <?php
 session_start();
+include ("config/database.php");
+
 
 if (isset($_POST['submit'])){
   $msg = $_POST['message'];
@@ -14,7 +16,7 @@ if (isset($_POST['submit'])){
   }
 
   try{
-    $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 

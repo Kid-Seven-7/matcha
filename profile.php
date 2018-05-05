@@ -51,6 +51,8 @@ if (isset($_GET['noprofile'])) {
           echo "</pre>";
           echo "<h2>{$_SESSION['username']}'s Profile</h2><br>";
           try {
+            $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = "SELECT *
                     FROM users
                     WHERE email='$email'";

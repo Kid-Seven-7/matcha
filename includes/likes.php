@@ -1,13 +1,12 @@
 <?php
   session_start();
-  require_once('config/database.php');
+  include_once '../config/database.php';
 
   if (isset($_GET['remlike'])){
     try {
       $user = $_GET['view'];
       //Inserting data to the database
       $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-      // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
@@ -19,11 +18,9 @@
       echo "error: ".$e;
     }
   }
-
   try {
     //Inserting data to the database
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-    // $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Checking for profiles the user has liked

@@ -25,6 +25,8 @@ if (isset($_POST['submit'])){
 
           try {
             // Check for duplicate files
+            $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $result = $conn->prepare("SELECT name, user, current
                                       FROM pictures
                                       WHERE name='{$fileName}'
@@ -34,6 +36,8 @@ if (isset($_POST['submit'])){
             // Check for 5 pic limit
             //TODO
             $i = 0;
+            $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $result = $conn->prepare("SELECT *
                                       FROM pictures
                                       WHERE user='{$_SESSION['username']}'");
@@ -46,6 +50,8 @@ if (isset($_POST['submit'])){
             echo "i is :{$i}";
 
             // Anding image to database
+            $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("INSERT INTO pictures (name, user, current)
                                     VALUES (:name, :user, :current)");
             $stmt->execute(array(':name' => $fileName, ':user' => $_SESSION['username'], ':current' => 1));

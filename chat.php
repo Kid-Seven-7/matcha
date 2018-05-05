@@ -20,7 +20,6 @@
         function(){
           $('#load').load('includes/im.php').fadein("Slow");
         },1000);
-      )
       </script>
       <div class="chatMainSection" id="MainChat">
         <?php include_once 'includes/im.php' ?>
