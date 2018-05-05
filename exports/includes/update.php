@@ -1,5 +1,12 @@
 <?php
 
+//Ha Ha, got your location
+$url = "http://ip-api.com/json";
+$response = file_get_contents($url);
+$json = json_decode($response, true);
+//Best formatting I can do
+$address = $json['city']  . ", " . $json['zip'] . ", " . $json['regionName'] . ", " . $json['country'];
+
 //check if new username is valid
 if (isset($_GET['signup']) && $_GET['signup'] == "invalid") {
   echo "<script>alert('Username can only contain characters a-z')</script>";
@@ -54,6 +61,27 @@ include ("config/database.php");
   try{
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+    $sql = "SELECT *
+            FROM users
+            WHERE user_name = '$username'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (count($result)) {
+      foreach($result as $row) {
+        if (!$row['address']){
+          //update address if address field is empty
+          $sql = "UPDATE users
+          SET address='$address'
+          WHERE email='$email'";
+          $stmt = $conn->prepare($sql);
+          $stmt->execute();
+        }
+      }
+    }
+
 
     //updating database values if needed
     if($username){
