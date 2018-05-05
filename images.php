@@ -8,34 +8,31 @@
     <?php include_once 'includes/header.php' ?>
     <div class="profilePicGallery">
       <?php
-        include ("config/database.php");
-
         session_start();
 
+        include ("config/database.php");
+
         try {
-        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $stmt = $conn->prepare("SELECT *
+                                  FROM pictures
+                                  WHERE user = '{$_SESSION['username']}'");
+          $stmt->execute();
 
-        $stmt = $conn->prepare("SELECT *
-                                FROM pictures
-                                WHERE user = '{$_SESSION['username']}'");
-        $stmt->execute();
-
-        // set the resulting array to associative
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        foreach($stmt->fetchAll() as $k=>$v) {
-          echo "<div class='picResults'>";
-          echo "<img src='uploads/{$v['name']}' alt='profilePic'><br>";
-          echo "<ul>
-                  <li><a href='includes/set_delete.php?del={$v['name']}'>delete</a></li>
-                  <li><a href='includes/set_delete.php?set={$v['name']}'>set as prolifepic</a></li>
-                </ul>";
-          echo "</div>";
+          // set the resulting array to associative
+          $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+          foreach($stmt->fetchAll() as $k=>$v) {
+            echo "<div class='picResults'>";
+            echo "<img src='uploads/{$v['name']}' alt='profilePic'><br>";
+            echo "<ul>
+                    <li><a href='includes/set_delete.php?del={$v['name']}'>delete</a></li>
+                    <li><a href='includes/set_delete.php?set={$v['name']}'>set as prolifepic</a></li>
+                  </ul>";
+            echo "</div>";
+          }
         }
-      }
-      catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
-      }
+        catch(PDOException $e) {
+          echo "Error: " . $e->getMessage();
+        }
       ?>
     </div>
   </body>

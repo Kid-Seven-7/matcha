@@ -8,9 +8,6 @@ if (isset($_GET['code']) && isset($_GET['email']) && isset($_GET['com'])) {
   $code = $_GET['code'];
 
   try {
-    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $stmt = $conn->prepare("SELECT *
                             FROM users
                             WHERE email = :email");
@@ -23,9 +20,6 @@ if (isset($_GET['code']) && isset($_GET['email']) && isset($_GET['com'])) {
           $new_code = hash('whirlpool', rand(0, 1000000));
           try {
             //changing the con_code in the database
-            $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             $stmt = $conn->prepare("UPDATE users
                                     SET con_code = :code
                                     WHERE email = :email");

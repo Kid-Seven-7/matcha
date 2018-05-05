@@ -1,13 +1,12 @@
 <?php
+include ("config/database.php");
+
 
 $match_bot = "match bot";
 $sent = date("Y-m-d h:i:s");
 $msg = "A new connection has been formed, you may now send DM's"
 
 try{
-  $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
   $stmt = $conn->prepare("SELECT *
                           FROM connections
                           WHERE user1 = :user

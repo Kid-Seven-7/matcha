@@ -17,10 +17,6 @@
       $email = $_SESSION['email'];
 
       try {
-        //TODO
-        $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         $stmt = $conn->prepare("SELECT *
                                 FROM users
                                 WHERE email = :email");
@@ -29,7 +25,6 @@
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (count($result)) {
           foreach($result as $row) {
-            //TODO
             if ($row['active'] == 1) {
               $_SESSION['username'] = $row['user_name'];
               $_SESSION['email'] = $row['email'];
@@ -42,7 +37,6 @@
           }
         }
       }catch(PDOException $e) {
-        //TODO
         header("Location: login.php?con=error");
         exit();
       }
@@ -73,7 +67,6 @@
   }elseif (isset($_GET['user']) && $_GET['user'] == "res") {
     echo ("<script>alert('Please login first');</script>");
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +87,8 @@
         <input name="login" placeholder="Email"/>
         <br>
         <label for="passwd">Password</label>
-        <br><input type="password" name="passwd" placeholder="Password"/>
+        <br>
+        <input type="password" name="passwd" placeholder="Password"/>
         <br>
         <br>
         <button type="submit" name="submit">Login</button>

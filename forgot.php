@@ -1,5 +1,4 @@
 <?php
-
 require_once('config/database.php');
 
 if (isset($_GET['reset']) && $_GET['reset'] == 1) {
@@ -19,7 +18,6 @@ if (isset($_GET['reset']) && $_GET['reset'] == 1) {
 }elseif (isset($_GET['code']) && $_GET['code'] == -1) {
   echo ("<script>alert('Invalid code entered. To reset your account enter your email and submit');</script>");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +28,7 @@ if (isset($_GET['reset']) && $_GET['reset'] == 1) {
   </head>
   <body>
     <?php include_once 'includes/header.php' ?>
-    <script>
+    <!-- <script>
       function myFunction() {
         var x = document.getElementById("myTopnav");
         if (x.className === "topnav") {
@@ -40,7 +38,7 @@ if (isset($_GET['reset']) && $_GET['reset'] == 1) {
           x.className = "topnav";
         }
       }
-    </script>
+    </script> -->
     <div>
       <div class="RegForm">
         <div>

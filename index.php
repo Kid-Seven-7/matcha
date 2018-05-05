@@ -35,9 +35,6 @@ session_start();
     $user = $_SESSION['email'];
 
     try {
-      $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
       $stmt = $conn->prepare('SELECT *
                               FROM users
                               WHERE email = :email');

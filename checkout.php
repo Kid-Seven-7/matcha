@@ -128,7 +128,6 @@ if(isset($_GET['user'])){
         }else{
           echo "<a href='includes/unlike.php'><img src='resources/thumb.png' alt='like' width='30px' height='30px'>Unike</a>";
         }
-
         echo "<br><br><a href=#> report as fake <a>";
         echo "<br><br><a href=#>block<a>";
       }catch(PDOException $e) {

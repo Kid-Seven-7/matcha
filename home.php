@@ -8,9 +8,6 @@
 
     try {
       //veryfying the user in the database
-      $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
       $stmt = $conn->prepare("SELECT *
                               FROM users
                               WHERE email = :email");
@@ -24,9 +21,6 @@
           if ($row['con_code'] == $code) {
             try {
               //Updating user info from active = 0 to active = 1
-              $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-              $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
               $stmt = $conn->prepare('UPDATE users
                                       SET active = :active
                                       WHERE email = :email');

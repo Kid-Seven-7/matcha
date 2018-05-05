@@ -1,5 +1,6 @@
 <?php
 session_start();
+include ("../config/database.php");
 
 $address = $_GET['address'];
 $latlng = $_GET['latlng'];
@@ -12,11 +13,9 @@ if(isset($_GET['latlng'])){
 }
 
 try {
-  $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-  $sql = "UPDATE users SET address = :address WHERE email = :email";
-
+  $sql = "UPDATE users
+          SET address = :address
+          WHERE email = :email";
   $stmt = $conn->prepare($sql);
   $stmt->execute(array(':address' => $address, ':email' => $email));
 }

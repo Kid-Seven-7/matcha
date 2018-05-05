@@ -24,16 +24,12 @@ if (isset($_POST['submit'])){
           move_uploaded_file($fileTmpName, $fileDestination);
 
           try {
-            // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
-            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
             // Check for duplicate files
             $result = $conn->prepare("SELECT name, user, current
                                       FROM pictures
                                       WHERE name='{$fileName}'
                                       AND user='{$_SESSION['username']}'");
             $result->execute();
-            // $conn= null;
 
             // Check for 5 pic limit
             //TODO
@@ -50,8 +46,6 @@ if (isset($_POST['submit'])){
             echo "i is :{$i}";
 
             // Anding image to database
-            // $conn = new PDO('mysql:dbname=Matcha;host:127.0.0.1', 'root', 'joseph07');
-            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("INSERT INTO pictures (name, user, current)
                                     VALUES (:name, :user, :current)");
             $stmt->execute(array(':name' => $fileName, ':user' => $_SESSION['username'], ':current' => 1));
@@ -69,8 +63,6 @@ if (isset($_POST['submit'])){
     }
   }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -95,12 +87,9 @@ if (isset($_POST['submit'])){
           if(!empty($_FILES['image']['name'])){
             echo "<a href='includes/setprofile.php'>set as profilePic</a><br>";
           }
-         ?>
+        ?>
         <img src="<?php echo $fileDestination ?>" alt="" width="400px" height="400px">
       </div>
-      <!-- <div class="webcam">
-        <?php include_once 'test2.php' ?>
-      </div> -->
     </div>
   </body>
 </html>
