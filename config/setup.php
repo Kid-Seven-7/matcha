@@ -145,7 +145,6 @@
     echo "ERROR: ".$e->getMessage()."<br/>";
   }
 
-
   try {
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -160,10 +159,29 @@
     );
     //executing the query
     $stmt->execute();
-    echo "Table connections created! <br/>";
+    echo "Connections table created! <br/>";
   }catch(PDOException $e) {
-    echo "Unable to create picture table";
+    echo "Unable to create connections table";
     echo "ERROR: ".$e->getMessage()."<br/>";
   }
-  $conn = null;
+
+  try {
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    echo "Creating table : history <br/>";
+    $stmt = $conn->prepare('CREATE TABLE history (
+      id int(11) not null PRIMARY KEY AUTO_INCREMENT,
+      viewer varchar(255) not null,
+      view varchar(255) not null,
+      seen int(1) not null
+      );'
+    );
+    //executing the query
+    $stmt->execute();
+    echo "History table created! <br/>";
+  }catch(PDOException $e) {
+    echo "Unable to create history table";
+    echo "ERROR: ".$e->getMessage()."<br/>";
+  }
 ?>

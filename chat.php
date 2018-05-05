@@ -11,6 +11,7 @@
       <div class="chatNotifications">
         <h2>Notifications</h2>
         <br>
+        <?php include_once 'includes/history.php' ?>
         <?php include_once 'includes/likes.php' ?>
         <?php include_once 'includes/connections.php' ?>
         <?php include_once 'includes/message.php' ?>

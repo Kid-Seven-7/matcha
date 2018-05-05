@@ -74,9 +74,9 @@
                         echo "<tr>";
                       }
                       if (in_array($array[$i], $_SESSION['interests'])){
-                        echo "<td><input class='box' type='checkbox' name='interests{$i}' value='{$array[$i]}' checked>{$array[$i]}</td>";
+                        echo "<td><input onclick='handleClick(this);' class='box' type='checkbox' name='interests{$i}' value='{$array[$i]}' checked>{$array[$i]}</td>";
                       }else {
-                        echo "<td><input class='box' type='checkbox' name='interests{$i}' value='{$array[$i]}'>{$array[$i]}</td>";
+                        echo "<td><input onclick='handleClick(this);' class='box' type='checkbox' name='interests{$i}' value='{$array[$i]}'>{$array[$i]}</td>";
                       }
                       if($i%2 != 0){
                         echo "</tr>";
@@ -85,8 +85,8 @@
                   }else{
                     echo "
                     <tr>
-                    <td><input class='box' type='checkbox' name='interests0' value='Tattoos'>Tattoos</td>
-                    <td><input class='box' type='checkbox' name='interests1' value='Piercings'>Piercings</td>
+                    <td><input onclick='handleClick(this);' class='box' type='checkbox' name='interests0' value='Tattoos'>Tattoos</td>
+                    <td><input onclick='handleClick(this);' class='box' type='checkbox' name='interests1' value='Piercings'>Piercings</td>
                     </tr>
                     <tr>
                     <td><input class='box' type='checkbox' name='interests2' value='Music'>Music</td>
@@ -111,6 +111,11 @@
                 }
                 checkInterestBox();
                 ?>
+                <script>
+                function handleClick(cb) {
+                  display("Clicked, new value = " + cb.checked);
+                }
+                </script>
               </table>
             </div>
             <div class="Age_range">

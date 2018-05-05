@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('config/database.php');
 if(isset($_GET['user'])){
   $user_id = $_GET['user'];
 }
@@ -16,13 +17,34 @@ if(isset($_GET['user'])){
     <?php include_once 'includes/header.php' ?>
     <div class="checkingOut">
       <?php
+
+      //view history
+      function history(){
+        $username = $_SESSION['username'];
+        try{
+          $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha',
+                          'root',
+                          'joseph07');
+          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $stmt = $conn->prepare("INSERT INTO history (viewer, view, seen)
+                                  VALUES(:viewer, :view, :seen)");
+
+          $stmt->execute(array(':viewer' => $username, ':view' => $_SESSION['checkingout'], ':seen' => 0));
+        }catch(PDOException $e) {
+
+        }
+      }
+
       try {
+        //search result profile
         $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         $sql = "SELECT *
                 FROM users
                 WHERE id='$user_id'";
         $stmt = $conn->prepare($sql);
+
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (count($result)) {
@@ -104,11 +126,21 @@ if(isset($_GET['user'])){
             if(($row['Nature'])){
               echo "<pre>    #Nature</pre>";
             }
+            $seen = explode(" ", $row['lastseen']);
+
+            $seen[1] = substr_replace($seen[1], "", -7);
+            if ($seen[0] == date("Y-m-d")){
+              echo "last seen @ {$seen[1]}<br>";
+            }else{
+              echo "last seen on {$seen[0]} @ {$seen[1]}<br>";
+            }
           }
         }
       }catch(PDOException $e) {
         echo "error: ".$e;
       }
+
+      history();
 
       $name = $_SESSION['username'];
       try{
@@ -126,7 +158,7 @@ if(isset($_GET['user'])){
             $liked = 1;
           }
         }
-        //Check to if see user has been liked before
+        //To like or to unlike
         if($liked == 0){
           echo "<a href='includes/like.php?liker={$user_id}'><img src='resources/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
         }else{

@@ -1,11 +1,11 @@
 <?php
-include ("config/database.php");
+require_once('config/database.php');
 
   if(isset($_GET['remcon']) && $_GET['remcon'] != "null"){
     $i = 0;
     try {
       //Inserting data to the database
-      $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
@@ -15,7 +15,7 @@ include ("config/database.php");
                               AND user2 = :other_user");
       $stmt->execute(array(':user' => $_SESSION['username'], ':other_user' => $_GET['remcon']));
 
-      $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $conn = new PDO('mysql:host=127.0.0.1;dbname=Matcha', 'root', 'joseph07');
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 

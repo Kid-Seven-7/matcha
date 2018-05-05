@@ -1,6 +1,5 @@
 <?php
-include ("config/database.php");
-
+require_once('config/database.php');
   try {
     $i = 0;
     //Inserting data to the database
