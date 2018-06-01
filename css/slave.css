@@ -51,7 +51,7 @@
     height: 800px;
     padding: 10px 10px 10px 10px;
   }
-  .SideBar h3 {
+  .SideBar h3,h4{
     text-align: center;
   }
   .SideBar p {
@@ -209,12 +209,12 @@
     width: 45%;
 		height: 250px;
     float: left;
-		padding: 10px,10px,10px,10px;
+		background-color: rgba(255,105,180, 0.9);
+
   }
   .suggestions img {
     width: 250px;
     height: 250px;
-		border: 1px black solid;
   }
 
 	/* userInfo */
@@ -222,7 +222,6 @@
 		width: 50%;
 		float: right;
 		word-wrap: break-word;
-		color: white;
 	}
 
 	/* userImage */
