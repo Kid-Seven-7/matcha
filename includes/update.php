@@ -64,13 +64,26 @@ include ("config/database.php");
       $stmt = $conn->prepare($sql);
       $stmt->execute();
     }
-    if($email){
+    if($email && $email != $_SESSION['email']){
+			$username = $_SESSION['username'];
       $sql = "UPDATE users
-              SET email='$email'
+              SET email='$email', active=0
               WHERE user_name='$username'";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
       $_SESSION['email'] = $email;
+
+			// test start
+				$to = $email;
+				$subject = "Verification code from Matcha";
+				$msg = "Dear $username, it seems that you have changed your email address\n
+					To reactivate your account click on the link below\n\n
+					http://localhost:8080/Matcha/home.php?verify=1&email=".$email;
+				$headers = 'From: noreply@Matcha.com';
+				mail($to, $subject, $msg, $headers);
+				session_unset();
+				header("Location: index.php?verify=0");
+			// test end
     }
     if($name){
       $sql = "UPDATE users
