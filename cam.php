@@ -93,7 +93,7 @@
                   }else{
                     echo "
                     <tr>
-                    <td><input class='box' type='checkbox' name='interests0' value='Tattoos'>Tattoos</td>
+                    <td><input class='box' type='checkbox' name='interests0' value='Tattoos' onclick='loadDoc()'>Tattoos</td>
                     <td><input class='box' type='checkbox' name='interests1' value='Piercings'>Piercings</td>
                     </tr>
                     <tr>
@@ -152,8 +152,23 @@
               <input class="inputButton" type="submit" name="submit" value="submit" id="submitButton">
             </div>
           </form>
+
+					<script>
+					function loadDoc() {
+					  var xhttp = new XMLHttpRequest();
+					  xhttp.onreadystatechange = function() {
+					    if (this.readyState == 4 && this.status == 200) {
+					      document.getElementById("results").innerHTML =
+					      this.responseText;
+					    }
+					  };
+					  xhttp.open("POST", "includes/search.php", true);
+					  xhttp.send();
+					}
+					</script>
+
           </div>
-        <div class="MainSection">
+        <div class="MainSection" id="results">
           <h2>Your search results</h2>
           <?php include_once 'includes/search.php' ?>
         </div>
