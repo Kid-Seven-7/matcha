@@ -11,12 +11,13 @@ include ("config/database.php");
 
   //assign values to the variables
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST["username"]) && $_POST["username"] != ""){
+    if(isset($_POST["username"])){
       $username = test_input($_POST["username"]);
       if (!preg_match("/^[a-zA-Z]*$/", $username)) {
         echo "<script>alert('Username can only contain characters a-z')</script>";
       }else{
-        $_SESSION['username'] = $username;
+        if ($username != "")
+          $_SESSION['username'] = $username;
       }
     }
     if(isset($_POST['new_email']) && $_POST['new_email'] != null){
@@ -56,7 +57,7 @@ include ("config/database.php");
     // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     //updating database values if needed
-    if($username){
+    if($username && $username != ""){
       $sql = "UPDATE users
               SET user_name='$username'
               WHERE email='$email'";
