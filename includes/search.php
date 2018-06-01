@@ -30,7 +30,13 @@ function printResult($row){
 					echo "<strong>Bio</strong>: {$row['bio']}<br>";
 					$seen = explode(" ", $row['lastseen']);
 					$time = explode(".", $seen[1]);
-					echo "<strong>Lastseen</strong>: on {$seen[0]} @ {$time[0]}<br>";
+					$current = date("Y-m-d");
+					if ($current == $seen[0]){
+						echo "<strong>Lastseen</strong>: on Today @ {$time[0]}<br>";
+					}
+					else{
+						echo "<strong>Lastseen</strong>: on {$seen[0]} @ {$time[0]}<br>";
+					}
 					echo "</div>";
         echo "</div>";
         break;
