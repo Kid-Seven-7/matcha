@@ -134,6 +134,20 @@
               </div>
             </div>
             <br>
+						<div class="sort-by">
+							<h3>Sort By</h3>
+							<div class="sort-value">
+								<input type="radio" name="sort" value="age">Age<br>
+								<input type="radio" name="sort" value="fame">Fame count<br>
+								<input type="radio" name="sort" value="common-interests">Common interests<br>
+							</div>
+							<div class="sort-direction">
+								<h4>Sort in</h4>
+								<input type="radio" name="direction" value="Acending">Acending order<br>
+								<input type="radio" name="direction" value="Decending">Decending order<br>
+							</div>
+						</div>
+						<br>
             <div class="buttonDiv">
               <input class="inputButton" type="submit" name="submit" value="submit" id="submitButton">
             </div>
