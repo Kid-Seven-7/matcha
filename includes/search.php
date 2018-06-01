@@ -19,8 +19,19 @@ function printResult($row){
   }elseif(isset($_SESSION['interests'])){
     foreach ($_SESSION['interests'] as $interest){
       if($row[$interest] == 1){
-        echo "<div class='suggestions'>";
-        echo "<a href='checkout.php?user={$row['id']}'><img alt='{$row['user_name']}' title='{$row['user_name']}' src='uploads/{$row['profilePic']}'></a>";
+				echo "<div class='suggestions'>";
+				echo "<div class='userImage'>";
+				echo "<a href='checkout.php?user={$row['id']}'><img alt='{$row['user_name']}' title='{$row['user_name']}' src='uploads/{$row['profilePic']}'></a>";
+				echo "</div>";
+	        echo "<div class='userInfo'>";
+					echo "<strong>Username</strong>: {$row['user_name']}<br>";
+					echo "<strong>Age</strong>: {$row['age']}<br>";
+					echo "<strong>Fame rating</strong>: {$row['fame']}<br>";
+					echo "<strong>Bio</strong>: {$row['bio']}<br>";
+					$seen = explode(" ", $row['lastseen']);
+					$time = explode(".", $seen[1]);
+					echo "<strong>Lastseen</strong>: on {$seen[0]} @ {$time[0]}<br>";
+					echo "</div>";
         echo "</div>";
         break;
       }

@@ -80,6 +80,7 @@
   .suggestions {
     width: 100%;
     clear: both;
+		float: left;
   }
   .chatMainSection {
     margin-top: 10px;
@@ -129,6 +130,7 @@
 @media screen and (max-width:1528px) {
   .checkingOut .rightDiv {
     width: 50%;
+		clear: both;
   }
 }
 
@@ -136,7 +138,14 @@
 @media screen and (max-width:1600px) {
   .suggestions {
     width: 25%;
+		float: left;
   }
+	.userInfo{
+		float: none;
+	}
+	.userImage{
+		float: none;
+	}
 }
 
 /**********************************
