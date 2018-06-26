@@ -1,7 +1,63 @@
 <?php
 session_start();
-
 require_once ('config/database.php');
+
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+$likes = 0;
+$pics = 0;
+try {
+	$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$sql = "SELECT *
+					FROM pictures
+					WHERE user='$username'";
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	if (count($result)) {
+		foreach($result as $row) {
+			$pics++;
+		}
+	}
+}catch(PDOException $e) {
+	echo "error: ".$e;
+}
+
+$_SESSION['haspic'] = $pics;
+
+try {
+	$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$sql = "SELECT *
+					FROM likes
+					WHERE likee='$username'";
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	if (count($result)) {
+		foreach($result as $row) {
+			$likes++;
+		}
+	}
+}catch(PDOException $e) {
+	echo "error: ".$e;
+}
+
+try {
+	$conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$sql = "UPDATE users
+					SET fame='$likes'
+					WHERE user_name='$username'";
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+}catch(PDOException $e) {
+	echo "error: ".$e;
+}
 
 if (isset($_GET['user'])) {
   if (!isset($_SESSION['username'])) {
@@ -11,8 +67,6 @@ if (isset($_GET['user'])) {
 if (isset($_GET['avatar'])) {
   echo ("<script>alert('This image has already been uploaded');</script>");
 }
-$username = $_SESSION['username'];
-$email = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>

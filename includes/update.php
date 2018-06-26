@@ -283,7 +283,7 @@ include ("config/database.php");
   <br><br>
   Age:
   <br>
-  <input type="number" name="age" placeholder="25" min="18" max="45" value="<?php if(isset($_POST['age'])) echo htmlentities($_POST['age']); ?>">
+  <input type="number" name="age" placeholder="25" min="16" max="100" value="<?php if(isset($_POST['age'])) echo htmlentities($_POST['age']); ?>">
   <br><br>
   Gender:
   <br>

@@ -2,7 +2,9 @@
 session_start();
 
 if (isset($_POST['submit'])){
-  $msg = $_POST['message'];
+	$date = date("j F Y h:i:s A");
+  $msg = "{$_POST['message']}<br><br>{$date}";
+
   $send_to = $_POST['send_to'];
   $conn_id = $_POST['conn_id'];
   $sent_by = $_SESSION['username'];

@@ -21,7 +21,7 @@ try{
   }
 
   $stmt->execute(array(':pic' => $image, ':username' => $user));
-  header("Location: ../images.php");
+  header("Location: ../profile.php");
 
 }catch(PDOException $e){
   echo "Unable to delete image: $e";

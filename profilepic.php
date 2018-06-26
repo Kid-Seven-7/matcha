@@ -16,10 +16,10 @@ if (isset($_POST['submit'])){
     if(in_array($fileActualExt, $allowed)){
       if($fileError === 0){
         if($filesize < 1000000){
-          // $fileNameNew = uniqid('', true). ".".$fileActualExt;
+          $fileNameNew = uniqid('', true). ".".$fileActualExt;
           $fileDestination ='uploads/'.$fileName;
           $_SESSION['profilePic'] = $fileName;
-          move_uploaded_file($fileTmpName, $fileDestination);
+          move_uploaded_file($fileNameNew, $fileDestination);
 
           // Check for duplicate files
           try {

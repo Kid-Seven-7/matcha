@@ -17,9 +17,6 @@ if(isset($_GET['user'])){
     <?php include_once 'includes/header.php' ?>
     <div class="checkingOut">
       <?php
-
-
-
       try {
         $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -132,13 +129,17 @@ if(isset($_GET['user'])){
             $liked = 1;
           }
         }
-        if($liked == 0){
-          echo "<a href='includes/like.php?liker={$user_id}'><img src='resources/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
-          // echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
-        }else{
-          // echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Unike</a>";
-          echo "<a href='includes/unlike.php'><img src='resources/thumb.png' alt='like' width='30px' height='30px'>Unike</a>";
-        }
+				if($_SESSION['haspic'] > 0){
+					if($liked == 0){
+						echo "<a href='includes/like.php?liker={$user_id}'><img src='resources/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
+						// echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Like</a>";
+					}else{
+						// echo "<a href='includes/like.php?liker={$user_id}'><img src='https://png.icons8.com/ios/1600/facebook-like.png' alt='like' width='30px' height='30px'>Unike</a>";
+						echo "<a href='includes/unlike.php'><img src='resources/thumb.png' alt='like' width='30px' height='30px'>Unike</a>";
+					}
+				}else{
+					echo "Upload a profile picture to like {$_SESSION['checkingout']}";
+				}
       }catch(PDOException $e) {
         echo "error: ".$e;
       }

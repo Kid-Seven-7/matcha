@@ -61,3 +61,14 @@
     ?>
   </div>
 </header>
+<script type="text/javascript">
+try{
+$(document).ready(function(){
+	setTimeout(function(){
+	 window.location.reload(1);
+ }, 9000);
+})}
+catch{
+
+};
+</script>

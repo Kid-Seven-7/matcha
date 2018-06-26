@@ -190,6 +190,7 @@
 
   /* picResults */
   .picResults {
+		clear: both;
     float: left;
     width: 320px;
     background-color: rgba(255,105,180, 0.7);
@@ -342,6 +343,12 @@
     border-radius: 5px;
     width: 65px;
   }
+
+	/* nopic */
+	.nopic h2{
+		text-align: center;
+	}
+
 	/*  */
   /*  */
 
