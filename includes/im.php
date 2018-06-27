@@ -52,11 +52,11 @@ if (isset($_GET['conn_id'])){
     if ($i == 0){
       echo "<div class='msgBoxSent'><strong>Match Bot:</strong><br> You have no messages at present :(</div><br>";
     }
-    echo "<form action='includes/sendmsg.php' method='POST'>
+    echo "<form id='formId' action='includes/sendmsg.php' method='POST'>
       <textarea class='replyBox' name='message' rows='8' cols='80' placeholder='reply'></textarea><br>
       <input type='hidden' name='conn_id' value='{$_GET['conn_id']}'>
       <input type='hidden' name='send_to' value='{$send_to}'>
-      <input class='inputButton' type='submit' name='submit' value='reply'>
+      <input autofocus id='reply' class='inputButton' type='submit' name='submit' value='reply'>
     </form>";
 
   }catch(PDOException $e) {

@@ -37,34 +37,9 @@
         <div class="SideBar">
           <h3>What are you looking for?</h3>
           <form class="" action="includes/adsearch.php" method="post">
-            <label for="">Preference:</label><br>
-            <?php
-              if(isset($_SESSION['preference'])){
-                switch($_SESSION['preference']){
-                  case 'male':
-                    echo "<input type='radio' name='gender' value='male' checked disabled> Male<br>
-                    <input type='radio' name='gender' value='female' disabled> Female<br>
-                    <input type='radio' name='gender' value='both' disabled> Both<br>";
-                    break;
-                  case 'female':
-                    echo "<input type='radio' name='gender' value='male' disabled> Male<br>
-                    <input type='radio' name='gender' value='female' checked disabled> Female<br>
-                    <input type='radio' name='gender' value='both' disabled> Both<br>";
-                    break;
-                  default:
-                    echo "<input type='radio' name='gender' value='male' disabled> Male<br>
-                    <input type='radio' name='gender' value='female' disabled> Female<br>
-                    <input type='radio' name='gender' value='both' checked disabled> Both<br>";
-                    break;
-                }
-              }else{
-                echo "<input type='radio' name='gender' value='male' disabled> Male<br>
-                <input type='radio' name='gender' value='female' disabled> Female<br>
-                <input type='radio' name='gender' value='both' checked disabled> Both<br>";
-              }
-            ?>
-            <br><br>
-            <label for="">Interests:</label>
+						<label for="">Interests:</label>
+						<br>
+            <label for="">please choose at least one</label>
             <div class="tableDiv">
               <!-- Because tables look neater -->
               <table>
@@ -93,8 +68,8 @@
                   }else{
                     echo "
                     <tr>
-                    <td><input class='box' type='checkbox' name='interests0' value='Tattoos' onclick='loadDoc()'>Tattoos</td>
-                    <td><input class='box' type='checkbox' name='interests1' value='Piercings'>Piercings</td>
+                    <td><input id='tats' class='box' type='checkbox' name='interests0' value='Tattoos'>Tattoos</td>
+                    <td><input id='pier' class='box' type='checkbox' name='interests1' value='Piercings'>Piercings</td>
                     </tr>
                     <tr>
                     <td><input class='box' type='checkbox' name='interests2' value='Music'>Music</td>
@@ -124,49 +99,35 @@
             <div class="Age_range">
               <br><label for="">Maximum Age: <span id="range"></span></label><br>
               <div class="slidecontainer">
-                <input type="number" name="age" value="age" id="age_range">
+                <input type="number" name="age" value="100" id="age_range">
               </div>
             </div>
             <div class="fame">
               <br><label for="">minimum fame rating: <span id="fame"></span></label><br>
               <div class="slidecontainer">
-                <input type="number" name="fame" value="fame" id="fame_range">
+                <input type="number" name="fame" value="0" id="fame_range">
               </div>
             </div>
             <br>
 						<div class="sort-by">
 							<h3>Sort By</h3>
 							<div class="sort-value">
+								<input type="radio" name="sort" value="user_name" checked>Name<br>
 								<input type="radio" name="sort" value="age">Age<br>
 								<input type="radio" name="sort" value="fame">Fame count<br>
-								<input type="radio" name="sort" value="common-interests">Common interests<br>
 							</div>
 							<div class="sort-direction">
 								<h4>Sort in</h4>
-								<input type="radio" name="direction" value="Acending">Acending order<br>
-								<input type="radio" name="direction" value="Decending">Decending order<br>
+								<input type="radio" name="direction" value="ASC" checked>Acending order<br>
+								<input type="radio" name="direction" value="DESC">Decending order<br>
 							</div>
 						</div>
 						<br>
             <div class="buttonDiv">
-              <input class="inputButton" type="submit" name="submit" value="submit" id="submitButton">
+							<input class="inputButton" type="submit" name="submit" value="submit" id="submitButton">
+              <input class="inputButton" type="submit" name="submit" value="submit" id="hsubmitButton" hidden>
             </div>
           </form>
-
-					<script>
-					function loadDoc() {
-					  var xhttp = new XMLHttpRequest();
-					  xhttp.onreadystatechange = function() {
-					    if (this.readyState == 4 && this.status == 200) {
-					      document.getElementById("results").innerHTML =
-					      this.responseText;
-					    }
-					  };
-					  xhttp.open("POST", "includes/search.php", true);
-					  xhttp.send();
-					}
-					</script>
-
           </div>
         <div class="MainSection" id="results">
           <h2>Your search results</h2>
@@ -178,4 +139,12 @@
       </section>
     </main>
   </body>
+	<script type="text/javascript">
+	document.getElementById("tats").checked = true;
+	var btn = document.getElementById('hsubmitButton');
+	if (btn.disabled == false){
+		btn.click();
+		btn.disabled = true;
+	}
+	</script>
 </html>

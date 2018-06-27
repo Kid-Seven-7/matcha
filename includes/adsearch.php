@@ -13,6 +13,14 @@ if (isset($_POST['fame'])){
   $_SESSION['fame_range'] = $_POST['fame'];
 }
 
+if (isset($_POST['sort'])){
+	$_SESSION['sort_by'] = $_POST['sort'];
+}
+
+if (isset($_POST['direction'])){
+	$_SESSION['sort_in'] =  $_POST['direction'];
+}
+
 $array = [];
 if (isset($_POST['interests0'])){
   $array[] = $_POST['interests0'];
@@ -41,7 +49,6 @@ if (isset($_POST['interests0'])){
 }
 
 $_SESSION['interests'] = $array;
-
 header("location: ../cam.php");
 
 ?>

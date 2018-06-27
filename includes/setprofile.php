@@ -13,5 +13,5 @@ try {
 } catch(PDOException $e) {
   echo "Unable to add picture to table: $e";
 }
-header("Location: ../cam.php");
+header("Location: ../profile.php");
 ?>

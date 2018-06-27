@@ -190,6 +190,7 @@
 
   /* picResults */
   .picResults {
+		clear: both;
     float: left;
     width: 320px;
     background-color: rgba(255,105,180, 0.7);
@@ -220,7 +221,7 @@
 	/* userInfo */
 	.userInfo{
 		width: 50%;
-		float: right;
+		/* float: right; */
 		word-wrap: break-word;
 	}
 
@@ -228,7 +229,7 @@
 	.userImage{
 		width: 50%;
 		padding: 10px,10px,10px,10px;
-		float: left;
+		/* float: left; */
 	}
 
   /* profiles */
@@ -342,6 +343,12 @@
     border-radius: 5px;
     width: 65px;
   }
+
+	/* nopic */
+	.nopic h2{
+		text-align: center;
+	}
+
 	/*  */
   /*  */
 
