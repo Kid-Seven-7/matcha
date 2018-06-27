@@ -92,7 +92,7 @@
                     ";
                   }
                 }
-                checkInterestBox();
+								checkInterestBox();
                 ?>
               </table>
             </div>

@@ -2,13 +2,23 @@
 
 /* max-width:280px */
 @media screen and (max-width:280px) {
-  .suggestions {
-    width: 100%;
+	.suggestions {
+    width: 200px;
+		height: auto;
+    float: left;
+		clear: both;
   }
 }
 
 /* max-width:426px */
 @media screen and (max-width:426px) {
+	.suggestions {
+    width: 75%;
+		height: 500px;
+    float: left;
+		clear: both;
+  }
+
   .TitleBar {
     width: 100%;
     text-align: center;
@@ -40,6 +50,13 @@
     width: 95%;
     float: none;
     text-align: center;
+  }
+
+	.suggestions {
+    width: 75%;
+		height: 500px;
+    float: left;
+		clear: both;
   }
 
   .UpdateForm table {
@@ -82,7 +99,7 @@
 	}
 
   .suggestions {
-    width: auto;
+    width: 90%;
     clear: both;
 		float: left;
   }
@@ -136,10 +153,37 @@
     width: 50%;
 		clear: both;
   }
+
+	.suggestions {
+		width: 25%;
+		height: 500px;
+		float: left;
+	}
+	.userInfo{
+		float: none;
+	}
+	.userImage{
+		float: none;
+	}
 }
 
 /* max-width:1600px */
 @media screen and (max-width:1600px) {
+  .suggestions {
+    width: 25%;
+		height: 500px;
+		float: left;
+  }
+	.userInfo{
+		float: none;
+	}
+	.userImage{
+		float: none;
+	}
+}
+
+/* max-width:1700px */
+@media screen and (min-width:3400px) {
   .suggestions {
     width: 25%;
 		height: 500px;
